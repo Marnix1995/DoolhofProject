@@ -19,9 +19,9 @@ public class Doolhof extends JFrame {
     private static JPanel panel;
     private static int breedte = 820;
     private static int hoogte = 910;
-
+    private static int tijd = 59;
+    
     public static void Doolhof() {
-
        
         JFrame frame = new JFrame("Doolhof");
        
@@ -30,14 +30,13 @@ public class Doolhof extends JFrame {
                
         panel = new Level();
         panel.setLayout(new BorderLayout());
-        panel.add(new Timers(59));               
+        panel.add(new Timers(tijd));               
         frame.add(panel, BorderLayout.SOUTH);
 
         frame.setResizable(false);
         frame.setSize(breedte, hoogte);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
     }
 

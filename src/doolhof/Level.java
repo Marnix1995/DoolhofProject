@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Marnix
+ * @author Marnix/Alois
  */
 //0 = leeg vakje
 //1 = muur
@@ -20,11 +20,10 @@ import javax.swing.JPanel;
 
 public class Level extends JPanel {
 
-    private static int n = 25;
+    private static int n = 25;    //aantal * n vakjes
     private int m;
     private Vak[][] level1 = new Vak[n][n];
-   
-    
+       
 
     public Object[][] getLevel1() {
 
