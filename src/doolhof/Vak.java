@@ -13,6 +13,7 @@ import javax.swing.JComponent;
  *
  * @author Marnix
  */
+
 public class Vak extends JComponent {
 
     private SpelObject spelobject;
