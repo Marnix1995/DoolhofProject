@@ -6,10 +6,6 @@ package doolhof;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.Timer;
@@ -30,7 +26,6 @@ public class Vak extends JComponent{
     private Level level = new Level();
     private int[][] lev = level.getLevel1();
     private Pacman p = new Pacman();
-
      
     
     @Override
@@ -48,7 +43,6 @@ public class Vak extends JComponent{
                     g.drawImage(muur, j * size, i * size, size, size, null);
                 }
 
-
                 if (lev[i][j] == 3) {
                     g.drawImage(exit, j * size, i * size, size, size, null);
 
@@ -56,11 +50,14 @@ public class Vak extends JComponent{
             }
         }
 
+        //Bepaal de startpositie van speler.
+        
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-
-                if (lev[i][j] == 2) {
-                    g.drawImage(speler, p.getX() * size, p.getY() * size, null);
+            for (int j = 0; j < n; j++) {                
+                                             
+                if (lev[i][j] == 2 ) {
+                                       
+                    g.drawImage(speler, j * size, i *size, null);
 
                 }
             }

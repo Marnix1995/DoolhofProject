@@ -6,7 +6,6 @@ package doolhof;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 /**
@@ -18,11 +17,7 @@ public class Toets extends KeyAdapter {
     private Pacman p = new Pacman();
     JFrame frame = new Doolhof();
 
-    public Toets() {
-       
-        
-    }
-           
+              
     @Override
             public void keyPressed(KeyEvent e) {
  

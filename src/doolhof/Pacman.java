@@ -26,7 +26,8 @@ public class Pacman extends SpelObject {
 
         return x;        
     }
-
+       
+    
     @Override
     public void move(int x, int y) {
 
