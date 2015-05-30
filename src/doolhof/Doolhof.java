@@ -5,33 +5,45 @@
 package doolhof;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
- * @author Marnix
+ * @author Maxime
  */
-
-public class Doolhof extends JFrame {
-
-    private static JPanel panel;
-    private static int breedte = 820;
-    private static int hoogte = 910;
-    private static int tijd = 210;
+public class Doolhof extends JFrame implements ActionListener {
+   
+    private  JPanel panel;
+    private  int breedte = 820;
+    private  int hoogte = 910;
+    private  int tijd = 210;
+    private Timer timer;  
     
-    public static void Doolhof() {
-       
+    
+     public Doolhof(){
+         
+         timer = new Timer(25, this);
+         timer.start();                 
+     }
+    
+    public void Doolhof() {
+
         JFrame frame = new JFrame("Doolhof");
+      
+        frame.addKeyListener(new Toets());
+        frame.setFocusable(true);                
        
-        JComponent component = new Vak();
+        JComponent component = new Vak();        
         frame.add(component);
-               
+              
         panel = new Level();
         panel.setLayout(new BorderLayout());
-        panel.add(new Timers(tijd));               
+        panel.add(new Timers(tijd));
         frame.add(panel, BorderLayout.SOUTH);
 
         frame.setResizable(false);
@@ -41,9 +53,9 @@ public class Doolhof extends JFrame {
 
     }
 
-    public static void main(String[] args) {
-
-        Doolhof();
-
-    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        repaint();
+    }    
+    
 }

@@ -28,7 +28,7 @@ public class Exit extends SpelObject {
    
     
     @Override
-    public void setObject(int x, int y) {
+    public void move(int x, int y) {
        
     }
    

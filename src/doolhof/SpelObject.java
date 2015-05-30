@@ -16,6 +16,6 @@ public abstract class SpelObject {
         
     }    
         
-    public abstract void setObject(int x, int y);   
+    public abstract void move(int x, int y);   
     
 }
