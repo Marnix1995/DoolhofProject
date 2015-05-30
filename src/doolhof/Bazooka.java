@@ -28,25 +28,12 @@ public class Bazooka extends SpelObject {
         return x;        
     }   
     
-       
-    @Override
-    public Image getImage(){
-        
-      this.img = new ImageIcon(Bazooka.class.getResource("\\Plaatjes\\player.png")).getImage();    
-      return img; 
-    }   
-    
-    
+                  
     @Override
     public void setObject(int x, int y) {
         
       this.x = x;
       this.y = y;
     }
-
-    @Override
-    public char getChar() {
-        
-       return 'b';
-    }   
+   
 }

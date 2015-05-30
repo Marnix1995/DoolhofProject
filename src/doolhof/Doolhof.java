@@ -14,12 +14,13 @@ import javax.swing.JPanel;
  *
  * @author Marnix
  */
+
 public class Doolhof extends JFrame {
 
     private static JPanel panel;
     private static int breedte = 820;
     private static int hoogte = 910;
-    private static int tijd = 59;
+    private static int tijd = 210;
     
     public static void Doolhof() {
        
@@ -43,7 +44,6 @@ public class Doolhof extends JFrame {
     public static void main(String[] args) {
 
         Doolhof();
-
 
     }
 }

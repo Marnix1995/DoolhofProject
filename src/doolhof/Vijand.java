@@ -4,8 +4,6 @@
  */
 package doolhof;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,7 +13,7 @@ public class Vijand extends SpelObject {
 
     private int x;
     private int y;
-    private Image img;
+   
 
     public int getY() {
 
@@ -26,12 +24,7 @@ public class Vijand extends SpelObject {
 
         return x;
     }
-
-    @Override
-    public Image getImage() {
-        this.img = new ImageIcon(Vijand.class.getResource("\\Plaatjes\\Enemy.png")).getImage();
-        return img;
-    }
+  
 
     @Override
     public void setObject(int x, int y) {
@@ -39,9 +32,5 @@ public class Vijand extends SpelObject {
         this.x = x;
         this.y = y;
     }
-
-    @Override
-    public char getChar() {
-       return 'v';
-    }
+   
 }

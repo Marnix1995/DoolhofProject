@@ -4,8 +4,6 @@
  */
 package doolhof;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,10 +13,11 @@ import javax.swing.ImageIcon;
 
 public class Muur extends SpelObject {
   
-private Image img;    
+    
 private boolean vernietigbaar;    
 private int x;
 private int y;
+private boolean passible = false;
     
 
  public int getY(){
@@ -31,13 +30,7 @@ private int y;
        return x;        
     }   
     
-    
-    @Override
-    public Image getImage(){
-        
-      this.img = new ImageIcon(Muur.class.getResource("\\Plaatjes\\crate.png")).getImage();   
-      return img;         
-    }    
+      
     
     @Override
     public void setObject(int x, int y) {
@@ -47,9 +40,5 @@ private int y;
         
     }
 
-    @Override
-    public char getChar() {
-        return 'm';
-    }
 }
 

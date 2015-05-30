@@ -4,16 +4,13 @@
  */
 package doolhof;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author Marnix
  */
 public class Exit extends SpelObject {
 
-    private Image img;
+  
     private int x;
     private int y;
     
@@ -27,20 +24,12 @@ public class Exit extends SpelObject {
         return x;        
     }    
     
-    @Override
-    public Image getImage(){
-        
-    new ImageIcon(Exit.class.getResource("\\Plaatjes\\finish.png")).getImage(); 
-    return img;
-    }
+  
+   
     
     @Override
     public void setObject(int x, int y) {
        
     }
-
-    @Override
-    public char getChar() {
-       return 'e';
-    }
+   
 }

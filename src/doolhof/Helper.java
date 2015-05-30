@@ -4,8 +4,7 @@
  */
 package doolhof;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
+
 
 /**
  *
@@ -15,7 +14,7 @@ public class Helper extends SpelObject {
 
     private int x;
     private int y;
-    private Image img;
+  
     
     public int getY() {
 
@@ -35,16 +34,6 @@ public class Helper extends SpelObject {
         this.y = y;
 
     }    
-   
-    @Override
-    public Image getImage(){
-      
-     this.img = new ImageIcon(Helper.class.getResource("\\Plaatjes\\friend.png")).getImage();    
-      return img;  
-    }
 
-    @Override
-    public char getChar() {
-        return 'h';
-    }
+   
 }

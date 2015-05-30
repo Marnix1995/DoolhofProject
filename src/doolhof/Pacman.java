@@ -4,8 +4,7 @@
  */
 package doolhof;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
+
 
 /**
  *
@@ -14,7 +13,7 @@ import javax.swing.ImageIcon;
 
 public class Pacman extends SpelObject {
 
-    private Image img;
+   
     private int x;
     private int y;
 
@@ -36,20 +35,9 @@ public class Pacman extends SpelObject {
     }
     
     
-    @Override
-    public Image getImage(){
-        
-     this.img = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\player.png")).getImage();  
-     return img;      
-    }    
-        
+          
     //Als buurvakje is grass; loop door;    
     //Als buurvakje is muur stop;
     
-    
-    @Override
-    public char getChar() {
-
-        return 'p';  
-    }
+   
 }

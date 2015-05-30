@@ -4,9 +4,6 @@
  */
 package doolhof;
 
-
-import java.awt.Image;
-
 /**
  *
  * @author Marnix
@@ -19,8 +16,6 @@ public abstract class SpelObject {
         
     }    
         
-    public abstract void setObject(int x, int y);
-    public abstract Image getImage();
-    public abstract char getChar();
+    public abstract void setObject(int x, int y);   
     
 }
