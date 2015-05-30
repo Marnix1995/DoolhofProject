@@ -14,14 +14,14 @@ import javax.swing.Timer;
 
 /**
  *
- * @author Maxime
+ * @author Marnix /Alois
  */
 public class Doolhof extends JFrame implements ActionListener {
    
-    private  JPanel panel;
-    private  int breedte = 820;
-    private  int hoogte = 910;
-    private  int tijd = 210;
+    private JPanel panel;
+    private int breedte = 820;
+    private int hoogte = 910;
+    private int tijd = 210;
     private Timer timer;  
     
     
