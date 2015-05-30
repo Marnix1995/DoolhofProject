@@ -16,6 +16,7 @@ import javax.swing.Timer;
  *
  * @author Marnix /Alois
  */
+
 public class Doolhof extends JFrame implements ActionListener {
    
     private JPanel panel;
@@ -35,10 +36,10 @@ public class Doolhof extends JFrame implements ActionListener {
 
         JFrame frame = new JFrame("Doolhof");
       
-        frame.addKeyListener(new Toets());
+        frame.addKeyListener(new Toets());  //Toetsen aanroepen, werkt nu.
         frame.setFocusable(true);                
        
-        JComponent component = new Vak();        
+        JComponent component = new Vak();           
         frame.add(component);
               
         panel = new Level();
@@ -55,7 +56,7 @@ public class Doolhof extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        repaint();
+        repaint();         //Repaint werkt niet met de toetsen..
     }    
     
 }
