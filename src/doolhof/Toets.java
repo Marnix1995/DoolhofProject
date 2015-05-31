@@ -6,7 +6,6 @@ package doolhof;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.JFrame;
 
 /**
  *
@@ -15,16 +14,20 @@ import javax.swing.JFrame;
 public class Toets extends KeyAdapter {
 
     private Pacman p = new Pacman();
-    JFrame frame = new Doolhof();
-
-              
-    @Override
+    
+    
+    public Toets(){
+        
+        
+    }
+             
+           @Override
             public void keyPressed(KeyEvent e) {
  
                 int keycode = e.getKeyCode();
                 if (keycode == KeyEvent.VK_UP) {
                     {
-                        p.move(0, -1);
+                      p.move(0, -1);
                       System.out.println("Omhoog " + p.getY()); 
                     }
                 }
@@ -32,7 +35,7 @@ public class Toets extends KeyAdapter {
                 if (keycode == KeyEvent.VK_DOWN) {
                     {
                         p.move(0, 1);
-                        System.out.println("beneden");
+                        System.out.println("beneden ");
                     }
                 }
                 if (keycode == KeyEvent.VK_RIGHT) {
@@ -48,6 +51,10 @@ public class Toets extends KeyAdapter {
                         
                     }
                 }
-            }         
-    }
+            } 
+           
+}
+           
+           
+          
     
