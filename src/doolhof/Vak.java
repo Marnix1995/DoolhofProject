@@ -6,15 +6,17 @@ package doolhof;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.Timer;
 
 /**
  *
  * @author Marnix
  */
-public class Vak extends JComponent{
+public class Vak extends JComponent {
 
     private Image speler = new ImageIcon(Vak.class.getResource("\\Plaatjes\\player.png")).getImage();
     private Image exit = new ImageIcon(Vak.class.getResource("\\Plaatjes\\finish.png")).getImage();
@@ -26,41 +28,36 @@ public class Vak extends JComponent{
     private Level level = new Level();
     private int[][] lev = level.getLevel1();
     private Pacman p = new Pacman();
-     
+
+    
+    
     
     @Override
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-
+       
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
-                g.drawImage(gras, j * size, i * size, size, size, null);
 
+                if (lev[i][j] == 0) {
+                    g.drawImage(gras, j * size, i * size, size, size, null);
+                }
 
                 if (lev[i][j] == 1) {
                     g.drawImage(muur, j * size, i * size, size, size, null);
                 }
 
-                if (lev[i][j] == 3) {
+                if (lev[i][j] == 2) {
+
                     g.drawImage(exit, j * size, i * size, size, size, null);
-
                 }
             }
-        }
-
-        //Bepaal de startpositie van speler.
-        
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {                
-                                             
-                if (lev[i][j] == 2 ) {
-                                       
-                    g.drawImage(speler, j * size, i *size, null);
-
-                }
-            }
-        }
+        } 
+        p.move(0,1);
+        g.drawImage(speler, p.getX() * size, p.getY() * size, size, size, null);
+        System.out.println("positie y: " + p.getY());
+       
     }
 }
