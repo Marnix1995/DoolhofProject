@@ -13,19 +13,15 @@ import java.awt.Image;
  */
 
 public abstract class SpelObject {
-    
-           
-    public SpelObject(){          
-        
-    }    
-    
+               
+    public abstract void setPositie(int x, int y);
     public abstract int getX();   
     public abstract int getY();
    
     public abstract void draw(Graphics g);
     public abstract void drawNieuw(Graphics g, int x, int y);
-    
-    public abstract void setPositie(int x, int y);
+    public abstract void move(int x, int y);
+   
     
     public abstract Image getImage();
     

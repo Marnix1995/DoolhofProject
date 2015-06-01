@@ -32,7 +32,6 @@ public class Helper extends SpelObject {
 
         return x;
     }
-
   
 
     @Override
@@ -55,5 +54,10 @@ public class Helper extends SpelObject {
     @Override
     public void setPositie(int x, int y) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void move(int x, int y) {
+        
     }
 }

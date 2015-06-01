@@ -19,6 +19,13 @@ public class Exit extends SpelObject {
     private int y;
     
     
+     @Override
+    public void setPositie(int x, int y) {
+      this.x = x;
+      this.y = y;
+    }   
+    
+    
     @Override
      public int getY(){
        
@@ -47,10 +54,10 @@ public class Exit extends SpelObject {
     public void drawNieuw(Graphics g, int x, int y) {
         
     }
+   
 
     @Override
-    public void setPositie(int x, int y) {
-      this.x = x;
-      this.y = y;
-    }   
+    public void move(int x, int y) {
+       
+    }
 }

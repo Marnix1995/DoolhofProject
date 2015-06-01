@@ -20,32 +20,36 @@ public class Pacman extends SpelObject {
     private int x;
     private int y;
     private int size = 32;
-       
+         
+    
+    @Override
+    public void setPositie(int x, int y){
+            
+     this.x = x;
+     this.y = y;
+     
+    }      
     
     @Override
     public int getY() {
-
+        
         return y;
     }
 
     @Override
-    public int getX() {
- 
+    public int getX() { 
+               
         return x;        
     }      
          
       
+    @Override
     public void move(int x, int y) {
 
         this.x += x;
         this.y += y;
     }
-     
-    @Override
-    public void setPositie(int x, int y){
-     this.x = x;
-     this.y = y;        
-    }  
+         
     
     @Override
      public void draw(Graphics g) {

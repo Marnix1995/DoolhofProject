@@ -28,11 +28,12 @@ public class Vijand extends SpelObject {
 
     @Override
     public int getX() {
-
+        System.out.println("x:"+ x);
         return x;
     }
   
   
+    @Override
     public void move(int x, int y) {
 
         this.x += x;

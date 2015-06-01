@@ -19,6 +19,11 @@ public class Bazooka extends SpelObject {
     private int y;
     
     
+      @Override
+    public void setPositie(int x, int y) {
+       
+    }
+    
     @Override
      public int getY(){
         
@@ -47,9 +52,10 @@ public class Bazooka extends SpelObject {
     public void drawNieuw(Graphics g, int x, int y) {
        
     }
+  
 
     @Override
-    public void setPositie(int x, int y) {
-       
+    public void move(int x, int y) {
+        
     }
 }

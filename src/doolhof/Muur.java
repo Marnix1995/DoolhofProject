@@ -61,7 +61,11 @@ private boolean passible = false;
     @Override
     public void drawNieuw(Graphics g, int x, int y) {
        
+    }
+
+    @Override
+    public void move(int x, int y) {
+       
     }    
-    
 }
 

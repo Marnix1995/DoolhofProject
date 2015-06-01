@@ -27,9 +27,9 @@ public class Doolhof extends JFrame implements ActionListener {
     private int ms = 100;
     private Timer timer;
     private JFrame frame = new JFrame("Doolhof");
-    private JComponent component = new Vak();   
+    private JComponent component = new Level();
     
-
+    
     public Doolhof() {
 
 
@@ -39,8 +39,8 @@ public class Doolhof extends JFrame implements ActionListener {
         panel = new Level();
         panel.setLayout(new BorderLayout());
         panel.add(new Timers(tijd));
-        panel.addKeyListener(new Toetsen());  //Toetsen aanroepen, werkt nu.
-        panel.setFocusable(true);
+        panel.addKeyListener(new Toets());         
+        panel.setFocusable(true);    
 
         frame.add(panel, BorderLayout.SOUTH);
         frame.add(component);
@@ -48,47 +48,11 @@ public class Doolhof extends JFrame implements ActionListener {
         frame.setSize(breedte, hoogte);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-               
-    }        
-	
+        
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
     }
-   
-    //Klasse Toets
-    public class Toetsen extends KeyAdapter {
-        
-       Pacman p = new Pacman();
-       
-        @Override
-        public void keyPressed(KeyEvent event) {
-
-            switch (event.getKeyCode()) {
-                case KeyEvent.VK_LEFT:
-                    
-                    p.move(0, -1);                  
-                    System.out.println("p: " + p.getX()); 
-                                                                             
-                    break;
-
-                case KeyEvent.VK_RIGHT:
-                    
-                    p.move(0, 1);
-                    
-                    break;
-                    
-                case KeyEvent.VK_UP:
-                     p.move(-1, 0);
-                    
-                    break;
-                    
-                case KeyEvent.VK_DOWN:
-                    
-                    p.move(1, 0);
-                    
-                    break;
-            }
-repaint();
-        }
-    }
 }
+
