@@ -4,6 +4,7 @@
  */
 package doolhof;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -18,22 +19,37 @@ public class Bazooka extends SpelObject {
     private int y;
     
     
+    @Override
      public int getY(){
         
        return y;         
     }
     
-    public int getX(){ 
-        
+    @Override
+    public int getX(){         
         return x;        
     }   
+                     
     
-                  
+
     @Override
-    public void move(int x, int y) {
-        
-      this.x = x;
-      this.y = y;
+    public Image getImage() {
+     this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\rocket_launcher.png")).getImage(); 
+        return img;
     }
-   
+
+    @Override
+    public void draw(Graphics g) {
+       
+    }
+
+    @Override
+    public void drawNieuw(Graphics g, int x, int y) {
+       
+    }
+
+    @Override
+    public void setPositie(int x, int y) {
+       
+    }
 }

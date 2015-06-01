@@ -15,7 +15,7 @@ public class MainClass {
     public static void main(String[] args) {
 
         Doolhof doolhof = new Doolhof(); 
-        doolhof.Doolhof();
+      
     }
    
 }

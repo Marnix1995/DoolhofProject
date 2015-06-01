@@ -6,11 +6,8 @@ package doolhof;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.Timer;
 
 /**
  *
@@ -18,46 +15,54 @@ import javax.swing.Timer;
  */
 public class Vak extends JComponent {
 
-    private Image speler = new ImageIcon(Vak.class.getResource("\\Plaatjes\\player.png")).getImage();
-    private Image exit = new ImageIcon(Vak.class.getResource("\\Plaatjes\\finish.png")).getImage();
-    private Image muur = new ImageIcon(Vak.class.getResource("\\Plaatjes\\crate.png")).getImage();
-    private Image gras = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
-    private Timer timer;
+    private Image leegVakje = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
     private int size = 32;              //Afmeting van een vakje 
     private int n = Level.getN();
     private Level level = new Level();
     private int[][] lev = level.getLevel1();
-    private Pacman p = new Pacman();
-
+       
     
-    
-    
+    SpelObject p = new Pacman();
+    SpelObject m = new Muur();
+    SpelObject e = new Exit();
+    SpelObject b = new Bazooka();
+    SpelObject h = new Helper();
+    SpelObject v = new Vijand();
+   
     @Override
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-       
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
+                m.setPositie(i, j);
+                e.setPositie(i, j);
+                p.setPositie(i, j);
 
-                if (lev[i][j] == 0) {
-                    g.drawImage(gras, j * size, i * size, size, size, null);
-                }
+                g.drawImage(leegVakje, j * size, i * size, size, size, null);
 
                 if (lev[i][j] == 1) {
-                    g.drawImage(muur, j * size, i * size, size, size, null);
+                    g.drawImage(m.getImage(), j * size, i * size, size, size, null);
+                    //System.out.println("muur: "+ m.getX() +"," + m.getY()); 
                 }
 
                 if (lev[i][j] == 2) {
 
-                    g.drawImage(exit, j * size, i * size, size, size, null);
+                    g.drawImage(e.getImage(), j * size, i * size, size, size, null);
+                }
+
+                if (lev[i][j] == 3) {
+
+                    g.drawImage(p.getImage(), j * size, i * size, size, size, null);
+                    System.out.println("Pacman: " + p.getX() + "," + p.getY());
+                                     
+                                                            
                 }
             }
-        } 
-        p.move(0,1);
-        g.drawImage(speler, p.getX() * size, p.getY() * size, size, size, null);
-        System.out.println("positie y: " + p.getY());
-       
-    }
+        }
+    }  
+   
 }
+
