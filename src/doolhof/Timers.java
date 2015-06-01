@@ -25,25 +25,18 @@ public class Timers extends JPanel {
     private int ms2 = 50;
     private Font font = new Font("Century gothic", Font.BOLD, 50);
     private Color color = (Color.BLUE);
-    private JLabel label; 
-    private JPanel panel;
-    private int breedte = 200;
-    private int hoogte = 500;
-    
+    private JLabel label;     
+       
     public Timers(int s) {
 
         this.startGetal = s;
               
         this.label = new JLabel();
         label.setFont(font);
-        label.setForeground(color);
-        this.panel = new JPanel();      
-        panel.setSize(breedte, hoogte); 
-                
+        label.setForeground(color);                       
         add(label);      
            
-        
-        ActionListener listener = new ActionListener() {
+           ActionListener listener = new ActionListener() {
 
            
             @Override

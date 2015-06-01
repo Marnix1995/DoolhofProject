@@ -6,6 +6,7 @@ package doolhof;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 
@@ -20,14 +21,14 @@ public class Pacman extends SpelObject {
     private int x;
     private int y;
     private int size = 32;
-         
+   
+           
     
     @Override
     public void setPositie(int x, int y){
             
      this.x = x;
-     this.y = y;
-     
+     this.y = y;     
     }      
     
     @Override
@@ -48,8 +49,7 @@ public class Pacman extends SpelObject {
 
         this.x += x;
         this.y += y;
-    }
-         
+    }         
     
     @Override
      public void draw(Graphics g) {
@@ -62,8 +62,7 @@ public class Pacman extends SpelObject {
           g.drawImage(img, x + size, y + size, size, size,null); 
          
      }
-     
-             
+                  
     //Als buurvakje is grass; loop door;    
     //Als buurvakje is muur stop;
 
@@ -72,5 +71,7 @@ public class Pacman extends SpelObject {
       
         this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\player.png")).getImage();  
         return img;
-    }       
+    }
+
+    
 }

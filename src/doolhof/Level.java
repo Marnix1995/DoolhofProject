@@ -6,6 +6,8 @@ package doolhof;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -20,56 +22,81 @@ import javax.swing.JPanel;
 //4 = vijand
 //5 = helper
 //6 = Bazooka
-
 public class Level extends JPanel {
 
     private int n = 25;    //aantal * n vakjes  
-    private Vak vk = new Vak();      
+    private Vak vk = new Vak();
     private Image leegVakje = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
     private int size = vk.vakSize();
-    int x;
-    int y;
-    
     SpelObject p = new Pacman();
     SpelObject m = new Muur();
     SpelObject e = new Exit();
     SpelObject b = new Bazooka();
     SpelObject h = new Helper();
     SpelObject v = new Vijand();
-          
-   
-   
+
+    public Level() {
+
+        addKeyListener(new Toets());
+        setFocusable(true);        
+    }
+
     @Override
     public void paintComponent(Graphics g) {
 
-
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-         
-                                
-                 g.drawImage(leegVakje, j * size, i * size, size, size, null);
 
+                g.drawImage(leegVakje, j * size, i * size, size, size, null);
+   
+                                              
                 if (vk.getLevel()[i][j] == 1) {
-                    g.drawImage(m.getImage(), j * size, i * size, size, size, null); 
-                     m.setPositie(i, j);
-                }
+                    g.drawImage(m.getImage(), j * size, i * size, size, size, null);
+                                    
 
                 if (vk.getLevel()[i][j] == 2) {
 
                     g.drawImage(e.getImage(), j * size, i * size, size, size, null);
-                    e.setPositie(i, j);
+                   
+                }
                 }
 
                 if (vk.getLevel()[i][j] == 3) {
-                
-                    g.drawImage(p.getImage(), j * size, i * size, size, size, null);
-                    p.setPositie(i, j);
-                    p.getY();
-                    
-                                                   
+                 g.drawImage(p.getImage(), p.getX() * size, p.getY() * size, size, size, null);
+                                        
                 }
             }
         }
-    }     
-   
+    }
+
+    public class Toets extends KeyAdapter {
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int keycode = e.getKeyCode();
+            if (keycode == KeyEvent.VK_UP) {
+                p.move(0, -1);
+                System.out.println("positie: " + p.getX() + "," + p.getY());
+                
+            }
+            if (keycode == KeyEvent.VK_DOWN) {
+
+                p.move(0, 1);
+                System.out.println("positie: " + p.getX() + "," + p.getY());
+                
+            }
+            if (keycode == KeyEvent.VK_LEFT) {
+
+                p.move(-1, 0);
+                System.out.println("positie: " + p.getX() + "," + p.getY());
+            }
+            if (keycode == KeyEvent.VK_RIGHT) {
+                p.move(1, 0);
+                System.out.println("positie: " + p.getX() + "," + p.getY());
+
+            }   
+           
+        }
+       
+    }
 }
