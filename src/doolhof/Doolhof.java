@@ -21,7 +21,7 @@ public class Doolhof extends JFrame implements ActionListener {
     private int breedte = 820;
     private int hoogte = 910;
     private int tijd = 99;
-    private int ms = 1;
+    private int ms = 20;
     private Timer timer;
     private JFrame frame = new JFrame("Doolhof");
     private JPanel levelPanel = new Level();

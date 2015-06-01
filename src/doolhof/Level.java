@@ -16,13 +16,13 @@ import javax.swing.JPanel;
  *
  * @author Marnix/Alois
  */
-//0 of > 6 = leeg vakje
+//0 of > 5 = leeg vakje
 //1 = muur
 //2 = exit
-//3 = pacman
-//4 = vijand
-//5 = helper
-//6 = Bazooka
+//3 = vijand
+//4 = helper
+//5 = Bazooka
+
 public class Level extends JPanel {
 
     private int n = 25;    //aantal * n vakjes  
@@ -51,15 +51,19 @@ public class Level extends JPanel {
             for (int j = 0; j < n; j++) {
 
                 g.drawImage(leegVakje, j * size, i * size, size, size, null);
-
+                               
                 if (vk.getLevel()[i][j] == 1) {
-                    g.drawImage(m.getImage(), j * size, i * size, size, size, null);
+                    g.drawImage(m.getImage(), j * size, i * size, size, size, null);                                                       
                 }
 
                 if (vk.getLevel()[i][j] == 2) {
                     g.drawImage(e.getImage(), j * size, i * size, size, size, null);
+                  
                 }
-
+                
+                 if (vk.getLevel()[i][j] == 3) {
+                    g.drawImage(v.getImage(), j * size, i * size, size, size, null);
+                }                
             }
         }
         g.drawImage(p.getImage(), p.getX() * size, p.getY() * size, size, size, null);

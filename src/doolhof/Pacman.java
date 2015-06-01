@@ -6,7 +6,6 @@ package doolhof;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 
@@ -59,8 +58,7 @@ public class Pacman extends SpelObject {
     
     @Override
      public void drawNieuw(Graphics g, int x, int  y){
-          g.drawImage(img, x + size, y + size, size, size,null); 
-         
+          g.drawImage(img, x + size, y + size, size, size,null);          
      }
                   
     //Als buurvakje is grass; loop door;    
