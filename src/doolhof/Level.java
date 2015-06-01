@@ -9,7 +9,6 @@ import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -29,8 +28,7 @@ public class Level extends JPanel {
     private Vak vk = new Vak();
     private Image leegVakje = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
     private int size = vk.vakSize();
-    
-    
+        
     SpelObject p = new Pacman();
     SpelObject m = new Muur();
     SpelObject e = new Exit();
@@ -61,7 +59,7 @@ public class Level extends JPanel {
                   
                 }
                 
-                 if (vk.getLevel()[i][j] == 3) {
+                if (vk.getLevel()[i][j] == 3) {
                     g.drawImage(v.getImage(), j * size, i * size, size, size, null);
                 }                
             }
@@ -69,7 +67,8 @@ public class Level extends JPanel {
         g.drawImage(p.getImage(), p.getX() * size, p.getY() * size, size, size, null);
     }
 
-    public class Toets extends KeyAdapter {
+    
+    public class Toets extends KeyAdapter implements KeyBoard   {
                      
         
         @Override
@@ -94,10 +93,9 @@ public class Level extends JPanel {
                 p.move(1, 0);
                 System.out.println("positie: " + p.getX() + "," + p.getY());
 
-            }              
+            }         
 
-        }
-         
+        }      
        
     }
 }

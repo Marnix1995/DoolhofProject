@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
  * @author Marnix
  */
 
-public interface KeyBoard {
+public interface KeyBoard  {
    
     
   public void keyPressed(KeyEvent e); 

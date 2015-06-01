@@ -31,8 +31,7 @@ public class Vijand extends SpelObject {
         System.out.println("x:"+ x);
         return x;
     }
-  
-  
+    
     @Override
     public void move(int x, int y) {
 
@@ -45,16 +44,7 @@ public class Vijand extends SpelObject {
       this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\Enemy.png")).getImage(); 
        return img;
     }
-
-    @Override
-    public void draw(Graphics g) {
-        
-    }
-
-    @Override
-    public void drawNieuw(Graphics g, int x, int y) {
-       
-    }
+   
 
     @Override
     public void setPositie(int x, int y) {

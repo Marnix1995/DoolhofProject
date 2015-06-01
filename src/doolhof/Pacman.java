@@ -50,16 +50,7 @@ public class Pacman extends SpelObject {
         this.y += y;
     }         
     
-    @Override
-     public void draw(Graphics g) {
-	g.drawImage(img, x*size, y*size, size, size,null);
-       
-	}
-    
-    @Override
-     public void drawNieuw(Graphics g, int x, int  y){
-          g.drawImage(img, x + size, y + size, size, size,null);          
-     }
+  
                   
     //Als buurvakje is grass; loop door;    
     //Als buurvakje is muur stop;
