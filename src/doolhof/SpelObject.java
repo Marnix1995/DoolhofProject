@@ -19,7 +19,7 @@ public abstract class SpelObject {
     public abstract int getY();
       
     public abstract void move(int x, int y);
-   
+    
     
     public abstract Image getImage();
     

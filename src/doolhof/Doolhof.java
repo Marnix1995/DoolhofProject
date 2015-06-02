@@ -21,32 +21,42 @@ public class Doolhof extends JFrame implements ActionListener {
     private int breedte = 820;
     private int hoogte = 910;
     private int tijd = 99;
-    private int ms = 20;
+    private int ms = 50;
     private Timer timer;
     private JFrame frame = new JFrame("Doolhof");
     private JPanel levelPanel = new Level();
            
     public Doolhof() {
 
-       timer = new Timer(ms, this);
-       timer.start(); 
-               
-        tijdPanel = new Timers(tijd);            
-               
+        timer = new Timer(ms, this);                       
+        tijdPanel = new Timers(tijd);       
         frame.add(tijdPanel, BorderLayout.SOUTH);
-        levelPanel.setLayout(new BorderLayout());   
+        levelPanel.setLayout(new BorderLayout()); 
+        
         frame.add(levelPanel);
         frame.setResizable(false);
         frame.setSize(breedte, hoogte);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);            
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        start();
+        
     }
-
+   
     @Override
     public void actionPerformed(ActionEvent e) {
         
     frame.repaint();     
                 
     }
+    
+    public void stop(){
+        
+        timer.stop();        
+    }  
+        
+    public void start(){
+        
+        timer.start();
+     }  
 }
 

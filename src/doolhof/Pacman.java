@@ -19,8 +19,7 @@ public class Pacman extends SpelObject {
     private Image img; 
     private int x;
     private int y;
-    private int size = 32;
-   
+    private Image imgRed;  
            
     
     @Override
@@ -50,8 +49,7 @@ public class Pacman extends SpelObject {
         this.y += y;
     }         
     
-  
-                  
+                    
     //Als buurvakje is grass; loop door;    
     //Als buurvakje is muur stop;
 
@@ -60,7 +58,13 @@ public class Pacman extends SpelObject {
       
         this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\player.png")).getImage();  
         return img;
+       
     }
-
     
+    public Image getRedImage() {
+      
+        this.imgRed = new ImageIcon(Vak.class.getResource("\\Plaatjes\\playerRood.png")).getImage();  
+        return imgRed;
+      
+}
 }

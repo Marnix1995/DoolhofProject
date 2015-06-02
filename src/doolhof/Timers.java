@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -25,10 +26,11 @@ public class Timers extends JPanel {
     private int ms2 = 50;
     private Font font = new Font("Century gothic", Font.BOLD, 50);
     private Color color = (Color.BLUE);
-    private JLabel label;     
+    private JLabel label;   
+       
        
     public Timers(int s) {
-
+      
         this.startGetal = s;
               
         this.label = new JLabel();
@@ -54,7 +56,7 @@ public class Timers extends JPanel {
         };
                 
         timer = new Timer(ms, listener);
-        timer.start();   
+        start();  
     }
           
     public String getExtraTijdAfhalen(String formaat){
@@ -74,9 +76,9 @@ public class Timers extends JPanel {
         return formaat;
     }
    
-    public void restart(){
+    public void start(){
         
-     timer.restart();        
+     timer.start();        
     }
     
     public void stop(){
