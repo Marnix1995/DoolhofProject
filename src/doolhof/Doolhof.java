@@ -22,7 +22,8 @@ public class Doolhof extends JFrame implements ActionListener {
     private int[][] level1;
     private int[][] level2;
     private int[][] level3;
-    private int tijd = 59;  
+    private int tijd = 59; 
+    int keycode;
     String[][] levelString;
     private Pacman p;
     
@@ -119,7 +120,7 @@ public class Doolhof extends JFrame implements ActionListener {
            timer = new Timers(tijd);
            level = new Level(levelString, 1, timer);
         
-           level.addKeyListener(new Toets(p));
+           level.addKeyListener(new Toets());
            level.setFocusable(true);              
     }
          
@@ -132,7 +133,7 @@ public class Doolhof extends JFrame implements ActionListener {
         frame.setSize(810, 910);
         frame.add(level);
         frame.add(timer, BorderLayout.SOUTH);               
-       
+                
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
        

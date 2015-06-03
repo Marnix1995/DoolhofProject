@@ -13,34 +13,30 @@ import java.awt.event.KeyEvent;
  */
 public class Toets extends KeyAdapter {
 
-    private Pacman p;    
-        
-    public Toets(Pacman p) {
-              
-       this.p = p;
-    }
-    
-    
+    int key;
+    Pacman p = new Pacman();
+
     @Override
     public void keyPressed(KeyEvent e) {
-        int keycode = e.getKeyCode();
-        if (keycode == KeyEvent.VK_UP) {
-                 
-           
-        }        
-        if (keycode == KeyEvent.VK_DOWN) {
-                            
+
+        int waardeKey = e.getKeyCode();
+
+        if (waardeKey == KeyEvent.VK_UP) {
+
+            p.setKey(waardeKey);
 
         }
-        if (keycode == KeyEvent.VK_LEFT) {
-          
-                       
+        if (waardeKey == KeyEvent.VK_DOWN) {
+
+            p.setKey(waardeKey);
         }
-        if (keycode == KeyEvent.VK_RIGHT) {
-          
-            
+        if (waardeKey == KeyEvent.VK_LEFT) {
+
+            p.setKey(waardeKey);
+        }
+        if (waardeKey == KeyEvent.VK_RIGHT) {
+
+            p.setKey(waardeKey);
         }
     }
 }
-
-

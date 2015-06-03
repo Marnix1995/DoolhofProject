@@ -44,8 +44,7 @@ public class Level extends JPanel {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 // vakjes[j][i] = new Vak(m); 
-                
-                
+                                
             }
         }
     }
@@ -57,7 +56,8 @@ public class Level extends JPanel {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
-                vak.tekenVakje(g, j * size,  i * size);               
+                vak.tekenVakje(g, j * size,  i * size);    
+               
             }
         }
     }
