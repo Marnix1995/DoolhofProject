@@ -27,25 +27,24 @@ public class Toets extends KeyAdapter {
         int keycode = e.getKeyCode();
         if (keycode == KeyEvent.VK_UP) {
             p.move(0, -1);
-            System.out.println("positie: " + p.getX() + "," + p.getY());
+           
                    
         }
         
         if (keycode == KeyEvent.VK_DOWN) {
 
             p.move(0, 1);
-            System.out.println("positie: " + p.getX() + "," + p.getY());            
+                   
 
         }
         if (keycode == KeyEvent.VK_LEFT) {
             p.move(-1, 0);
-            System.out.println("positie: " + p.getX() + "," + p.getY());
+           
             
         }
         if (keycode == KeyEvent.VK_RIGHT) {
             p.move(1, 0);
-            System.out.println("positie: " + p.getX() + "," + p.getY());
-
+            
         }
     }
 }

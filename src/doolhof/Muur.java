@@ -19,34 +19,10 @@ public class Muur extends SpelObject {
   
 private Image img;    
 private boolean vernietigbaar;    
-private int x ;
-private int y ;
-private int vakSize = 32;   
 
- 
-    
-    
-    
-  @Override
- public int getY(){
+private int vakSize = 32;   
         
-       return y;         
-    }   
- 
-    @Override
-    public int getX(){ 
-        
-       return x;        
-    }         
-      
-    
-    @Override
-    public void setPositie(int x, int y){
        
-        this.x = x;
-        this.y = y;        
-    }
-    
 
     @Override
     public Image getImage() {
@@ -68,7 +44,7 @@ private int vakSize = 32;
 
     @Override
     public void draw(Graphics g) {
-      g.drawImage(img,x*vakSize, y*vakSize,vakSize,vakSize,null);
+    //  g.drawImage(img,x*vakSize, y*vakSize,vakSize,vakSize,null);
        
     }
 

@@ -16,21 +16,7 @@ public class Bazooka extends SpelObject {
 
     private Image img;
    
-  
-    @Override
-    public void setPositie(int x, int y) {
-    }
-
-    @Override
-    public int getY() {
-
-        return y;
-    }
-
-    @Override
-    public int getX() {
-        return x;
-    }
+    
 
     @Override
     public Image getImage() {

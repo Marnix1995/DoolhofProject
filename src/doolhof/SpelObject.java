@@ -14,27 +14,13 @@ import java.awt.Image;
 
 public abstract class SpelObject {
        
-     Doolhof game;    // Dit private
-      int x, y; //maak dit private
+    Doolhof game;    // Dit private
+     
     private int value;
     private Vak vak;
     private int vakSize = 32;
-    
-    
-     public SpelObject()
-	{		
-		this.x = x;
-		this.y = y;
-	}
-    
-    public SpelObject(int value)
-	{
-		this.value = value;
-	}        
-    
-    public abstract void setPositie(int x, int y);
-    public abstract int getX();   
-    public abstract int getY();
+    private int x, y;        
+         
       
     public abstract void move(int x, int y);
     
@@ -48,15 +34,7 @@ public abstract class SpelObject {
       return vakSize; 
     }
     
-    public int getRow(){
-        return x;
-        
-    }
-    
-    public int getKolom(){
-        
-        return y;
-    }
+   
     
     public int getValue(){
         

@@ -15,24 +15,13 @@ import javax.swing.ImageIcon;
 public class Helper extends SpelObject {
 
     Image img;
-       
+     
     
     public void showRouteToExit(){
                 
     }
     
-    
-    @Override
-    public int getY() {
-
-        return y;
-    }
-
-    @Override
-    public int getX() {
-
-        return x;
-    }
+   
 
     @Override
     public Image getImage() {
@@ -41,11 +30,7 @@ public class Helper extends SpelObject {
         return img;
     }
 
-    @Override
-    public void setPositie(int x, int y) {
-     
-        
-    }
+   
 
     @Override
     public void move(int x, int y) {

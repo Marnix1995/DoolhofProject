@@ -22,32 +22,7 @@ public class Pacman extends SpelObject {
     //int rij = object.getRow();
     //int kolom = object.getKolom();
 
-
-
-    @Override
-    public void setPositie(int x, int y) {
-
-        this.x = x;
-        this.y = y;
-    }
-
-    @Override
-    public int getY() {
-
-        return y;
-    }
-
-    @Override
-    public int getX() {
-
-        return x;
-    }
-
-    @Override
-    public void move(int x, int y) {
-          game.getPacman().x = x + x;
-          game.getPacman().y = y + y;      
-    }
+         
 
     @Override
     public Image getImage() {
@@ -59,7 +34,7 @@ public class Pacman extends SpelObject {
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(img, x * vakSize, y * vakSize, vakSize, vakSize, null);
+      //  g.drawImage(img, x * vakSize, y * vakSize, vakSize, vakSize, null);
     }
 
     @Override
@@ -78,5 +53,10 @@ public class Pacman extends SpelObject {
     @Override
     public boolean isPassable() {
         return true;
+    }
+
+    @Override
+    public void move(int x, int y) {
+      
     }
 }

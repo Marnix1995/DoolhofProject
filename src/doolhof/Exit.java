@@ -16,25 +16,9 @@ public class Exit extends SpelObject {
 
     private Image img;
    
-            
-    
-    @Override
-    public void setPositie(int x, int y) {
-      this.x = x;
-      this.y = y;
-    }   
-    
-    
-    @Override
-     public int getY(){
-       
-       return y;        
-    }
-    
-    @Override
-    public int getX(){          
-        return x;        
-    }    
+           
+  
+   
          
 
     @Override
