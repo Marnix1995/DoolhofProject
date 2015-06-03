@@ -21,7 +21,6 @@ public class Pacman extends SpelObject {
     private int vakSize = 32;
     //int rij = object.getRow();
     //int kolom = object.getKolom();
-
          
 
     @Override
