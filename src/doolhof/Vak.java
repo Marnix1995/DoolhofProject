@@ -13,6 +13,7 @@ import javax.swing.JComponent;
  *
  * @author Marnix
  */
+
 public class Vak extends JComponent {
 
     private int size = 32;  //Afmeting van een vakje 
