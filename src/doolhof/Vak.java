@@ -40,7 +40,7 @@ public class Vak extends JComponent {
     }
     
     
-    public void tekenVakje(Graphics g, int x, int y) {
+    public void tekenVakjes(Graphics g, int x, int y) {
 
         if (isSpelObject == true) {
           

@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 
 public class Level extends JPanel {
 
-    private int n = 25;    //aantal * n vakjes  
+    private int n = 20;    //aantal * n vakjes  
     private Vak[][] vakjes = new Vak[n][n];    
     private Vak vak; 
     private int size = 32;
@@ -48,7 +48,11 @@ public class Level extends JPanel {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                                 
-                 vakjes[j][i] = new Vak(p);                               
+                 if(levelScan[j][i].endsWith("w")){
+                   
+                     vakjes[j][i] = new Vak(m);
+                     
+                 }                
             }
         }
     }
@@ -60,7 +64,7 @@ public class Level extends JPanel {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
-                vak.tekenVakje(g, j * size,  i * size);                 
+                vak.tekenVakjes(g, j * size,  i * size);                 
             }
         }
     }
