@@ -35,7 +35,7 @@ public class Exit extends SpelObject {
     }
 
     @Override
-    public void drawItem(Graphics g, int x, int y) {
+    public void drawItem(Graphics g) {
        
     }
 

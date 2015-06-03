@@ -67,6 +67,11 @@ public class Level extends JPanel {
             }
         }
     }
+    
+    public int GetN()
+	{
+		return n;
+	}
 }
         
 

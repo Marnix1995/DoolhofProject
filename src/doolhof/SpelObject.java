@@ -24,7 +24,7 @@ public abstract class SpelObject {
       
     public abstract void move(int x, int y);
     
-    public abstract void drawItem(Graphics g, int x, int y);    
+    public abstract void drawItem(Graphics g);
     public abstract void draw(Graphics g);
     
     public abstract boolean isPassable();
