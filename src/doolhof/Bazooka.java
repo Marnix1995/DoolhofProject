@@ -15,14 +15,8 @@ import javax.swing.ImageIcon;
 public class Bazooka extends SpelObject {
 
     private Image img;
-    private int x;
-    private int y;
-
-    public Bazooka(Doolhof game, int row, int col) {
-        super(game, row, col);
-
-    }
-
+   
+  
     @Override
     public void setPositie(int x, int y) {
     }

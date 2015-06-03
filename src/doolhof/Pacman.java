@@ -15,21 +15,14 @@ import javax.swing.ImageIcon;
 public class Pacman extends SpelObject {
 
     private Image img;
-    private int x;
-    private int y;    
+    
     private Image imgRed;
    // private SpelObject object;
     private int vakSize = 32;
     //int rij = object.getRow();
     //int kolom = object.getKolom();
 
-    public Pacman(Doolhof game, int row, int col) {
-        super(game, row, col);
-    }
 
-    public Pacman() {
-        super(1);
-    }
 
     @Override
     public void setPositie(int x, int y) {
@@ -52,9 +45,8 @@ public class Pacman extends SpelObject {
 
     @Override
     public void move(int x, int y) {
-          game.p.rij = rij + x;
-          game.p.kolom = kolom + y;
-      
+          game.getPacman().x = x + x;
+          game.getPacman().y = y + y;      
     }
 
     @Override
@@ -74,6 +66,7 @@ public class Pacman extends SpelObject {
     public void drawItem(Graphics g, int x, int y) {
 
         g.drawImage(img, x + vakSize, y + vakSize, vakSize, vakSize, null);
+       
     }
 
     public Image getRedImage() {

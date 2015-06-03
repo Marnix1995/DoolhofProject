@@ -23,17 +23,9 @@ private int x ;
 private int y ;
 private int vakSize = 32;   
 
- public Muur(Doolhof game, int row, int col)
-	{
-		super(game, row, col);
-		
-	}
+ 
     
-    public Muur()
-	{
-		super(1);
-	}
-
+    
     
   @Override
  public int getY(){
@@ -45,16 +37,14 @@ private int vakSize = 32;
     public int getX(){ 
         
        return x;        
-    }   
-          
+    }         
       
     
     @Override
     public void setPositie(int x, int y){
        
         this.x = x;
-        this.y = y;
-        
+        this.y = y;        
     }
     
 
@@ -73,11 +63,13 @@ private int vakSize = 32;
     @Override
     public void drawItem(Graphics g, int x, int y) {
        g.drawImage(img,x + vakSize, y+ vakSize, vakSize, vakSize,null);
+       
     }
 
     @Override
     public void draw(Graphics g) {
       g.drawImage(img,x*vakSize, y*vakSize,vakSize,vakSize,null);
+       
     }
 
     @Override

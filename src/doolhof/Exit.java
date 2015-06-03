@@ -15,18 +15,8 @@ import javax.swing.ImageIcon;
 public class Exit extends SpelObject {
 
     private Image img;
-    private int x;
-    private int y;
-    
-        public Exit(Doolhof game, int row, int col) {
-        super(game, row, col);
-    }
-    
-    public Exit()
-	{
-	super(1);
-	}
-      
+   
+            
     
     @Override
     public void setPositie(int x, int y) {

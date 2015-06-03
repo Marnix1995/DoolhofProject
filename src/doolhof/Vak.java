@@ -13,60 +13,43 @@ import javax.swing.JComponent;
  *
  * @author Marnix
  */
+public class Vak extends JComponent  {
 
-//0 of > 5 = leeg vakje
-//1 = muur
-//2 = exit
-//3 = vijand
-//4 = helper
-//5 = Bazooka
-
-public class Vak extends JComponent {
-       
-    
     private int size = 32;  //Afmeting van een vakje 
-    private int col = 0;
-    private int row = 0;
-    
+    private int x;
+    private int y;
     private Doolhof doolhof;
-   
-    private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();     
-    private SpelObject object;
-              
+    private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
     
-    public Vak(SpelObject object){
+    private char karakter;
         
-        this.object = object;
-        
-    }    
-    
-    public int getVakSize(){ 
-       
-        return size;         
-    }
-               
-       
-    public void drawTile(Graphics g, int x, int y) {
-
-          object.drawItem(g, x, y ); 
-          
-        }       
             
-    
-    public void getRow(int row){
+    public Vak(int x , int y, char karakter) {
         
-        this.row = row;
+        this.x = 0;
+        this.y = 0;
     }
+
+    public int getVakSize() {
+
+        return size;
+    }
+     
     
-    
-    public void getCol(int col){
+    public void drawTile(Graphics g) {
         
-        this.col = col;
-    } 
-    
+       g.drawRect(x, y, size, size);
+       
+       
+    }
+
+    public void getRow(int row) {
+
+        this.x = row;
+    }
+
+    public void getCol(int col) {
+
+        this.y = col;
+    }
 }
-  
-    
-            
-    
-

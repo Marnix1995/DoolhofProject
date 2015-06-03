@@ -18,16 +18,45 @@ public class Doolhof extends JFrame implements ActionListener {
     private  Timer repaint = new Timer(25, this);
     private static JFrame frame;
     private static JPanel level;
-    private static Timers timer;
+    private static Timers timer;   
     private int[][] level1;
     private int[][] level2;
     private int[][] level3;
-    private int tijd = 59;    
-     Pacman p;
+    private int tijd = 59;  
+    char[][] levell;
+    private Pacman p;
     
     public Doolhof() {
                   
             repaint.start();
+           
+            char w = 'w';
+            char c = 'c';
+            char e = 'e';
+            levell = new char[][]{
+                                {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w}       ,
+				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,w}	,
+				{w,c,c,c,w,c,c,c,w,c,c,c,w,w,w,w,w,w,c,w}	,
+				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,w}	,
+				{w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w}	,
+				{w,c,c,c,w,c,c,c,c,c,c,w,w,w,w,w,w,w,w,w}	,
+				{w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w}	,
+				{w,c,w,w,w,w,w,w,w,w,w,c,c,c,c,c,c,c,c,w}	,
+				{w,c,c,c,c,w,c,c,c,c,c,c,c,w,w,w,w,w,c,w}	,
+				{w,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,w}	,
+				{w,c,w,c,c,w,c,c,c,w,w,w,w,w,w,w,w,w,c,w}	,
+				{w,c,w,c,c,w,c,c,c,c,c,c,c,c,w,c,c,c,c,w}	,
+				{w,c,w,c,c,w,c,c,c,c,c,c,c,c,w,c,c,c,c,w}	,
+				{w,c,w,c,c,w,c,w,w,w,w,w,w,c,w,c,c,c,c,w}	,
+				{w,c,w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,w}	,
+				{w,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w,c,w}	,
+				{w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w}	,
+				{w,c,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,c,w}	,
+				{w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,e,w}	,
+				{w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w}	,
+		};           
+            
+            
             
             //De levels van 25 x 25;
             level1 = new int[][]
@@ -45,7 +74,7 @@ public class Doolhof extends JFrame implements ActionListener {
             {1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 3, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 3, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
-            {1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
+            {0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 3, 1, 0, 1, 0, 0, 0, 1, 1},
             {1, 0, 0, 1, 0, 3, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -73,7 +102,7 @@ public class Doolhof extends JFrame implements ActionListener {
             {1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 3, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-            {1, 0, 0, 3, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
+            {0, 0, 0, 3, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 3, 1, 0, 1, 0, 0, 0, 1, 1},
@@ -88,7 +117,7 @@ public class Doolhof extends JFrame implements ActionListener {
             
            timer = new Timers(tijd);
            level = new Level(this, level1, 1, timer);
-           p = new Pacman(this, 2,2);
+        
            level.addKeyListener(new Toets(p, timer));
            level.setFocusable(true);
               

@@ -15,17 +15,16 @@ import java.awt.Image;
 public abstract class SpelObject {
        
      Doolhof game;    // Dit private
-      int rij, kolom; //maak dit private
+      int x, y; //maak dit private
     private int value;
     private Vak vak;
     private int vakSize = 32;
     
     
-     public SpelObject(Doolhof doolhof, int row, int col)
-	{
-		this.game = doolhof;
-		this.rij = row;
-		this.kolom = col;
+     public SpelObject()
+	{		
+		this.x = x;
+		this.y = y;
 	}
     
     public SpelObject(int value)
@@ -50,13 +49,13 @@ public abstract class SpelObject {
     }
     
     public int getRow(){
-        return rij;
+        return x;
         
     }
     
     public int getKolom(){
         
-        return kolom;
+        return y;
     }
     
     public int getValue(){

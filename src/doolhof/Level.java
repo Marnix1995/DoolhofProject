@@ -45,67 +45,28 @@ public class Level extends JPanel {
     @Override
 	public void paintComponent(Graphics g)
 	{
-		this.draw(g);              
+		this.draw(g); 
+              
 	}
     
     public void draw(Graphics g) {
 
-    
+      
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                
-                // tekent muur
-                
-                if (this.levelScan[i][j] == 1) {
-
-                    this.vakjes[i][j] = new Vak(new Muur()) {
-                      
-                        public boolean isPassable() {
-                            return false;
-                        }
-                    };
-                    this.vakjes[i][j].drawTile(g, j * size, i * size);
-                    
-                    
-                } //  tekent grass
-                
-                else if (this.levelScan[i][j] == 0) {
-
-                    this.vakjes[i][j] = new Vak(new Exit()) {
-
-                       
-                        public boolean isPassable() {
-                            return true;
-                        }
-                    };
-                    
-                    this.vakjes[i][j].drawTile(g, j * size, i * size);
-                    
-                }  // tekent exit
-                
-                else if (this.levelScan[i][j] == 2) {
-
-                    this.vakjes[i][j] = new Vak(new Pacman()) {
-
-                     
-                        public boolean isPassable() {
-                            return true;
-                        }
-                    };                   
-                    this.vakjes[i][j].drawTile(g, j * size, i * size);
-                    
-                }                                 
-            }
-        }
+               
  
         // teken pacman
-     doolhof.p.draw(g);
+     //doolhof.getPacman().draw(g);
           
       
-        //for (SpelObject m : doolhof.objecten) {
+       //for (SpelObject m : doolhof.objecten) {
             //if (!m.equals(null)) {
              //   m.draw(g);
             }
         }
+    }
+}
         
 

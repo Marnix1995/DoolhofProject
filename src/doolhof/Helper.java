@@ -15,14 +15,7 @@ import javax.swing.ImageIcon;
 public class Helper extends SpelObject {
 
     Image img;
-    private int x;
-    private int y;
-
-    public Helper(Doolhof game, int row, int col) {
-        super(game, row, col);
-
-    }
-
+       
     
     public void showRouteToExit(){
                 

@@ -17,16 +17,8 @@ import javax.swing.ImageIcon;
 public class Vijand extends SpelObject {
 
     private Image img;
-    private int x;
-    private int y;
-   
+       
     
-     public Vijand(Doolhof game, int row, int col)
-	{
-		super(game, row, col);
-		
-	}   
-
     @Override
     public int getY() {
 
@@ -55,21 +47,21 @@ public class Vijand extends SpelObject {
 
     @Override
     public void setPositie(int x, int y) {
-        throw new UnsupportedOperationException("Not supported yet.");
+       
     }
 
     @Override
     public void drawItem(Graphics g, int x, int y) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
     }
 
     @Override
     public void draw(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
     }
 
     @Override
     public boolean isPassable() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return true;
     }
 }
