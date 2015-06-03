@@ -15,9 +15,7 @@ import javax.swing.ImageIcon;
 public class Exit extends SpelObject {
 
     private Image img;
-   
-           
-  
+    
    
          
 
@@ -35,14 +33,10 @@ public class Exit extends SpelObject {
     }
 
     @Override
-    public void drawItem(Graphics g) {
+    public void drawItem(Graphics g, int x, int y) {
        
     }
 
-    @Override
-    public void draw(Graphics g) {
-      
-    }
 
     
     @Override

@@ -32,15 +32,11 @@ public class Vijand extends SpelObject {
     }
    
     @Override
-    public void drawItem(Graphics g) {
+    public void drawItem(Graphics g, int x, int y) {
         
     }
 
-    @Override
-    public void draw(Graphics g) {
-        
-    }
-
+   
     @Override
     public boolean isPassable() {
         return true;

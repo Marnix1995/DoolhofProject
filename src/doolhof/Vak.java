@@ -18,38 +18,45 @@ public class Vak extends JComponent  {
     private int size = 32;  //Afmeting van een vakje 
     private int x;
     private int y;
-    private Doolhof doolhof;
-    private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
+       
+    private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();      
     
-    private char karakter;
+    private SpelObject p = new Pacman();
+    private SpelObject v = new Vijand();
+    SpelObject m = new Muur();
+     
+     
+    public Vak(){
         
-            
-    public Vak(int x , int y, char karakter) {
+    } 
+     
+     
+    public Vak(SpelObject object) {
         
-        this.x = 0;
-        this.y = 0;
-    }
-
+                  
+    }  
+   
     public int getVakSize() {
 
         return size;
     }
      
     
-    public void drawTile(Graphics g) {
-        
-       g.drawRect(x, y, size, size);
+    public void tekenVakje(Graphics g, int x, int y){
+      
+        g.drawImage(img, x , y, null);
        
+    }
        
+
+    public void getX(int x) {
+
+        this.x = x;
     }
 
-    public void getRow(int row) {
+    public void getY(int y) {
 
-        this.x = row;
-    }
-
-    public void getCol(int col) {
-
-        this.y = col;
-    }
-}
+        this.y = y;
+    }       
+    
+} 

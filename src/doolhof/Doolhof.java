@@ -23,17 +23,18 @@ public class Doolhof extends JFrame implements ActionListener {
     private int[][] level2;
     private int[][] level3;
     private int tijd = 59;  
-    char[][] levell;
+    String[][] levelString;
     private Pacman p;
     
     public Doolhof() {
                   
             repaint.start();
            
-            char w = 'w';
-            char c = 'c';
-            char e = 'e';
-            levell = new char[][]{
+            String w = "W";
+            String c = "c";
+            String e = "e";
+            
+            levelString = new String[][]{
                                 {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w}       ,
 				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,w}	,
 				{w,c,c,c,w,c,c,c,w,c,c,c,w,w,w,w,w,w,c,w}	,
@@ -116,11 +117,10 @@ public class Doolhof extends JFrame implements ActionListener {
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
             
            timer = new Timers(tijd);
-           level = new Level(this, level1, 1, timer);
+           level = new Level(levelString, 1, timer);
         
-           level.addKeyListener(new Toets(p, timer));
-           level.setFocusable(true);
-              
+           level.addKeyListener(new Toets(p));
+           level.setFocusable(true);              
     }
          
         public static void main(String[] args) {
@@ -146,7 +146,7 @@ public class Doolhof extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {      
-        frame.repaint();          
+        repaint();          
     }    
 }
 

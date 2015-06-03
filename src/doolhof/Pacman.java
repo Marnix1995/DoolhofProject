@@ -17,10 +17,9 @@ public class Pacman extends SpelObject {
     private Image img;
     
     private Image imgRed;
-   // private SpelObject object;
+  
     private int vakSize = 32;
-    //int rij = object.getRow();
-    //int kolom = object.getKolom();
+    
          
 
     @Override
@@ -32,15 +31,11 @@ public class Pacman extends SpelObject {
     }
 
     @Override
-    public void draw(Graphics g) {
-      //  g.drawImage(img, x * vakSize, y * vakSize, vakSize, vakSize, null);
+    public void drawItem(Graphics g, int x, int y) {
+        g.drawImage(img, x * vakSize, y * vakSize, vakSize, vakSize, null);
     }
 
-    @Override
-    public void drawItem(Graphics g) {
-
-       
-    }
+  
 
     public Image getRedImage() {
 

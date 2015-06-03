@@ -37,15 +37,11 @@ private int vakSize = 32;
     }
 
     @Override
-    public void drawItem(Graphics g) {
+    public void drawItem(Graphics g, int x , int y) {
        
     }
 
-    @Override
-    public void draw(Graphics g) {
-    //  g.drawImage(img,x*vakSize, y*vakSize,vakSize,vakSize,null);
-       
-    }
+   
 
     @Override
     public boolean isPassable() {
