@@ -38,7 +38,6 @@ private int vakSize = 32;
 
     @Override
     public void drawItem(Graphics g) {
-       g.drawImage(img,x + vakSize, y+ vakSize, vakSize, vakSize,null);
        
     }
 
