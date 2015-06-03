@@ -11,7 +11,8 @@ import java.awt.event.KeyEvent;
  *
  * @author Marnix
  */
-public class Toets extends KeyAdapter {
+
+public class Toets extends KeyAdapter implements KeyBoard {
 
     int key;
     Pacman p = new Pacman();

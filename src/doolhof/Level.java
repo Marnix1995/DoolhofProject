@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 //3 = vijand
 //4 = helper
 //5 = Bazooka
+
 public class Level extends JPanel {
 
     private int n = 25;    //aantal * n vakjes  
@@ -27,8 +28,10 @@ public class Level extends JPanel {
     private Doolhof doolhof;
     private String[][] levelScan;
     private Timers timer;
+    
     private SpelObject p = new Pacman();
     private SpelObject m = new Muur();
+    private SpelObject v = new Vijand();
 
     public Level(String[][] level, int levelCode, Timers timer) {
 
@@ -40,28 +43,29 @@ public class Level extends JPanel {
         
         timer.start();
 
-        //vakjes tekenen
+        //scannen van level in doolhof  
+        
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                // vakjes[j][i] = new Vak(m); 
                                 
+                 vakjes[j][i] = new Vak(p);                               
+            }
+        }
+    }
+    
+    
+    @Override
+    public void paintComponent(Graphics g) {
+       
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+
+                vak.tekenVakje(g, j * size,  i * size);                 
             }
         }
     }
 
     
-    @Override
-    public void paintComponent(Graphics g) {
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-
-                vak.tekenVakje(g, j * size,  i * size);    
-               
-            }
-        }
-    }
-
     public String[][] getVakjes() {
 
         return levelScan;

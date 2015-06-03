@@ -6,7 +6,6 @@ package doolhof;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 
@@ -17,15 +16,15 @@ import javax.swing.ImageIcon;
 
 public class Pacman extends SpelObject {
       
-    int keycode; 
-    int left = 37;
-    int up = 38;
-    int right = 39;
-    int down = 40;
+    private int keycode; 
+    private int left = 37;
+    private int up = 38;
+    private int right = 39;
+    private int down = 40;
         
     private Image img;    
     private Image imgRed;   
-    private int vakSize = 32;       
+    private int size = 32;       
       
         
     public void setKey(int k){
@@ -56,11 +55,11 @@ public class Pacman extends SpelObject {
         return img;        
     }
 
+    
     @Override
     public void drawItem(Graphics g, int x, int y) {
-        g.drawImage(img, x * vakSize, y * vakSize, vakSize, vakSize, null);
-        
-        System.out.println();
+        g.drawImage(img, x * size, y * size, size, size, null);
+                
     }
   
 

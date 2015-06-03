@@ -13,41 +13,41 @@ import javax.swing.JComponent;
  *
  * @author Marnix
  */
-public class Vak extends JComponent  {
+public class Vak extends JComponent {
 
     private int size = 32;  //Afmeting van een vakje 
     private int x;
     private int y;
-       
-    private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();      
+    private boolean isSpelObject = false;
+    private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
+    private SpelObject object;
+    private Pacman p = new Pacman();
     
-    private SpelObject p = new Pacman();
-    private SpelObject v = new Vijand();
-    SpelObject m = new Muur();
-     
-     
-    public Vak(){
-        
-    } 
-     
-     
+    public Vak() {
+    }
+
     public Vak(SpelObject object) {
-        
-                  
-    }  
-   
+
+        this.object = object;
+        this.isSpelObject = true;
+
+    }
+
     public int getVakSize() {
 
         return size;
     }
-     
     
-    public void tekenVakje(Graphics g, int x, int y){
-      
-        g.drawImage(img, x , y, null);
-       
+    
+    public void tekenVakje(Graphics g, int x, int y) {
+
+        if (isSpelObject == true) {
+          
+          object.drawItem(g, x, y);           
+        } else 
+            g.drawImage(img, x, y, null);        
     }
-       
+    
 
     public void getX(int x) {
 
@@ -57,6 +57,5 @@ public class Vak extends JComponent  {
     public void getY(int y) {
 
         this.y = y;
-    }       
-    
-} 
+    }
+}
