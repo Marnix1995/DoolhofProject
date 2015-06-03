@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -20,14 +19,14 @@ public class Timers extends JPanel {
     
     private int startGetal;
     private int stopGetal = 0;
-    private int ExtraTijd = 5;    //Dit is hoeveel er van de tijd afgehaald mag worden. Dit is later nodig voor de vijand.
+    private int ExtraTijd = 3;    //Dit is hoeveel er van de tijd afgehaald mag worden. Dit is later nodig voor de vijand.
     private Timer timer;
     private int ms = 1000;
-    private int ms2 = 50;
+ 
     private Font font = new Font("Century gothic", Font.BOLD, 50);
     private Color color = (Color.BLUE);
     private JLabel label;   
-       
+    private JPanel panel;   
        
     public Timers(int s) {
       
@@ -37,13 +36,12 @@ public class Timers extends JPanel {
         label.setFont(font);
         label.setForeground(color);                       
         add(label);      
+       
            
            ActionListener listener = new ActionListener() {
-
            
             @Override
-            public void actionPerformed(ActionEvent e) {
-                       
+            public void actionPerformed(ActionEvent e) {                       
                                
                 String text = getTijdAfhalen(getFormaat());
                 label.setText("Time: "+text);
@@ -54,18 +52,16 @@ public class Timers extends JPanel {
                 }
             }
         };
+           
+        timer = new Timer(ms, listener); 
+               
+      }
+       
+    
+    public void getExtraTijdAfhalen(){
                 
-        timer = new Timer(ms, listener);
-        start();  
-    }
-          
-    public String getExtraTijdAfhalen(String formaat){
-        
-        formaat = getFormaat();      
-        startGetal -= ExtraTijd;
-        
-        return formaat;        
-    }  
+        startGetal -= ExtraTijd;                        
+    }     
     
     
     public String getTijdAfhalen(String formaat){
@@ -93,7 +89,8 @@ public class Timers extends JPanel {
        int seconds = (count / ms) % 60; 
       
         String str = String.format("%d:%02d", minutes, seconds);
-        return str;       
+        return str;            
+        
     }   
 }
 

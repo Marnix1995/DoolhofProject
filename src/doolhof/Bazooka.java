@@ -17,36 +17,47 @@ public class Bazooka extends SpelObject {
     private Image img;
     private int x;
     private int y;
-    
-    
-      @Override
+
+    public Bazooka(Doolhof game, int row, int col) {
+        super(game, row, col);
+
+    }
+
+    @Override
     public void setPositie(int x, int y) {
-       
     }
-    
+
     @Override
-     public int getY(){
-        
-       return y;         
+    public int getY() {
+
+        return y;
     }
-    
+
     @Override
-    public int getX(){         
-        return x;        
-    }   
-                     
-    
+    public int getX() {
+        return x;
+    }
 
     @Override
     public Image getImage() {
-     this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\rocket_launcher.png")).getImage(); 
+        this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\rocket_launcher.png")).getImage();
         return img;
     }
 
-    
-
     @Override
     public void move(int x, int y) {
-        
+    }
+
+    @Override
+    public void drawItem(Graphics g, int x, int y) {
+    }
+
+    @Override
+    public void draw(Graphics g) {
+    }
+
+    @Override
+    public boolean isPassable() {
+        return true;
     }
 }

@@ -21,10 +21,21 @@ private Image img;
 private boolean vernietigbaar;    
 private int x ;
 private int y ;
-private boolean passible = false;
-    
+private int vakSize = 32;   
 
-    @Override
+ public Muur(Doolhof game, int row, int col)
+	{
+		super(game, row, col);
+		
+	}
+    
+    public Muur()
+	{
+		super(1);
+	}
+
+    
+  @Override
  public int getY(){
         
        return y;         
@@ -52,12 +63,26 @@ private boolean passible = false;
        this.img = new ImageIcon(Muur.class.getResource("\\Plaatjes\\crate.png")).getImage(); 
        return img;
     }
-
   
 
     @Override
     public void move(int x, int y) {
        
-    }    
+    }
+
+    @Override
+    public void drawItem(Graphics g, int x, int y) {
+       g.drawImage(img,x + vakSize, y+ vakSize, vakSize, vakSize,null);
+    }
+
+    @Override
+    public void draw(Graphics g) {
+      g.drawImage(img,x*vakSize, y*vakSize,vakSize,vakSize,null);
+    }
+
+    @Override
+    public boolean isPassable() {
+       return false;
+    }
 }
 

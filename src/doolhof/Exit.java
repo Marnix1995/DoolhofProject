@@ -18,8 +18,17 @@ public class Exit extends SpelObject {
     private int x;
     private int y;
     
+        public Exit(Doolhof game, int row, int col) {
+        super(game, row, col);
+    }
     
-     @Override
+    public Exit()
+	{
+	super(1);
+	}
+      
+    
+    @Override
     public void setPositie(int x, int y) {
       this.x = x;
       this.y = y;
@@ -43,12 +52,27 @@ public class Exit extends SpelObject {
       this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\finish.png")).getImage(); 
       return img;
       
-    }
-
+    } 
    
 
     @Override
     public void move(int x, int y) {
        
+    }
+
+    @Override
+    public void drawItem(Graphics g, int x, int y) {
+       
+    }
+
+    @Override
+    public void draw(Graphics g) {
+      
+    }
+
+    
+    @Override
+    public boolean isPassable() {
+      return true;
     }
 }
