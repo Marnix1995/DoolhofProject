@@ -17,61 +17,54 @@ import javax.swing.JPanel;
 //3 = vijand
 //4 = helper
 //5 = Bazooka
-
 public class Level extends JPanel {
 
     private int n = 20;    //aantal * n vakjes  
-    private Vak[][] vakjes = new Vak[n][n];    
-    private Vak vak; 
+    private Vak[][] vakjes = new Vak[n][n];
+    private Vak vak;
     private int size = 32;
     private int code;
     private Doolhof doolhof;
     private String[][] levelScan;
     private Timers timer;
-   
     private SpelObject p = new Pacman();
     private SpelObject m = new Muur();
     private SpelObject v = new Vijand();
-
+    private SpelObject e = new Exit();
+    
     public Level(String[][] level, int levelCode, Timers timer) {
 
-       // this.vak = new Vak(p);
         this.code = levelCode;
         this.levelScan = level;
         this.timer = timer;
-            
+
         timer.start();
 
-        //scannen van level in doolhof  
-        
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                  
-                vak = new Vak(null, n, n);
-                
-                 if(levelScan[j][i].endsWith("w")){                   
-                   this.vak = new Vak(p, n, n);  
-                                  
-                }                
-            }
-        }
-   }
-                    
-    
+    }
+
     @Override
     public void paintComponent(Graphics g) {
-       
-        
-        for (int i = 0; i < getVakjes().length; i++) {
-            for (int j = 0; j < getVakjes()[i].length; j++) {
-                              
-                vak.tekenVakjes(g, j * size,  i * size);              
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+               
+                    vak = new Vak(null, n, n);
+                    vak.tekenVakjes(g, j * size, i * size);
                 
+                
+                if (levelScan[j][i].endsWith("w")) {
+                    vak = new Vak(m, n, n);
+                    vak.tekenVakjes(g, j * size, i * size);
+                }
+                
+                if (levelScan[j][i].endsWith("e")) {
+                    vak = new Vak(e, n, n);
+                    vak.tekenVakjes(g, j * size, i * size);
+                }
             }
         }
     }
 
-    
     public String[][] getVakjes() {
 
         return levelScan;
@@ -79,6 +72,5 @@ public class Level extends JPanel {
 
     public int GetN() {
         return n;
-    }    
-   
+    }
 }

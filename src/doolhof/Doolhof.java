@@ -37,6 +37,12 @@ public class Doolhof extends JFrame implements ActionListener {
             String e = "e";
             
             levelString = new String[][]{
+                
+                                {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w}       ,
+				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,w}	,
+				{w,c,c,c,w,c,c,c,w,c,c,c,w,w,w,w,w,w,c,w}	,
+				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,w}	,
+				{w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w}       ,               
                                 {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w}       ,
 				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,w}	,
 				{w,c,c,c,w,c,c,c,w,c,c,c,w,w,w,w,w,w,c,w}	,
@@ -59,8 +65,7 @@ public class Doolhof extends JFrame implements ActionListener {
 				{w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w}	,
 		};           
             
-            
-            
+                       
            
             
            timer = new Timers(tijd);

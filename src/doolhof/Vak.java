@@ -32,7 +32,6 @@ public class Vak extends JComponent {
         
     }
  
-
     public int getVakSize() {
 
         return size;
