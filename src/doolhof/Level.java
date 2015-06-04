@@ -55,10 +55,12 @@ public class Level extends JPanel {
     public Vak getBuur(int x, int y, int dir) {
 
         switch (dir) {
-
-
+            case 1:
+                return vak.getBuur(dir);
 
         }
+        return vak.getBuur(dir);
+            
     }
 
     @Override

@@ -24,50 +24,54 @@ public class Vak extends JComponent {
     private Level level;
       
     public Vak(Level level, int x, int y) {
-        
+
         this.level = level;
         this.x = x;
-        this.y = y;        
+        this.y = y;
+
     }
-  
+    //public void setObject(Spelobject s){
+
+//}
     public int getVakSize() {
 
         return size;
     }
 
     public void tekenVakjes(Graphics g) {
-                   
-       
-        g.drawImage(img, x* size, y *size , this);             
-          
-        if(speelObject != null){
-            g.drawImage(speelObject.getImage(), x * size ,y * size, null);
+
+        g.drawImage(img, x * size, y * size, this);
+
+        if (speelObject != null) {
+            g.drawImage(speelObject.getImage(), x * size, y * size, this);
         }
+    }
+
+    public Vak getBuur(int dir) {
+
+        switch (dir) {
+            case 1:
+                return level.getBuur(x, y, dir);
         }
-    
-   public Vak getBuur(int dir){
-            
-       level.getBuur(x, y, dir);                
-        
-       
-       
-           }
-   
-    public void zetObject(SpelObject s){
-        speelObject = s;       
+        return level.getBuur(x, y, dir);
+
     }
-        
-    public SpelObject getObject(){    
-        
-        return speelObject;            
-}
-        
-    public void verplaats(Vak t){
-        
-        t.zetObject(speelObject);   
-        speelObject = null;    
+
+    public void zetObject(SpelObject s) {
+        speelObject = s;
+
     }
-        
+
+    public SpelObject getObject() {
+
+        return speelObject;
+    }
+
+    public void verplaats(Vak t) {
+        t.zetObject(speelObject);
+        speelObject = null;
+    }
+
     public void getX(int x) {
 
         this.x = x;
