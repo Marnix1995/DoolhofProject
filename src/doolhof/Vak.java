@@ -30,13 +30,8 @@ public class Vak extends JComponent {
         this.y = y;
 
     }
-    //public void setObject(Spelobject s){
-
-//}
-    public int getVakSize() {
-
-        return size;
-    }
+  
+    
 
     public void tekenVakjes(Graphics g) {
 

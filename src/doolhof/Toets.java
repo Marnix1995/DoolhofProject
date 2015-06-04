@@ -21,8 +21,7 @@ public class Toets extends KeyAdapter implements KeyBoard {
         
         int waardeKey = e.getKeyCode();
         if (waardeKey == KeyEvent.VK_UP) {
-          
-            
+                      
                 
         }
         if (waardeKey == KeyEvent.VK_DOWN) {

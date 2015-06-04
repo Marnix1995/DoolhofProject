@@ -29,8 +29,7 @@ public class Pacman extends SpelObject {
         System.out.println(e);
               
     }         
-    
-    
+        
     @Override
     public Image getImage() {
 
