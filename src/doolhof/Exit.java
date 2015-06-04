@@ -16,22 +16,14 @@ public class Exit extends SpelObject {
 
     private Image img;
     
-            
-
-    @Override
+    
+   @Override
     public Image getImage() {
-      this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\finish.png")).getImage(); 
+      this.img = new ImageIcon(Exit.class.getResource("\\Plaatjes\\finish.png")).getImage(); 
       return img;
       
     } 
    
-
-    @Override
-    public void move(int x, int y) {
-       
-    }
-
-
     
     @Override
     public boolean isPassable() {

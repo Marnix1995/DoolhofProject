@@ -6,6 +6,7 @@ package doolhof;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 
@@ -20,9 +21,15 @@ public class Pacman extends SpelObject {
     private Image img;    
     private Image imgRed;   
     private int ammunitie;         
-        
+    
    
-        
+    
+    public void getKey(KeyEvent e){
+               
+        System.out.println(e);
+              
+    }         
+    
     
     @Override
     public Image getImage() {
@@ -30,20 +37,20 @@ public class Pacman extends SpelObject {
         this.img = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\player.png")).getImage();
         return img;        
     }
-  
-  
+    
     public Image getRedImage() {
 
         this.imgRed = new ImageIcon(Vak.class.getResource("\\Plaatjes\\playerRood.png")).getImage();
         return imgRed;
     }
 
+    
     @Override
     public boolean isPassable() {
         return true;
     }
 
-   
+    
     public void move(int dir) {
       
         Vak target = vak.getBuur(dir);
@@ -56,14 +63,9 @@ public class Pacman extends SpelObject {
         }        
     }
 
-
+    
     @Override
     public void pakOp(Pacman p) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void move(int x, int y) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+     
+    }   
 }

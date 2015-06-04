@@ -24,10 +24,7 @@ public class Bazooka extends SpelObject {
         return img;
     }
 
-    @Override
-    public void move(int x, int y) {
-    }
-
+   
     
     @Override
     public boolean isPassable() {

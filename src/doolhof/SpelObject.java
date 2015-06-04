@@ -13,30 +13,19 @@ import java.awt.Image;
  */
 
 public abstract class SpelObject {
-       
-    Doolhof game;    // Dit private
-     
-    private int value;
-    private Vak vak;    
-    private int x, y;        
+        
+    protected Vak vak;    
+         
          
     public abstract void pakOp(Pacman p); 
+       
     
-    public abstract void move(int x, int y);
-    
-      
-    public void setVak(Vak v){
-        
-        vak = v;
+    public void setVak(Vak v){        
+      vak = v;
     }
     
     public abstract boolean isPassable();
-         
-    
-    public int getValue(){
-        
-        return value;        
-    }
+                 
     
     public abstract Image getImage();    
     

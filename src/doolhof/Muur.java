@@ -19,8 +19,6 @@ public class Muur extends SpelObject {
   
 private Image img;    
 private boolean vernietigbaar;    
-
-
        
 
     @Override
@@ -29,12 +27,6 @@ private boolean vernietigbaar;
        return img;
     }
   
-
-    @Override
-    public void move(int x, int y) {
-       
-    }
-
     
 
     @Override

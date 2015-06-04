@@ -22,11 +22,10 @@ public class Doolhof extends JFrame implements ActionListener {
     private int[][] level1;
     private int[][] level2;
     private int[][] level3;
-    private int tijd = 59; 
-    int keycode;
-    
+    private int tijd = 59;  
+    Pacman u;
     String[][] levelString;
-    private Pacman p;
+   
     
     public Doolhof() {
                 
@@ -35,51 +34,48 @@ public class Doolhof extends JFrame implements ActionListener {
             String w = "w";
             String c = "c";
             String e = "e";
+            String p = "p";
             
             levelString = new String[][]{
                 
-                                {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
-				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
-				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
-                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
-                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
-				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
-                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
-                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
-				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
-                                {w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
-                                {w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
-				{w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
-                                {w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w,c,c,w,c,c,c,c,c,w},
-                                {w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,w,c,c,w,c,c,c,c,c,w},
-				{w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-				{w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,e,c,c,c,c,c,w},
-                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w},
-				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w},
-                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w},
-                                {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
+                                {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
+				{w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+				{w,c,w,p,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+				{w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+				{w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+				{w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,c,c,c,c,c,c,c,w,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,w,c,c,c,c,c,c,w,c,c,w,c,c,c,c,c,c,c,c,w},
+				{w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,w},
+                                {w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,w},
+                                {w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,w},
+				{w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,w},
+                                {w,c,w,c,c,c,w,w,w,w,c,c,c,c,c,c,c,c,c,c,c,w},
+                                {w,c,w,c,c,c,c,c,c,w,c,c,c,c,e,c,c,c,c,c,c,w},
+                                {w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,w},                               
+				{w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
+                                                         
 		};          
                              
             
            timer = new Timers(tijd);
-           level = new Level(levelString, 1, timer);
+           level = new Level(levelString, timer);
         
            level.addKeyListener(new Toets());
            level.setFocusable(true);              
     }
          
         public static void main(String[] args) {
-     
-                      
+                           
         frame = new Doolhof();        
         frame.setResizable(false);
-        frame.setSize(890, 910);
+        frame.setSize(890, 980);
         frame.add(level);
         frame.add(timer, BorderLayout.SOUTH);               
                 
@@ -88,8 +84,7 @@ public class Doolhof extends JFrame implements ActionListener {
        
      }      
       
-             
-
+            
     @Override
     public void actionPerformed(ActionEvent e) {      
         repaint();          

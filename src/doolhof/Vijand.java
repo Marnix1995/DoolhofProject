@@ -17,13 +17,8 @@ import javax.swing.ImageIcon;
 public class Vijand extends SpelObject {
 
     private Image img;
-   
-    
-    @Override
-    public void move(int x, int y) {
        
-    }
-
+  
     
     @Override
     public Image getImage() {

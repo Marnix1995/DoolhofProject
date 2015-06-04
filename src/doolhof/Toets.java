@@ -15,17 +15,15 @@ import java.awt.event.KeyEvent;
 public class Toets extends KeyAdapter implements KeyBoard {
 
     
-    private Pacman p;
-
-      
+             
     @Override
     public void keyPressed(KeyEvent e) {
-
+        
         int waardeKey = e.getKeyCode();
-
         if (waardeKey == KeyEvent.VK_UP) {
-
           
+            
+                
         }
         if (waardeKey == KeyEvent.VK_DOWN) {
 
