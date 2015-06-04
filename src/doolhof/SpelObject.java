@@ -17,7 +17,7 @@ public abstract class SpelObject {
     Doolhof game;    // Dit private
      
     private int value;
-    private Vak vak;    
+    Vak vak;    
     private int x, y;        
          
     public abstract void pakOp(Pacman p); 

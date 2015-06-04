@@ -35,11 +35,12 @@ public class Doolhof extends JFrame implements ActionListener {
             String w = "w";
             String c = "c";
             String e = "e";
+            String p = "p";
             
             levelString = new String[][]{
                 
                                 {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
-				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
+				{w,p,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
 				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
                                 {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
                                 {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},

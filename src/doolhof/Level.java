@@ -27,13 +27,12 @@ public class Level extends JPanel {
     private Doolhof doolhof;
     private String[][] levelScan;
     private Timers timer;
-    
-    
+
     private SpelObject p = new Pacman();
     private SpelObject m = new Muur();
     private SpelObject v = new Vijand();
     private SpelObject e = new Exit();
-    
+
     public Level(String[][] level, int levelCode, Timers timer) {
 
         this.code = levelCode;
@@ -41,45 +40,53 @@ public class Level extends JPanel {
         this.timer = timer;
 
         timer.start();
-        
-    
-           for (int i = 0; i < n; i++) {
+
+        for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                 
-        vakjes[i][j] = new Vak(this, i, j);
-              
-             switch(levelScan[i][j]){
-                 case "w":
-                     vakjes[i][j].zetObject(m);
-                     
-                 
-             }
-        
+
+                vakjes[i][j] = new Vak(this, i, j);
+
+                switch (levelScan[i][j]) {
+                    case "w":
+                        vakjes[i][j].zetObject(m);
+
+                }
+                switch (levelScan[i][j]) {
+                    case "p":
+                        vakjes[i][j].zetObject(p);
+
+                }
+                switch (levelScan[i][j]) {
+                    case "e":
+                        vakjes[i][j].zetObject(e);
+
+                }
+
             }
-           }       
-        
+        }
+
     }
 
-    public Vak getBuur(int x, int y, int dir){
-        
-        
-        switch(dir){
-            
-            
+    public Vak getBuur(int x, int y, int dir) {
+
+        switch (dir) {
+            case 1:
+                return vak.getBuur(dir);
+
         }
+        return vak.getBuur(dir);
             
-            }
-    
-    
+    }
+
     @Override
     public void paintComponent(Graphics g) {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-               
-              vakjes[i][j].tekenVakjes(g);
-              
-                }
+
+                vakjes[i][j].tekenVakjes(g);
+
             }
         }
     }
+}
