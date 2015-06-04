@@ -31,6 +31,7 @@ public class Pacman extends SpelObject {
         
       this.keycode = k; 
       checkKey();
+      
     }
        
         

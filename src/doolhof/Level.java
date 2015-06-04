@@ -29,8 +29,8 @@ public class Level extends JPanel {
     private String[][] levelScan;
     private Timers timer;
     
-    private SpelObject p = new Pacman();
-    private SpelObject m = new Muur();
+    private Pacman p = new Pacman();
+    private Muur m = new Muur();
     private SpelObject v = new Vijand();
 
     public Level(String[][] level, int levelCode, Timers timer) {
@@ -50,7 +50,7 @@ public class Level extends JPanel {
                                 
                  if(levelScan[j][i].endsWith("w")){
                    
-                     vakjes[j][i] = new Vak(m);
+                     vakjes[j][i] = new Vak(p);
                      
                  }                
             }
@@ -63,7 +63,7 @@ public class Level extends JPanel {
        
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-
+               
                 vak.tekenVakjes(g, j * size,  i * size);                 
             }
         }

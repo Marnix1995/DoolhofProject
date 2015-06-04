@@ -19,7 +19,7 @@ public class Muur extends SpelObject {
   
 private Image img;    
 private boolean vernietigbaar;    
-
+int size = 32;
 private int vakSize = 32;   
         
        
@@ -38,7 +38,7 @@ private int vakSize = 32;
 
     @Override
     public void drawItem(Graphics g, int x , int y) {
-       
+         g.drawImage(img, x * size, y * size, size, size, null);
     }
 
    

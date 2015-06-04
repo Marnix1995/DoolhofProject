@@ -22,9 +22,10 @@ public class Vak extends JComponent {
     private boolean isSpelObject = false;
     private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
     private SpelObject object;
-    private Pacman p = new Pacman();
+      
     
     public Vak() {
+        
     }
 
     public Vak(SpelObject object) {
@@ -41,12 +42,17 @@ public class Vak extends JComponent {
     
     
     public void tekenVakjes(Graphics g, int x, int y) {
-
-        if (isSpelObject == true) {
           
-          object.drawItem(g, x, y);           
-        } else 
-            g.drawImage(img, x, y, null);        
+        if(object instanceof Pacman){
+            
+         g.drawImage(object.getImage(), x, y,null); 
+            System.out.println("Ik ben Pacman");
+        }  
+            
+        if(object instanceof Muur){
+        
+          g.drawImage(object.getImage(), x, y, null);        
+    }
     }
     
 
