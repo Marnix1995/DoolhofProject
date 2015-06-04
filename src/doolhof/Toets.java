@@ -14,9 +14,10 @@ import java.awt.event.KeyEvent;
 
 public class Toets extends KeyAdapter implements KeyBoard {
 
-    int key;
-    Pacman p = new Pacman();
+    
+    private Pacman p;
 
+      
     @Override
     public void keyPressed(KeyEvent e) {
 
@@ -24,20 +25,19 @@ public class Toets extends KeyAdapter implements KeyBoard {
 
         if (waardeKey == KeyEvent.VK_UP) {
 
-            p.setKey(waardeKey);
-
+          
         }
         if (waardeKey == KeyEvent.VK_DOWN) {
 
-            p.setKey(waardeKey);
+           
         }
         if (waardeKey == KeyEvent.VK_LEFT) {
 
-            p.setKey(waardeKey);
+           
         }
         if (waardeKey == KeyEvent.VK_RIGHT) {
 
-            p.setKey(waardeKey);
+           
         }
     }
 }

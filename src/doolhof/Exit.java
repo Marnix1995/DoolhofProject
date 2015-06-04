@@ -16,8 +16,7 @@ public class Exit extends SpelObject {
 
     private Image img;
     
-   
-         
+            
 
     @Override
     public Image getImage() {
@@ -32,15 +31,15 @@ public class Exit extends SpelObject {
        
     }
 
-    @Override
-    public void drawItem(Graphics g, int x, int y) {
-       
-    }
-
 
     
     @Override
     public boolean isPassable() {
       return true;
+    }
+
+    @Override
+    public void pakOp(Pacman p) {
+      
     }
 }

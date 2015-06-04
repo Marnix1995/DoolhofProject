@@ -17,24 +17,21 @@ public abstract class SpelObject {
     Doolhof game;    // Dit private
      
     private int value;
-    private Vak vak;
-    private int vakSize = 32;
+    private Vak vak;    
     private int x, y;        
          
-      
+    public abstract void pakOp(Pacman p); 
+    
     public abstract void move(int x, int y);
     
-    public abstract void drawItem(Graphics g, int x, int y);
-    
-    
-    public abstract boolean isPassable();
-    
-    public int getVakSize(){
-    
-      return vakSize; 
+      
+    public void setVak(Vak v){
+        
+        vak = v;
     }
     
-   
+    public abstract boolean isPassable();
+         
     
     public int getValue(){
         

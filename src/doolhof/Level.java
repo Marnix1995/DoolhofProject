@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 //5 = Bazooka
 public class Level extends JPanel {
 
-    private int n = 20;    //aantal * n vakjes  
+    private int n = 25;    //aantal * n vakjes  
     private Vak[][] vakjes = new Vak[n][n];
     private Vak vak;
     private int size = 32;
@@ -27,6 +27,8 @@ public class Level extends JPanel {
     private Doolhof doolhof;
     private String[][] levelScan;
     private Timers timer;
+    
+    
     private SpelObject p = new Pacman();
     private SpelObject m = new Muur();
     private SpelObject v = new Vijand();
@@ -39,38 +41,45 @@ public class Level extends JPanel {
         this.timer = timer;
 
         timer.start();
-
+        
+    
+           for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                 
+        vakjes[i][j] = new Vak(this, i, j);
+              
+             switch(levelScan[i][j]){
+                 case "w":
+                     vakjes[i][j].zetObject(m);
+                     
+                 
+             }
+        
+            }
+           }       
+        
     }
 
+    public Vak getBuur(int x, int y, int dir){
+        
+        
+        switch(dir){
+            
+            
+        }
+            
+            }
+    
+    
     @Override
     public void paintComponent(Graphics g) {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                
-                    vak = new Vak(null, n, n);
-                    vak.tekenVakjes(g, j * size, i * size);
-                
-                
-                if (levelScan[j][i].endsWith("w")) {
-                    vak = new Vak(m, n, n);
-                    vak.tekenVakjes(g, j * size, i * size);
-                }
-                
-                if (levelScan[j][i].endsWith("e")) {
-                    vak = new Vak(e, n, n);
-                    vak.tekenVakjes(g, j * size, i * size);
+              vakjes[i][j].tekenVakjes(g);
+              
                 }
             }
         }
     }
-
-    public String[][] getVakjes() {
-
-        return levelScan;
-    }
-
-    public int GetN() {
-        return n;
-    }
-}

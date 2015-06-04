@@ -38,35 +38,34 @@ public class Doolhof extends JFrame implements ActionListener {
             
             levelString = new String[][]{
                 
-                                {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w}       ,
-				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,w}	,
-				{w,c,c,c,w,c,c,c,w,c,c,c,w,w,w,w,w,w,c,w}	,
-				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,w}	,
-				{w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w}       ,               
-                                {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w}       ,
-				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,w}	,
-				{w,c,c,c,w,c,c,c,w,c,c,c,w,w,w,w,w,w,c,w}	,
-				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,w}	,
-				{w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w}	,
-				{w,c,c,c,w,c,c,c,c,c,c,w,w,w,w,w,w,w,w,w}	,
-				{w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w}	,
-				{w,c,w,w,w,w,w,w,w,w,w,c,c,c,c,c,c,c,c,w}	,
-				{w,c,c,c,c,w,c,c,c,c,c,c,c,w,w,w,w,w,c,w}	,
-				{w,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,w}	,
-				{w,c,w,c,c,w,c,c,c,w,w,w,w,w,w,w,w,w,c,w}	,
-				{w,c,w,c,c,w,c,c,c,c,c,c,c,c,w,c,c,c,c,w}	,
-				{w,c,w,c,c,w,c,c,c,c,c,c,c,c,w,c,c,c,c,w}	,
-				{w,c,w,c,c,w,c,w,w,w,w,w,w,c,w,c,c,c,c,w}	,
-				{w,c,w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,w}	,
-				{w,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w,c,w}	,
-				{w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w}	,
-				{w,c,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,c,w}	,
-				{w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,e,w}	,
-				{w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w}	,
-		};           
-            
-                       
-           
+                                {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
+				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
+				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
+                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
+                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
+				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
+                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
+                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
+				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
+                                {w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
+                                {w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
+				{w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,w},
+                                {w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w,c,c,w,c,c,c,c,c,w},
+                                {w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,w,c,c,w,c,c,c,c,c,w},
+				{w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+				{w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,e,c,c,c,c,c,w},
+                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w},
+				{w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w},
+                                {w,c,c,c,w,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w},
+                                {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
+		};          
+                             
             
            timer = new Timers(tijd);
            level = new Level(levelString, 1, timer);
@@ -80,7 +79,7 @@ public class Doolhof extends JFrame implements ActionListener {
                       
         frame = new Doolhof();        
         frame.setResizable(false);
-        frame.setSize(810, 910);
+        frame.setSize(890, 910);
         frame.add(level);
         frame.add(timer, BorderLayout.SOUTH);               
                 

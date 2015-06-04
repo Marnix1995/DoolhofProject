@@ -15,37 +15,13 @@ import javax.swing.ImageIcon;
  */
 
 public class Pacman extends SpelObject {
-      
-    private int keycode; 
-    private int left = 37;
-    private int up = 38;
-    private int right = 39;
-    private int down = 40;
-        
+              
+    
     private Image img;    
     private Image imgRed;   
-    private int size = 32;       
-      
+    private int ammunitie;         
         
-    public void setKey(int k){
-        
-      this.keycode = k; 
-      checkKey();
-      
-    }       
-        
-    public void checkKey(){
-        
-        if(keycode == up){                        
-            System.out.println("UP");            
-        }        
-        if(keycode == down){            
-            System.out.println("DOWN");
-        } 
-        if (keycode == left){   
-            System.out.println("LEFT");
-        } 
-    }
+   
         
     
     @Override
@@ -54,15 +30,8 @@ public class Pacman extends SpelObject {
         this.img = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\player.png")).getImage();
         return img;        
     }
-
-    
-    //@Override
-    //public void drawItem(Graphics g, int x, int y) {
-        //g.drawImage(img, x * size, y * size, size, size, null);
-                
-    //}
   
-
+  
     public Image getRedImage() {
 
         this.imgRed = new ImageIcon(Vak.class.getResource("\\Plaatjes\\playerRood.png")).getImage();
@@ -74,13 +43,27 @@ public class Pacman extends SpelObject {
         return true;
     }
 
-    @Override
-    public void move(int x, int y) {
+   
+    public void move(int dir) {
       
+        Vak target = vak.getBuur(dir);
+        SpelObject item = target.getObject();
+        
+        if(item == null && !(item instanceof Muur)){            
+            vak.verplaats(target);
+            item.pakOp(this);
+                   
+        }        
+    }
+
+
+    @Override
+    public void pakOp(Pacman p) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void drawItem(Graphics g, int x, int y) {
+    public void move(int x, int y) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }
