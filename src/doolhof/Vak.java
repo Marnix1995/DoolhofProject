@@ -4,6 +4,7 @@
  */
 package doolhof;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -13,7 +14,6 @@ import javax.swing.JComponent;
  *
  * @author Marnix
  */
-
 public class Vak extends JComponent {
 
     private int size = 32;  //Afmeting van een vakje 
@@ -21,39 +21,34 @@ public class Vak extends JComponent {
     private int y;
     private boolean isSpelObject = false;
     private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
-    private SpelObject object;
-      
+    private SpelObject speelObject;
+
     
-    public Vak() {
+    public Vak(SpelObject objects, int x, int y) {
+        
+        this.speelObject = objects;
+        this.x = x;
+        this.y = y;
         
     }
-
-    public Vak(SpelObject object) {
-
-        this.object = object;
-        this.isSpelObject = true;
-
-    }
+ 
 
     public int getVakSize() {
 
         return size;
     }
-    
-    
+
     public void tekenVakjes(Graphics g, int x, int y) {
-          
-        if(object instanceof Pacman){
-            
-         g.drawImage(object.getImage(), x, y,null); 
-            System.out.println("Ik ben Pacman");
-        }  
-            
-        if(object instanceof Muur){
         
-          g.drawImage(object.getImage(), x, y, null);        
-    }
-    }
+        //System.out.println(speelObject);
+        
+        if(speelObject == null){
+           g.drawImage(img, x, y, this);             
+        }    
+        else{
+            g.drawImage(speelObject.getImage(), x, y, this);
+        }
+        }
     
 
     public void getX(int x) {

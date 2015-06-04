@@ -32,7 +32,7 @@ public class Doolhof extends JFrame implements ActionListener {
                 
             repaint.start();
            
-            String w = "W";
+            String w = "w";
             String c = "c";
             String e = "e";
             

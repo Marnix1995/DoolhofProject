@@ -32,8 +32,7 @@ public class Pacman extends SpelObject {
       this.keycode = k; 
       checkKey();
       
-    }
-       
+    }       
         
     public void checkKey(){
         
@@ -57,11 +56,11 @@ public class Pacman extends SpelObject {
     }
 
     
-    @Override
-    public void drawItem(Graphics g, int x, int y) {
-        g.drawImage(img, x * size, y * size, size, size, null);
+    //@Override
+    //public void drawItem(Graphics g, int x, int y) {
+        //g.drawImage(img, x * size, y * size, size, size, null);
                 
-    }
+    //}
   
 
     public Image getRedImage() {
@@ -78,5 +77,10 @@ public class Pacman extends SpelObject {
     @Override
     public void move(int x, int y) {
       
+    }
+
+    @Override
+    public void drawItem(Graphics g, int x, int y) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -28,43 +28,45 @@ public class Level extends JPanel {
     private Doolhof doolhof;
     private String[][] levelScan;
     private Timers timer;
-    
-    private Pacman p = new Pacman();
-    private Muur m = new Muur();
+   
+    private SpelObject p = new Pacman();
+    private SpelObject m = new Muur();
     private SpelObject v = new Vijand();
 
     public Level(String[][] level, int levelCode, Timers timer) {
 
-
+       // this.vak = new Vak(p);
         this.code = levelCode;
         this.levelScan = level;
         this.timer = timer;
-        this.vak = new Vak();
-        
+            
         timer.start();
 
         //scannen van level in doolhof  
         
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                                
-                 if(levelScan[j][i].endsWith("w")){
-                   
-                     vakjes[j][i] = new Vak(p);
-                     
-                 }                
+                  
+                vak = new Vak(null, n, n);
+                
+                 if(levelScan[j][i].endsWith("w")){                   
+                   this.vak = new Vak(p, n, n);  
+                                  
+                }                
             }
         }
-    }
-    
+   }
+                    
     
     @Override
     public void paintComponent(Graphics g) {
        
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-               
-                vak.tekenVakjes(g, j * size,  i * size);                 
+        
+        for (int i = 0; i < getVakjes().length; i++) {
+            for (int j = 0; j < getVakjes()[i].length; j++) {
+                              
+                vak.tekenVakjes(g, j * size,  i * size);              
+                
             }
         }
     }
@@ -77,5 +79,6 @@ public class Level extends JPanel {
 
     public int GetN() {
         return n;
-    }
+    }    
+   
 }
