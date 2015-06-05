@@ -26,8 +26,7 @@ import javax.swing.*;
     private static Color color = (Color.BLACK);
     private static ArrayList<JButton> knoppen = new ArrayList<>();  
     private static JLabel label; 
-   
-    
+       
     
     public static void main(String[] args) {
   
