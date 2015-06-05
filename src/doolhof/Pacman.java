@@ -45,22 +45,23 @@ public class Pacman extends SpelObject {
 
         Vak target = vak.getBuur(dir);
         SpelObject item = target.getObject();
-
-        if (!(item instanceof Muur)) {
+       
+        
+        //if ((item instanceof Muur)) {
             
-            if(target != null){
+           // if(target != null){
             vak.verplaats(target);
             vak = target;
-            }
-            
-            //item.pakOp(this);
-        }
-        
-        if (item instanceof Exit){
-            
-            
-        }
+                        
+          
+       // }
     }
+       // if (item instanceof Exit){
+            
+            
+       // }
+  //  }
+
 
     @Override
     public void pakOp(Pacman p) {

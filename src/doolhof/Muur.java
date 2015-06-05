@@ -26,14 +26,14 @@ private boolean vernietigbaar;
        this.img = new ImageIcon(Muur.class.getResource("\\Plaatjes\\crate.png")).getImage(); 
        return img;
     }
-  
-    
+      
 
     @Override
     public boolean isPassable() {
        return false;
     }
 
+    
     @Override
     public void pakOp(Pacman p) {
         

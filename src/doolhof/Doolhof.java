@@ -1,96 +1,166 @@
 package doolhof;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
-
+import javax.swing.*;
 
 /**
  *
  * @author Marnix /Alois
  */
-
 public class Doolhof extends JFrame implements ActionListener {
    
-    private  Timer repaint = new Timer(25, this);
+    private Timer timerRepaint = new Timer(25, this);
+    private static int breedte = 890;
+    private static int hoogte = 980;   
     private static JFrame frame;
+    private static JPanel startPanel;
+    private static JPanel knoppenPanel;    
     private static JPanel level;
-    private static Timers timer;   
-    private int[][] level1;
-    private int[][] level2;
-    private int[][] level3;
-    private int tijd = 59;  
-   
-    
-    int dir;
-    String[][] levelString;
-   
+    private static Timers timer;
+    private static int tijd = 60;   
+    private static Pacman p = new Pacman();
+    private static Font font = new Font("Century gothic", Font.BOLD, 50);
+    private Image img = new ImageIcon(Doolhof.class.getResource("\\Plaatjes\\player.png")).getImage();
+    private static Color color = (Color.BLACK);
+        
     
     public Doolhof() {
-                
-            repaint.start();
-           
-            String w = "w";
-            String c = "c";
-            String e = "e";
-            String p = "p";
-            
-            levelString = new String[][]{
-                
-                                {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
-				{w,c,w,c,w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-				{w,c,w,p,w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,w,c,w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,w,c,w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-				{w,c,w,c,w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,w,c,w,w,w,w,w,w,w,w,w,w,w,w,w,w,c,c,c,w},
-                                {w,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,w},
-				{w,c,w,w,w,w,w,w,w,w,w,w,w,w,w,w,c,w,c,c,c,w},
-                                {w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,w,c,w,c,c,c,w},
-                                {w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,w,c,w,c,c,c,w},
-				{w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,w,c,w,c,c,c,w},
-                                {w,c,c,c,c,c,c,c,c,w,c,c,w,c,c,w,c,w,c,c,c,w},
-                                {w,c,w,c,c,c,c,c,c,w,c,c,w,c,c,w,c,w,c,c,c,w},
-				{w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,w,c,w,c,c,c,w},
-                                {w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,w,c,w,c,c,c,w},
-                                {w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,w},
-				{w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,w},
-                                {w,c,w,c,c,c,w,w,w,w,c,c,c,c,c,c,c,c,c,c,c,w},
-                                {w,c,w,c,c,c,c,c,c,w,c,c,c,c,e,c,c,c,c,c,c,w},
-                                {w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,w},                               
-				{w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
-                                                         
-		};          
-                            
-            
-           timer = new Timers(tijd);
-           Pacman pc = new Pacman();
-           level = new Level(levelString, timer, pc);
+         
         
-           level.addKeyListener(new Toets(pc));
-           level.setFocusable(true);              
+        timerRepaint.start();
+        
     }
-              
-    
-        public static void main(String[] args) {
-                           
-        frame = new Doolhof();        
-        frame.setResizable(false);
-        frame.setSize(890, 980);
-        frame.add(level);
-        frame.add(timer, BorderLayout.SOUTH);               
-                
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-       
-     }      
-                  
-    @Override
-    public void actionPerformed(ActionEvent e) {      
-        this.repaint();          
-    }    
-}
 
+    public static void main(String[] args) {
+
+
+        EventQueue.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+
+                doolhofFrame();
+                startPanel();
+
+            }
+        });
+    }
+
+    public static void levelPanel() {
+
+        timer = new Timers(tijd);
+        level = new Level(getLevel1(), timer, p);
+
+        level.setVisible(true);
+        frame.add(level);
+        frame.add(timer, BorderLayout.SOUTH);
+
+    }
+
+    public static void startPanel() {
+
+
+        FlowLayout layout = new FlowLayout();
+
+        startPanel = new JPanel();        
+        startPanel.setLayout(layout);
+        startPanel.setVisible(true); 
+          
+        JPanel graphicsPanel = new JPanel();
+        graphicsPanel.setLayout(layout);
+        graphicsPanel.setVisible(true);
+        
+        JLabel label = new JLabel("<html><br><br>Pacman</html>", SwingConstants.CENTER);
+        label.setFont(font);
+        label.setForeground(color);
+        graphicsPanel.add(label); 
+        
+        JButton buttonExit = new JButton("Exit");        
+        JButton buttonStart = new JButton("Start");
+        JButton buttonRead = new JButton("Read Me");        
+        JButton buttonCheat = new JButton("CHEATS");    
+        
+        startPanel.add(buttonStart);
+        startPanel.add(buttonExit);
+        startPanel.add(buttonRead);
+        startPanel.add(buttonCheat);         
+               
+        frame.add(startPanel, BorderLayout.NORTH);
+        frame.add(graphicsPanel, BorderLayout.CENTER);
+        
+        
+        buttonStart.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent start) {
+
+                levelPanel();
+                startPanel.setVisible(false);                 
+                frame.setTitle("Level 1");
+            }
+        });
+
+        buttonExit.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                System.exit(0);
+            }
+        });
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    }
+  
+      
+        
+    public static void doolhofFrame() {
+
+        frame = new Doolhof();
+        frame.setTitle("Doolhof");
+        frame.setResizable(false);
+        frame.setSize(breedte, hoogte);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+
+    public static String[][] getLevel1() {
+
+        String w = "w";
+        String c = "c";
+        String e = "e";
+        String p = "p";
+
+
+        String[][] level1 = new String[][]{
+            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
+            {w, p, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, w},
+            {w, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, w},
+            {w, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, w},
+            {w, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, w},
+            {w, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, w},
+            {w, c, w, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, c, c, w},
+            {w, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, w},
+            {w, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, w, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, w, c, c, w, c, c, w, c, w, c, c, c, w},
+            {w, c, w, c, c, c, c, c, c, w, c, c, w, c, c, w, c, w, c, c, c, w},
+            {w, c, w, c, c, c, c, c, c, w, c, c, c, c, c, w, c, w, c, c, c, w},
+            {w, c, w, c, c, c, c, c, c, w, c, c, c, c, c, w, c, w, c, c, c, w},
+            {w, c, w, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, w, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, w, c, c, c, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, w, c, c, c, c, c, c, w, c, c, c, c, e, c, c, c, c, c, c, w},
+            {w, c, w, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},};
+
+        return level1;
+    }
+}

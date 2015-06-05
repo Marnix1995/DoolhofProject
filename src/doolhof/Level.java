@@ -20,13 +20,17 @@ public class Level extends JPanel {
     private Doolhof doolhof;
     private String[][] levelScan;
     private Timers timer;
+        
     
     public Level(String[][] level, Timers timer,  Pacman p) {
 
         this.levelScan = level;
         this.timer = timer;
         timer.start();
-       
+        
+        addKeyListener(new Toets(p));
+        setFocusable(true);
+        
         
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -54,8 +58,7 @@ public class Level extends JPanel {
     }
 
    public Vak[][] getVakjes(){
-       
-       
+            
        return vakjes;
    }
 
@@ -68,6 +71,6 @@ public class Level extends JPanel {
                 vakjes[i][j].tekenVakjes(g);
             }
         }
-      //repaint();
+      repaint();
     }
 }

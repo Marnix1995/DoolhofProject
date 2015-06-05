@@ -14,7 +14,6 @@ import javax.swing.JComponent;
  *
  * @author Marnix
  */
-
 public class Vak extends JComponent {
 
     private int size = 40;  //Afmeting van een vakje 
@@ -42,26 +41,29 @@ public class Vak extends JComponent {
     }
 
     //Vraag de buurvakjes op. Geef dir mee.   
-    
     public Vak getBuur(int dir) {
         Vak[][] vakjes = level.getVakjes();
 
-        switch (dir) {
-            case 1:
-                //speelObject.setVak(this);
-                return vakjes[y - 1][x ];
-            case 2:
-                return vakjes[y+1][ x ];
-            case 3:
-                return vakjes[y][x -1];
-            case 4:
-                return vakjes[y][x + 1];
-            default:
-                return null;
-        } 
-    }
+        
+            switch (dir) {
+                case 1:
+                    speelObject.setVak(this);
+                    return vakjes[y - 1][x];
+                case 2:
+                    return vakjes[y + 1][x];
+                case 3:
+                    return vakjes[y][x - 1];
+                case 4:
+                    return vakjes[y][x + 1];
+                default:
+                    return null;
+            }
+        }
+   
+        
+        //geef spelObject s mee.
+    
 
-    //geef spelObject s mee.
     public void zetObject(SpelObject s) {
         speelObject = s;
 
@@ -74,10 +76,9 @@ public class Vak extends JComponent {
 
     //verplaats speelobject, geef vak t mee (zichzelf)
     //Zet speelpobjct op vak op null.
-    
     public void verplaats(Vak t) {
         t.zetObject(speelObject);
-        
+
         speelObject = null;
     }
 
