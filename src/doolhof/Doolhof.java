@@ -9,7 +9,8 @@ import javax.swing.*;
  *
  * @author Marnix /Alois
  */
-public class Doolhof extends JFrame implements ActionListener {
+
+    public class Doolhof extends JFrame implements ActionListener {
    
     private Timer timerRepaint = new Timer(25, this);
     private static int breedte = 890;

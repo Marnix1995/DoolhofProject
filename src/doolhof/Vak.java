@@ -40,11 +40,13 @@ public class Vak extends JComponent {
         }
     }
 
-    //Vraag de buurvakjes op. Geef dir mee.   
+    //Vraag de buurvakjes op. Geef dir mee.  
+    
     public Vak getBuur(int dir) {
         Vak[][] vakjes = level.getVakjes();
 
-        
+        try{
+           
             switch (dir) {
                 case 1:
                     speelObject.setVak(this);
@@ -56,13 +58,16 @@ public class Vak extends JComponent {
                 case 4:
                     return vakjes[y][x + 1];
                 default:
-                    return null;
+                    return null;                    
             }
-        }
-   
-        
-        //geef spelObject s mee.
-    
+           
+        }catch(ArrayIndexOutOfBoundsException a){
+            
+            System.out.println("Buiten bereik van doolhof!");
+                  return null;   
+        }        
+    }
+          
 
     public void zetObject(SpelObject s) {
         speelObject = s;
