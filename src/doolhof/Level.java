@@ -20,48 +20,44 @@ public class Level extends JPanel {
     private Doolhof doolhof;
     private String[][] levelScan;
     private Timers timer;
-
-    public Level(String[][] level, Timers timer) {
+    
+    public Level(String[][] level, Timers timer,  Pacman p) {
 
         this.levelScan = level;
         this.timer = timer;
         timer.start();
-
-
+       
+        
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
                 vakjes[i][j] = new Vak(this, j, i);
 
+                
                 switch (levelScan[i][j]) {
-                    
+
                     case "w":
                         vakjes[i][j].zetObject(new Muur());
                         break;
-                        
+
                     case "e":
-                        vakjes[i][j].zetObject(new Exit());                       
+                        vakjes[i][j].zetObject(new Exit());                        
                         break;
-                        
-                    case "p":
-                        vakjes[i][j].zetObject(new Pacman());
-                        System.out.println("player: " + i + "," + j);
+
+                    case "p":                                                 
+                        vakjes[i][j].zetObject(p);                                 
+                       p.setVak(vakjes[i][j]);
                         break;
                 }
             }
         }
     }
 
-    public Vak getBuur(int x, int y, int dir) {
-
-        switch (dir) {
-            case 1:
-                return vak.getBuur(dir);
-
-        }
-        return vak.getBuur(dir);
-            
-    }
+   public Vak[][] getVakjes(){
+       
+       
+       return vakjes;
+   }
 
     @Override
     public void paintComponent(Graphics g) {
@@ -70,8 +66,8 @@ public class Level extends JPanel {
             for (int j = 0; j < n; j++) {
 
                 vakjes[i][j].tekenVakjes(g);
-
             }
         }
+      //repaint();
     }
 }

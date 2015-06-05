@@ -23,7 +23,9 @@ public class Doolhof extends JFrame implements ActionListener {
     private int[][] level2;
     private int[][] level3;
     private int tijd = 59;  
-    Pacman u;
+   
+    
+    int dir;
     String[][] levelString;
    
     
@@ -39,21 +41,21 @@ public class Doolhof extends JFrame implements ActionListener {
             levelString = new String[][]{
                 
                                 {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
-				{w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-				{w,c,w,p,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-				{w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-				{w,c,w,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-				{w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,c,c,c,c,c,c,c,w,c,c,w,c,c,c,c,c,c,c,c,w},
-                                {w,c,w,c,c,c,c,c,c,w,c,c,w,c,c,c,c,c,c,c,c,w},
-				{w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,w},
-                                {w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,w},
+				{w,c,w,c,w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+				{w,c,w,p,w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,w,c,w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,w,c,w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+				{w,c,w,c,w,c,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,w},
+                                {w,c,w,c,w,w,w,w,w,w,w,w,w,w,w,w,w,w,c,c,c,w},
+                                {w,c,w,c,c,c,c,c,c,c,c,c,c,c,c,c,c,w,c,c,c,w},
+				{w,c,w,w,w,w,w,w,w,w,w,w,w,w,w,w,c,w,c,c,c,w},
+                                {w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,w,c,w,c,c,c,w},
+                                {w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,w,c,w,c,c,c,w},
+				{w,c,c,c,c,c,c,c,c,c,c,c,w,c,c,w,c,w,c,c,c,w},
+                                {w,c,c,c,c,c,c,c,c,w,c,c,w,c,c,w,c,w,c,c,c,w},
+                                {w,c,w,c,c,c,c,c,c,w,c,c,w,c,c,w,c,w,c,c,c,w},
+				{w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,w,c,w,c,c,c,w},
+                                {w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,w,c,w,c,c,c,w},
                                 {w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,w},
 				{w,c,w,c,c,c,c,c,c,w,c,c,c,c,c,c,c,c,c,c,c,w},
                                 {w,c,w,c,c,c,w,w,w,w,c,c,c,c,c,c,c,c,c,c,c,w},
@@ -62,15 +64,17 @@ public class Doolhof extends JFrame implements ActionListener {
 				{w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
                                                          
 		};          
-                             
+                            
             
            timer = new Timers(tijd);
-           level = new Level(levelString, timer);
+           Pacman pc = new Pacman();
+           level = new Level(levelString, timer, pc);
         
-           level.addKeyListener(new Toets());
+           level.addKeyListener(new Toets(pc));
            level.setFocusable(true);              
     }
-         
+              
+    
         public static void main(String[] args) {
                            
         frame = new Doolhof();        
@@ -83,11 +87,10 @@ public class Doolhof extends JFrame implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
        
      }      
-      
-            
+                  
     @Override
     public void actionPerformed(ActionEvent e) {      
-        repaint();          
+        this.repaint();          
     }    
 }
 

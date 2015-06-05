@@ -9,37 +9,28 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
-
 /**
  *
  * @author Marnix
  */
 
 public class Pacman extends SpelObject {
-              
+
+    private Image img;
+    private Image imgRed;
+    private int ammunitie;
     
-    private Image img;    
-    private Image imgRed;   
-    private int ammunitie;         
     
-   
-    
-    public void getKey(KeyEvent e){
-               
-        System.out.println(e);
-              
-    }         
-        
     @Override
     public Image getImage() {
 
         this.img = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\player.png")).getImage();
-        return img;        
+        return img;
     }
-    
+
     public Image getRedImage() {
 
-        this.imgRed = new ImageIcon(Vak.class.getResource("\\Plaatjes\\playerRood.png")).getImage();
+        this.imgRed = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerRood.png")).getImage();
         return imgRed;
     }
 
@@ -49,22 +40,31 @@ public class Pacman extends SpelObject {
         return true;
     }
 
-    
     public void move(int dir) {
-      
+
+
         Vak target = vak.getBuur(dir);
         SpelObject item = target.getObject();
-        
-        if(item == null && !(item instanceof Muur)){            
+
+        if (!(item instanceof Muur)) {
+            
+            if(target != null){
             vak.verplaats(target);
-            item.pakOp(this);
-                   
-        }        
+            vak = target;
+            }
+            
+            //item.pakOp(this);
+        }
+        
+        if (item instanceof Exit){
+            
+            
+        }
     }
 
-    
     @Override
     public void pakOp(Pacman p) {
-     
-    }   
+        
+        
+    }
 }

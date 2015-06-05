@@ -14,15 +14,16 @@ import java.awt.Image;
 
 public abstract class SpelObject {
         
-    protected Vak vak;    
+    public Vak vak;
          
          
     public abstract void pakOp(Pacman p); 
-       
+         
     
     public void setVak(Vak v){        
-      vak = v;
+     vak = v;       
     }
+    
     
     public abstract boolean isPassable();
                  
