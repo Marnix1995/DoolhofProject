@@ -14,19 +14,17 @@ import javax.swing.JPanel;
 public class Level extends JPanel {
 
     private int n = 22;    //aantal * n vakjes  
-    private Vak[][] vakjes = new Vak[n][n];
-    private Vak vak;
-    private int code;
+    private Vak[][] vakjes = new Vak[n][n];    
     private Doolhof doolhof;
     private String[][] levelScan;
-    private Timers timer;
-        
+    private int tijd = 60;     
     
-    public Level(String[][] level, Timers timer,  Pacman p) {
+    public Level(String[][] level, Timers timer, Pacman p) {
 
-        this.levelScan = level;
-        this.timer = timer;
-        timer.start();
+        
+        this.levelScan = level;       
+        timer.start(tijd);
+        
         
         addKeyListener(new Toets(p));
         setFocusable(true);
@@ -52,6 +50,10 @@ public class Level extends JPanel {
                         vakjes[i][j].zetObject(p);                                 
                        p.setVak(vakjes[i][j]);
                         break;
+                        
+                    case "v":                                                 
+                        vakjes[i][j].zetObject(new Vijand());                        
+                        break;                       
                 }
             }
         }

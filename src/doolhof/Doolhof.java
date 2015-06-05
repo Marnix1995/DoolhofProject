@@ -3,6 +3,7 @@ package doolhof;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -10,30 +11,23 @@ import javax.swing.*;
  * @author Marnix /Alois
  */
 
-    public class Doolhof extends JFrame implements ActionListener {
-   
-    private Timer timerRepaint = new Timer(25, this);
+    public class Doolhof extends JFrame  {
+      
     private static int breedte = 890;
     private static int hoogte = 980;   
     private static JFrame frame;
     private static JPanel startPanel;
     private static JPanel knoppenPanel;    
     private static JPanel level;
-    private static Timers timer;
-    private static int tijd = 60;   
+    private static Timers timerPanel;    
     private static Pacman p = new Pacman();
     private static Font font = new Font("Century gothic", Font.BOLD, 50);
+    private static Font fontBtn = new Font("Century gothic", Font.BOLD, 15);
     private Image img = new ImageIcon(Doolhof.class.getResource("\\Plaatjes\\player.png")).getImage();
     private static Color color = (Color.BLACK);
-        
-    
-    public Doolhof() {
-         
-        
-        timerRepaint.start();
-        
-    }
-
+    private static ArrayList<JButton> knoppen = new ArrayList<>();  
+       
+   
     public static void main(String[] args) {
 
 
@@ -44,19 +38,18 @@ import javax.swing.*;
 
                 doolhofFrame();
                 startPanel();
-
             }
         });
     }
 
     public static void levelPanel() {
 
-        timer = new Timers(tijd);
-        level = new Level(getLevel1(), timer, p);
+        timerPanel = new Timers();
+        level = new Level(getLevel1(), timerPanel, p);
 
         level.setVisible(true);
         frame.add(level);
-        frame.add(timer, BorderLayout.SOUTH);
+        frame.add(timerPanel, BorderLayout.SOUTH);
 
     }
 
@@ -77,17 +70,25 @@ import javax.swing.*;
         label.setFont(font);
         label.setForeground(color);
         graphicsPanel.add(label); 
+                                    
+        JButton buttonStart = new JButton("Start");  
+        JButton buttonExit = new JButton("Exit");            
+        JButton buttonRead = new JButton("Read me");        
+        JButton buttonCheat = new JButton("Cheats");         
+       
+        knoppen.add(buttonStart);
+        knoppen.add(buttonExit);
+        knoppen.add(buttonRead);
+        knoppen.add(buttonCheat);
         
-        JButton buttonExit = new JButton("Exit");        
-        JButton buttonStart = new JButton("Start");
-        JButton buttonRead = new JButton("Read Me");        
-        JButton buttonCheat = new JButton("CHEATS");    
+        for(JButton b : knoppen ){  
+            
+            b.setFont(fontBtn);
+            b.setBackground(Color.LIGHT_GRAY);
+            startPanel.add(b);           
+        }
         
-        startPanel.add(buttonStart);
-        startPanel.add(buttonExit);
-        startPanel.add(buttonRead);
-        startPanel.add(buttonCheat);         
-               
+        
         frame.add(startPanel, BorderLayout.NORTH);
         frame.add(graphicsPanel, BorderLayout.CENTER);
         
@@ -112,12 +113,7 @@ import javax.swing.*;
             }
         });
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-    }
-  
-      
+       
         
     public static void doolhofFrame() {
 
@@ -164,4 +160,39 @@ import javax.swing.*;
 
         return level1;
     }
+    
+     public static String[][] getLevel2() {
+
+        String w = "w";
+        String c = "c";
+        String e = "e";
+        String p = "p";
+        String v = "v";
+
+        String[][] level2 = new String[][]{
+            {v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v},
+            {v, p, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, v},
+            {v, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, v},
+            {v, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, v},
+            {v, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, v},
+            {v, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, v},
+            {v, c, w, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, c, c, v},
+            {v, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, v},
+            {v, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, w, c, c, c, v},
+            {v, c, c, c, c, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, v},
+            {v, c, c, c, c, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, v},
+            {v, c, c, c, c, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, v},
+            {v, c, c, c, c, c, c, c, c, w, c, c, w, c, c, w, c, w, c, c, c, v},
+            {v, c, w, c, c, c, c, c, c, w, c, c, w, c, c, w, c, w, c, c, c, v},
+            {v, c, w, c, c, c, c, c, c, w, c, c, c, c, c, w, c, w, c, c, c, v},
+            {v, c, w, c, c, c, c, c, c, w, c, c, c, c, c, w, c, w, c, c, c, v},
+            {v, c, w, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, v},
+            {v, c, w, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, v},
+            {v, c, w, c, c, c, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, v},
+            {v, c, w, c, c, c, c, c, c, w, c, c, c, c, e, c, c, c, c, c, c, v},
+            {v, c, w, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, v},
+            {v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v},};
+
+        return level2;
+    }   
 }

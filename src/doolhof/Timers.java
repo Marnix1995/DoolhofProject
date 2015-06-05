@@ -28,10 +28,9 @@ public class Timers extends JPanel {
     private JLabel label;   
     private JPanel panel;   
        
-    public Timers(int s) {
+    public Timers() {
       
-        this.startGetal = s;
-              
+                      
         this.label = new JLabel();
         label.setFont(font);
         label.setForeground(color);                       
@@ -72,8 +71,8 @@ public class Timers extends JPanel {
         return formaat;
     }
    
-    public void start(){
-        
+    public void start(int tijd){
+     this.startGetal = tijd;   
      timer.start();        
     }
     
