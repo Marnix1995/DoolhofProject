@@ -16,7 +16,7 @@ import javax.swing.JComponent;
  */
 public class Vak extends JComponent {
 
-    private int size = 40;  //Afmeting van een vakje 
+    private int size = 30;  //Afmeting van een vakje 
     private int x;
     private int y;
     private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();

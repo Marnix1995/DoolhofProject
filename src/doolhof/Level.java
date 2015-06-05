@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  */
 public class Level extends JPanel {
 
-    private int n = 22;    //aantal * n vakjes  
+    private int n = 25;    //aantal * n vakjes  
     private Vak[][] vakjes = new Vak[n][n];    
     private Doolhof doolhof;
     private String[][] levelScan;

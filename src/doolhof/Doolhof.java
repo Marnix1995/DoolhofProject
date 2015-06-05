@@ -13,8 +13,8 @@ import javax.swing.*;
 
     public class Doolhof extends JFrame  {
       
-    private static int breedte = 890;
-    private static int hoogte = 980;   
+    private static int breedte = 760;
+    private static int hoogte = 850;   
     private static JFrame frame;
     private static JPanel startPanel;
     private static JPanel knoppenPanel;    
@@ -23,13 +23,14 @@ import javax.swing.*;
     private static Pacman p = new Pacman();
     private static Font font = new Font("Century gothic", Font.BOLD, 50);
     private static Font fontBtn = new Font("Century gothic", Font.BOLD, 15);
-    private Image img = new ImageIcon(Doolhof.class.getResource("\\Plaatjes\\player.png")).getImage();
     private static Color color = (Color.BLACK);
     private static ArrayList<JButton> knoppen = new ArrayList<>();  
-       
+    private static JLabel label; 
    
+    
+    
     public static void main(String[] args) {
-
+  
 
         EventQueue.invokeLater(new Runnable() {
 
@@ -66,11 +67,12 @@ import javax.swing.*;
         graphicsPanel.setLayout(layout);
         graphicsPanel.setVisible(true);
         
-        JLabel label = new JLabel("<html><br><br>Pacman</html>", SwingConstants.CENTER);
+        label = new JLabel("<html><br><br>Pacman</html>");
         label.setFont(font);
         label.setForeground(color);
-        graphicsPanel.add(label); 
-                                    
+        graphicsPanel.add(label);         
+        
+                                 
         JButton buttonStart = new JButton("Start");  
         JButton buttonExit = new JButton("Exit");            
         JButton buttonRead = new JButton("Read me");        
@@ -87,12 +89,10 @@ import javax.swing.*;
             b.setBackground(Color.LIGHT_GRAY);
             startPanel.add(b);           
         }
-        
-        
+                
         frame.add(startPanel, BorderLayout.NORTH);
         frame.add(graphicsPanel, BorderLayout.CENTER);
-        
-        
+                
         buttonStart.addActionListener(new ActionListener() {
 
             @Override
@@ -111,10 +111,32 @@ import javax.swing.*;
 
                 System.exit(0);
             }
+        });          
+    
+       buttonRead.addActionListener(new ActionListener() {
+
+            int clicks = 0;          
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            clicks ++;
+             
+            label.setText("<html><br><br><br><br>Het is de bedoeling om binnen de aangegeven tijd de Exit te bereiken.<br>"
+                    + "De speler kan onderweg vijanden tegen komen, die extra tijd van de timer zullen afhalen.<br>"
+                    + "De speler kan, als deze aanwezig zijn, een of meerdere bazooka`s oppakken en hiermee<br>"
+                    + "binnenmuren wegschieten om zo sneller en makkelijker bij de Exit te komen.<br><br>"
+                    + "© 2015</html>");
+              
+            label.setFont(fontBtn);            
+            if(clicks % 2 == 0){          
+           
+              label.setText("<html><br><br>Pacman</html>");            
+              label.setFont(font);              
+            }            
+            }
         });
     }
-       
-        
+            
     public static void doolhofFrame() {
 
         frame = new Doolhof();
@@ -135,29 +157,36 @@ import javax.swing.*;
 
 
         String[][] level1 = new String[][]{
-            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
-            {w, p, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, w},
-            {w, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, w},
-            {w, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, w},
-            {w, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, w},
-            {w, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, w},
-            {w, c, w, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, c, c, w},
-            {w, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, w},
-            {w, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, w, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, w, c, c, w, c, c, w, c, w, c, c, c, w},
-            {w, c, w, c, c, c, c, c, c, w, c, c, w, c, c, w, c, w, c, c, c, w},
-            {w, c, w, c, c, c, c, c, c, w, c, c, c, c, c, w, c, w, c, c, c, w},
-            {w, c, w, c, c, c, c, c, c, w, c, c, c, c, c, w, c, w, c, c, c, w},
-            {w, c, w, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, w, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, w, c, c, c, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, w, c, c, c, c, c, c, w, c, c, c, c, e, c, c, c, c, c, c, w},
-            {w, c, w, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},};
-
+            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, p, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, w, w, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, w, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, w, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, w, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w}, 
+            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, w, w, w, w, w, w, w, w, w, c, c, c, c, w, w, w, w, w, w, w, w, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
+            {w, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},           
+            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
+            
+            
+        }; 
+                
+                
         return level1;
     }
     
