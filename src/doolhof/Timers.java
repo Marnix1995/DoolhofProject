@@ -23,7 +23,7 @@ public class Timers extends JPanel {
     private Timer timer;
     private int ms = 1000;
  
-    private Font font = new Font("Century gothic", Font.BOLD, 50);
+    private Font font = new Font("Century gothic", Font.BOLD, 30);
     private Color color = (Color.BLUE);
     private JLabel label;   
     private JPanel panel;   

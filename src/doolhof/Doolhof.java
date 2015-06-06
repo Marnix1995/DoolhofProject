@@ -14,7 +14,7 @@ import javax.swing.*;
     public class Doolhof extends JFrame  {
       
     private static int breedte = 760;
-    private static int hoogte = 850;   
+    private static int hoogte = 830;   
     private static JFrame frame;
     private static JPanel startPanel;
     private static JPanel knoppenPanel;    
@@ -75,12 +75,22 @@ import javax.swing.*;
         JButton buttonStart = new JButton("Start");  
         JButton buttonExit = new JButton("Exit");            
         JButton buttonRead = new JButton("Read me");        
-        JButton buttonCheat = new JButton("Cheats");         
-       
+        JButton buttonCheat = new JButton("Cheats");  
+        final JButton ok = new JButton("Ok");
+        ok.setVisible(false);
+        
+        final JComboBox box = new JComboBox();
+        box.addItem("Level 1");
+        box.addItem("Level 2");
+        box.addItem("Level 3");        
+        box.setFont(fontBtn);
+        box.setVisible(false);
+        
         knoppen.add(buttonStart);
         knoppen.add(buttonExit);
         knoppen.add(buttonRead);
         knoppen.add(buttonCheat);
+        knoppen.add(ok);
         
         for(JButton b : knoppen ){  
             
@@ -88,7 +98,7 @@ import javax.swing.*;
             b.setBackground(Color.LIGHT_GRAY);
             startPanel.add(b);           
         }
-                
+        startPanel.add(box);        
         frame.add(startPanel, BorderLayout.NORTH);
         frame.add(graphicsPanel, BorderLayout.CENTER);
                 
@@ -133,7 +143,31 @@ import javax.swing.*;
               label.setFont(font);              
             }            
             }
-        });
+        });      
+       
+         buttonCheat.addActionListener(new ActionListener() {
+
+            int clicks = 0;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+             clicks ++;
+             label.setText("<html><br><br><br><br>Kies hier het levelnummer.</html>");
+             label.setFont(fontBtn);  
+             
+             box.setVisible(true);
+             ok.setVisible(true);  
+             
+             if(clicks % 2 == 0){
+                 
+             box.setVisible(false);
+             ok.setVisible(false); 
+             
+             label.setText("<html><br><br>Pacman</html>");            
+             label.setFont(font);    
+             
+             }             
+            }
+        });            
     }
             
     public static void doolhofFrame() {
@@ -153,41 +187,39 @@ import javax.swing.*;
         String c = "c";
         String e = "e";
         String p = "p";
-
+        String v = "v";
 
         String[][] level1 = new String[][]{
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
+            {w, p, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, w, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w},
+            {w, c, c, w, c, w, w, w, w, w, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, w, c, w, c, c, c, c, c, c, c, w, c, w, c, w, w, w, w, w, w, w, w, w, w},
+            {w, c, c, w, w, w, w, w, w, w, w, w, v, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, w, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, c, w},
+            {w, c, c, w, w, w, w, w, w, w, w, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, w, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, w, w},
+            {w, c, c, w, c, w, w, w, w, w, w, w, v, w, c, w, w, w, w, w, w, w, w, c, w},
+            {w, c, w, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, c, w},
+            {w, c, c, w, c, w, c, w, w, w, c, w, c, w, c, w, w, w, w, w, w, w, w, c, w}, 
+            {w, w, c, w, c, c, c, c, c, c, c, w, v, w, c, c, c, c, c, c, c, c, w, c, w},
+            {w, c, c, w, c, c, c, v, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, c, w, w, w, w, w, w, w, w, w, w, c, w, c, c, w, w, w, w, w, w, w, w, w},
             {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, p, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, w, w, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, w, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, w, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, w, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w}, 
-            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, w, w, w, w, w, w, w, w, w, c, c, c, c, w, w, w, w, w, w, w, w, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, w},
             {w, c, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
             {w, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},           
+            {w, c, c, c, c, c, c, c, c, c, c, c, c, w, w, w, w, c, c, c, e, c, c, c, w},
+            {w, w, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, c, c, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w},           
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
-            
-            
-        }; 
-                
+                        
+        };                 
                 
         return level1;
-    }
+    }    
     
      public static String[][] getLevel2() {
 

@@ -80,10 +80,10 @@ public class Vak extends JComponent {
     }
 
     //verplaats speelobject, geef vak t mee (zichzelf)
-    //Zet speelpobjct op vak op null.
+    //Zet speelpobjct op vak op leeg vlak.
+    
     public void verplaats(Vak t) {
         t.zetObject(speelObject);
-
         speelObject = null;
     }
 
