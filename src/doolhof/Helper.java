@@ -19,8 +19,7 @@ public class Helper extends SpelObject {
     public void showRouteToExit(){
                 
     }
-    
-   
+       
 
     @Override
     public Image getImage() {
@@ -28,8 +27,7 @@ public class Helper extends SpelObject {
 
         return img;
     }  
-
-  
+ 
       
 
     @Override

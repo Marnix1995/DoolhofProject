@@ -11,6 +11,8 @@ import java.awt.event.KeyEvent;
  *
  * @author Marnix
  */
+
+
 public class Toets extends KeyAdapter implements KeyBoard {
 
     private int dir;
