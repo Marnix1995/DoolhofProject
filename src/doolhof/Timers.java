@@ -1,4 +1,3 @@
-
 package doolhof;
 
 import java.awt.Color;
@@ -13,104 +12,93 @@ import javax.swing.Timer;
  *
  * @author Marnix/Alois (c) 2015-05-29
  */
-
 public class Timers extends JPanel {
 
-    
     private int startGetal;
     private int stopGetal = 0;
     private int ExtraTijd = 3;    //Dit is hoeveel er van de tijd afgehaald mag worden. Dit is later nodig voor de vijand.
     private Timer timer;
     private int ms = 1000;
- 
     private Font font = new Font("Century gothic", Font.BOLD, 30);
     private Color color = (Color.BLUE);
-    private JLabel label;   
-    private JPanel panel;   
-      
+    private JLabel label;    
+   
+
     public Timers() {
-      
-                      
+
         this.label = new JLabel();
         label.setFont(font);
-        label.setForeground(color);                       
-        add(label);      
-       
-           
-           ActionListener listener = new ActionListener() {
-           
+        label.setForeground(color);
+        add(label);
+
+        ActionListener listener = new ActionListener() {
+                                  
             @Override
-            public void actionPerformed(ActionEvent e) {                       
-                  
-               
-                String text = getTijdAfhalen(getFormaat());
-                label.setText("Time: "+text);
+            public void actionPerformed(ActionEvent e) {
                 
-                if (startGetal < stopGetal) {                    
+                 String text = getTijdAfhalen(getFormaat());
+                 label.setText("    Time: " + text +"             Munitie:  ");
+               
+                if (startGetal < stopGetal) {
                     stop();
-                    label.setText("Game Over!");
-                }               
+                    label.setText("    Game Over!");
+                }
             }
         };
-           
-        timer = new Timer(ms, listener); 
-               
-      }
-       
-    
-    public void getExtraTijdAfhalen(){
-                
-        startGetal -= ExtraTijd;                        
-    }     
-    
-    public int getStartGetal(){
+        timer = new Timer(ms, listener);  
         
+    }
+
+    public void getExtraTijdAfhalen() {
+
+        startGetal -= ExtraTijd;
+    }
+
+    public int getStartGetal() {
+
         return startGetal;
     }
-          
-    
-    public int getStopGetal(){
-        
-       return stopGetal; 
+
+    public int getStopGetal() {
+
+        return stopGetal;
     }
-    
-    public String getTijdAfhalen(String formaat){
-        
+
+    public String getTijdAfhalen(String formaat) {
+
         formaat = getFormaat();
-        startGetal --;
-        
+        startGetal--;
+
         return formaat;
     }
-   
-    public void start(int tijd){
-     this.startGetal = tijd;   
-     timer.start();        
+
+    public void start(int tijd) {
+
+        this.startGetal = tijd;
+        timer.start();
     }
-    
-    public void hervat(){
-       timer.start();         
+
+    public void hervat() {
+        timer.start();
     }
-    
-    public void pauze(){
-       timer.stop(); 
-       label.setText("Pauze");        
+
+    public void pauze() {
+        timer.stop();
+        label.setText("    Pauze");
     }
-    
-    public void stop(){
-         
-     timer.stop();        
+
+    public void stop() {
+
+        timer.stop();
     }
-    
-    public String getFormaat(){
-            
-       int count = startGetal * ms; 
-       int minutes = count / (60 * ms);
-       int seconds = (count / ms) % 60; 
-      
+
+    public String getFormaat() {
+
+        int count = startGetal * ms;
+        int minutes = count / (60 * ms);
+        int seconds = (count / ms) % 60;
+
         String str = String.format("%d:%02d", minutes, seconds);
-        return str;            
-        
-    }   
+        return str;
+    }
 }
-
-

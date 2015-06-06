@@ -14,11 +14,12 @@ import javax.swing.*;
     public class Doolhof extends JFrame  {
       
     private static int breedte = 760;
-    private static int hoogte = 830;   
+    private static int hoogte = 820;   
     private static JFrame frame;
     private static JPanel startPanel;
     private static JPanel knoppenPanel;    
     private static JPanel level;
+    private static JPanel munitiePanel;
     private static Timers timerPanel;    
     private static Pacman p = new Pacman();
     private static Font font = new Font("Century gothic", Font.BOLD, 50);
@@ -47,16 +48,15 @@ import javax.swing.*;
     }
     
     public static void levelPanel() {
-           
-        timerPanel = new Timers();   
-            
-        level = new Level(getLevel1(), timerPanel, p);
-       
-       
+         
+              
+        timerPanel = new Timers();      
+         
+        level = new Level(getLevel1(), timerPanel, p);          
         level.setVisible(true);
         frame.add(level);
-        frame.add(timerPanel, BorderLayout.SOUTH);
-                
+        frame.add(timerPanel, BorderLayout.SOUTH);       
+        
     }
 
     public static void startPanel() {
@@ -82,10 +82,8 @@ import javax.swing.*;
         JButton buttonStart = new JButton("Start");  
         JButton buttonExit = new JButton("Exit");            
         JButton buttonRead = new JButton("Read me");        
-        JButton buttonCheat = new JButton("Cheats");  
-        final JButton ok = new JButton("Ok");       
-        ok.setVisible(false);
-        
+        JButton buttonCheat = new JButton("Cheats");               
+             
         final JComboBox box = new JComboBox();
         box.addItem("Level 1");
         box.addItem("Level 2");
@@ -96,8 +94,8 @@ import javax.swing.*;
         knoppen.add(buttonStart);
         knoppen.add(buttonExit);
         knoppen.add(buttonRead);
-        knoppen.add(buttonCheat);      
-        knoppen.add(ok);  
+        knoppen.add(buttonCheat);     
+         
         
         for(JButton b : knoppen ){  
             
@@ -164,12 +162,12 @@ import javax.swing.*;
              label.setFont(fontBtn);  
              
              box.setVisible(true);
-             ok.setVisible(true);  
+             
              
              if(clicks % 2 == 0){
                  
              box.setVisible(false);
-             ok.setVisible(false); 
+           
              
              label.setText("<html><br><br>Pacman</html>");            
              label.setFont(font);    

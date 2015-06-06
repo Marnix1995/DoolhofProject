@@ -22,16 +22,17 @@ public class Level extends JPanel implements ActionListener {
     private Vak[][] vakjes = new Vak[n][n];
     private Doolhof doolhof;
     private String[][] levelScan;
-    private int tijd = 45;
-    private Timers timer;
-    private JButton button;
-    private Level l;
+    private int tijd = 60;
+    private Timers timer;  
     private int druktOpPauze = 0;
-
+    private Pacman p;
+    
+    
     public Level(String[][] level, Timers timer, Pacman p) {
 
         this.timer = timer;
         this.levelScan = level;
+        this.p = p;
         timer.start(tijd);
         repaintTimer.start();
 
@@ -41,10 +42,9 @@ public class Level extends JPanel implements ActionListener {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-
+              
                 vakjes[i][j] = new Vak(this, j, i);
-
-
+        
                 switch (levelScan[i][j]) {
 
                     case "w":
@@ -67,8 +67,9 @@ public class Level extends JPanel implements ActionListener {
                 }
             }
         }
-    }
-
+    }     
+    
+       
     public void toets(int toets) {
 
         druktOpPauze++;
@@ -89,7 +90,6 @@ public class Level extends JPanel implements ActionListener {
                     timer.hervat();
                 }
         }
-
     }
 
     public Vak[][] getVakjes() {
@@ -110,13 +110,12 @@ public class Level extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-
-        if (druktOpPauze % 2 == 0) {
-
-            this.repaint();
-        } else if (timer.getStopGetal() == timer.getStartGetal() && druktOpPauze % 2 != 0) {
-            repaintTimer.stop();
-        }
+      
+         this.repaint();
+            
+         if (timer.getStopGetal() == timer.getStartGetal()) {
+           repaintTimer.stop();
+        
     }
+}
 }

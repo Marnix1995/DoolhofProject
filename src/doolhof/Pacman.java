@@ -19,7 +19,8 @@ public class Pacman extends SpelObject {
     private Image imgBoven = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerBoven.png")).getImage();
     private Image imgOnder = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerOnder.png")).getImage();
     private int dir;
-    private int ammunitie;
+    private int munitie = 5;
+    
 
     @Override
     public Image getImage() {
@@ -37,6 +38,8 @@ public class Pacman extends SpelObject {
                 return imgRechts;
         }
     }
+           
+       
     
     @Override
     public boolean isPassable() {
