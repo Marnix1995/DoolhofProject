@@ -24,38 +24,45 @@ import javax.swing.*;
     private static Font font = new Font("Century gothic", Font.BOLD, 50);
     private static Font fontBtn = new Font("Century gothic", Font.BOLD, 15);
     private static Color color = (Color.BLACK);
-    private static ArrayList<JButton> knoppen = new ArrayList<>();  
+     
     private static JLabel label; 
        
+       
+     public Doolhof(){
+           
+     }
     
     public static void main(String[] args) {
-  
+        
 
         EventQueue.invokeLater(new Runnable() {
 
             @Override
             public void run() {
-
+            
                 doolhofFrame();
-                startPanel();
-            }
-        });
+                startPanel();                 
+           }
+       });
     }
-
+    
     public static void levelPanel() {
-
-        timerPanel = new Timers();
+           
+        timerPanel = new Timers();   
+            
         level = new Level(getLevel1(), timerPanel, p);
-
+       
+       
         level.setVisible(true);
         frame.add(level);
         frame.add(timerPanel, BorderLayout.SOUTH);
-
+                
     }
 
     public static void startPanel() {
 
-
+       ArrayList<JButton> knoppen = new ArrayList<>(); 
+       
         FlowLayout layout = new FlowLayout();
 
         startPanel = new JPanel();        
@@ -76,7 +83,7 @@ import javax.swing.*;
         JButton buttonExit = new JButton("Exit");            
         JButton buttonRead = new JButton("Read me");        
         JButton buttonCheat = new JButton("Cheats");  
-        final JButton ok = new JButton("Ok");
+        final JButton ok = new JButton("Ok");       
         ok.setVisible(false);
         
         final JComboBox box = new JComboBox();
@@ -89,27 +96,28 @@ import javax.swing.*;
         knoppen.add(buttonStart);
         knoppen.add(buttonExit);
         knoppen.add(buttonRead);
-        knoppen.add(buttonCheat);
-        knoppen.add(ok);
+        knoppen.add(buttonCheat);      
+        knoppen.add(ok);  
         
         for(JButton b : knoppen ){  
             
             b.setFont(fontBtn);
             b.setBackground(Color.LIGHT_GRAY);
-            startPanel.add(b);           
+            startPanel.add(b);            
         }
+        
         startPanel.add(box);        
         frame.add(startPanel, BorderLayout.NORTH);
         frame.add(graphicsPanel, BorderLayout.CENTER);
                 
         buttonStart.addActionListener(new ActionListener() {
-
+  
             @Override
-            public void actionPerformed(ActionEvent start) {
-
-                levelPanel();
-                startPanel.setVisible(false);                 
-                frame.setTitle("Level 1");
+            public void actionPerformed(ActionEvent e) {
+                
+                levelPanel();  
+                startPanel.setVisible(false);      
+                frame.setTitle("Level 1");                
             }
         });
 
@@ -133,7 +141,8 @@ import javax.swing.*;
             label.setText("<html><br><br><br><br>Het is de bedoeling om binnen de aangegeven tijd de Exit te bereiken.<br>"
                     + "De speler kan onderweg vijanden tegen komen, die extra tijd van de timer zullen afhalen.<br>"
                     + "De speler kan, als deze aanwezig zijn, een of meerdere bazooka`s oppakken en hiermee<br>"
-                    + "binnenmuren wegschieten om zo sneller en makkelijker bij de Exit te komen.<br><br>"
+                    + "binnenmuren wegschieten om zo sneller en makkelijker bij de Exit te komen.<br>"
+                    + "Gebruikte toetsen: ↓  →  ↑  ←  ESC,  P en  S.<br><br>"
                     + "© 2015</html>");
               
             label.setFont(fontBtn);            
@@ -171,7 +180,7 @@ import javax.swing.*;
     }
             
     public static void doolhofFrame() {
-
+      
         frame = new Doolhof();
         frame.setTitle("Doolhof");
         frame.setResizable(false);
@@ -210,9 +219,9 @@ import javax.swing.*;
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, c, w},
             {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, w},
             {w, c, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
-            {w, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, w, w, w, w, c, c, c, e, c, c, c, w},
-            {w, w, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, c, c, c, c, c, w},
+            {w, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, c, c, c, w, c, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, c, w, w, w, w, w, c, w, e, c, w, c, w},
+            {w, w, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, w, w, w, w, c, w},
             {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w},           
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
                         

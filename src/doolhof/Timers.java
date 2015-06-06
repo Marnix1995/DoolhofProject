@@ -27,7 +27,7 @@ public class Timers extends JPanel {
     private Color color = (Color.BLUE);
     private JLabel label;   
     private JPanel panel;   
-       
+      
     public Timers() {
       
                       
@@ -41,14 +41,15 @@ public class Timers extends JPanel {
            
             @Override
             public void actionPerformed(ActionEvent e) {                       
-                               
+                  
+               
                 String text = getTijdAfhalen(getFormaat());
                 label.setText("Time: "+text);
                 
                 if (startGetal < stopGetal) {                    
                     stop();
                     label.setText("Game Over!");
-                }
+                }               
             }
         };
            
@@ -62,6 +63,16 @@ public class Timers extends JPanel {
         startGetal -= ExtraTijd;                        
     }     
     
+    public int getStartGetal(){
+        
+        return startGetal;
+    }
+          
+    
+    public int getStopGetal(){
+        
+       return stopGetal; 
+    }
     
     public String getTijdAfhalen(String formaat){
         
@@ -76,8 +87,17 @@ public class Timers extends JPanel {
      timer.start();        
     }
     
+    public void hervat(){
+       timer.start();         
+    }
+    
+    public void pauze(){
+       timer.stop(); 
+       label.setText("Pauze");        
+    }
+    
     public void stop(){
-        
+         
      timer.stop();        
     }
     

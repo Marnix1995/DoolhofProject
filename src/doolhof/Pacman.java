@@ -4,15 +4,14 @@
  */
 package doolhof;
 
-import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author Marnix
  */
+
 public class Pacman extends SpelObject {
 
     private Image imgRechts = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerRechts.png")).getImage();
@@ -38,7 +37,6 @@ public class Pacman extends SpelObject {
                 return imgRechts;
         }
     }
-
     
     @Override
     public boolean isPassable() {

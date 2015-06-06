@@ -11,16 +11,15 @@ import java.awt.event.KeyEvent;
  *
  * @author Marnix
  */
-
-
 public class Toets extends KeyAdapter implements KeyBoard {
 
-    private int dir;
     private Pacman p;
+    private Level l;
 
-    public Toets(Pacman p) {
+    public Toets(Pacman p, Level l) {
 
         this.p = p;
+        this.l = l;
     }
 
     @Override
@@ -30,7 +29,6 @@ public class Toets extends KeyAdapter implements KeyBoard {
         if (waardeKey == KeyEvent.VK_UP) {
 
             p.move(1);
-           
         }
         if (waardeKey == KeyEvent.VK_DOWN) {
 
@@ -45,6 +43,14 @@ public class Toets extends KeyAdapter implements KeyBoard {
         if (waardeKey == KeyEvent.VK_RIGHT) {
 
             p.move(4);
+        }
+        if (waardeKey == KeyEvent.VK_ESCAPE) {
+
+            l.toets(1);
+        }
+        if (waardeKey == KeyEvent.VK_P) {
+
+            l.toets(2);
         }
     }
 }
