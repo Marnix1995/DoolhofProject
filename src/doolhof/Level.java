@@ -7,6 +7,7 @@ package doolhof;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -106,12 +107,35 @@ public class Level extends JPanel implements ActionListener {
                 vakjes[i][j].tekenVakjes(g);
             }
         }
+        ArrayList<Kogel> ms = p.getBULLETS(); // nieuwe array ms krijgt de kogels.
+
+        for (Kogel m : ms) // array ms Kogels wordt getekent.
+        for(int i = 0; i < ms.size(); i++)
+        {
+               m.draw(g);
+            
+        }
+    }
+    
+    private void updateKogel() {
+
+        ArrayList<Kogel> ms = p.getBULLETS(); //nieuwe array ms krijgt de kogels.
+
+        for (int i = 0; i < ms.size(); i++) { // array ms Kogels wordt getekent.
+
+            Kogel m = ms.get(i);
+
+           
+                m.SHOOT_MOVE();
+            
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
       
          this.repaint();
+         updateKogel(); // Kogel methode om de kogel te laten bewegen
             
          if (timer.getStopGetal() == timer.getStartGetal()) {
            repaintTimer.stop();

@@ -52,5 +52,11 @@ public class Toets extends KeyAdapter implements KeyBoard {
 
             l.toets(2);
         }
+        if (waardeKey == KeyEvent.VK_SPACE) {
+
+            p.schiet();
+            p.getX();
+            System.out.println("schieten!!!");
+        }
     }
 }
