@@ -62,7 +62,6 @@ public class Pacman extends SpelObject {
         return y;
     }
     
-
     @Override
     public Image getImage() {
 
@@ -85,7 +84,7 @@ public class Pacman extends SpelObject {
     public boolean isPassable() {
         return true;
     }
-
+    
     public void move(int dir) {
 
         this.dir = dir;

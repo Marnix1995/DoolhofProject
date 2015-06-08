@@ -26,6 +26,7 @@ public class Kogel extends SpelObject {
         this.y = y;
     }
 
+    
     //move my bullet
     public void SHOOT_MOVE() //move Kogels
     {

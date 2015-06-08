@@ -22,6 +22,7 @@ public class Toets extends KeyAdapter implements KeyBoard {
         this.l = l;
     }
 
+    
     @Override
     public void keyPressed(KeyEvent e) {
 
