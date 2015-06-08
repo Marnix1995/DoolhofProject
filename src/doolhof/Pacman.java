@@ -36,7 +36,7 @@ public class Pacman extends SpelObject {
     
     public void schiet()
     {
-        if (heeftMunitie = true && ( munitie > 0 ))
+        if (heeftMunitie = true && ( munitie > 1 ))
             {
         kogel = new Kogel(this.getX() ,this.getY()); // nieuwe kogel
         munitie --;
