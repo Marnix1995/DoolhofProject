@@ -41,6 +41,8 @@ public class Kogel extends SpelObject {
             SpelObject item = target.getObject();
 
             if (!(item instanceof Muur)) {
+                vak.verplaats(target);
+                vak = target;
             }
 
         } catch (NullPointerException n) {
