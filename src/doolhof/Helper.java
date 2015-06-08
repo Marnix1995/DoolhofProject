@@ -4,7 +4,6 @@
  */
 package doolhof;
 
-import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -14,16 +13,16 @@ import javax.swing.ImageIcon;
  */
 public class Helper extends SpelObject {
 
-    Image img;     
+   private Image img;     
     
     public void showRouteToExit(){
                 
     }
-       
+      
 
     @Override
     public Image getImage() {
-        new ImageIcon(Vak.class.getResource("\\Plaatjes\\friend.png")).getImage();
+       this.img = new ImageIcon(Helper.class.getResource("\\Plaatjes\\friend.png")).getImage();
 
         return img;
     }  

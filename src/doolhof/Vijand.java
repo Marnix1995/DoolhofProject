@@ -25,10 +25,10 @@ public class Vijand extends SpelObject {
        return img;
     }
        
-  
-           
+             
    public void Beweeg(int x, int y){
-            
+     
+       
    }    
         
     @Override

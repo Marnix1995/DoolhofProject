@@ -69,10 +69,10 @@ public class Vak extends JComponent {
         }        
     }
                 
-    public Vak checkVijandTimer(int i){
+    public void checkVijandTimer(int i){
            
-       level.checkVijandTimer(this, i);     
-      return this;
+      level.checkVijandTimer(this, i);     
+      
     }  
         
     

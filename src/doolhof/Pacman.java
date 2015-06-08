@@ -90,8 +90,7 @@ public class Pacman extends SpelObject {
 
             vak.verplaats(target);
             vak = target;
-           
-            
+                       
             if (item instanceof Vijand) {
                
                 item.setVak(vak);

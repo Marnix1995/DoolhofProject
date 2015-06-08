@@ -13,7 +13,7 @@ import javax.swing.Timer;
 
 /**
  *
- * @author Marnix/Alois (c) 2015-05-29
+ * @author Marnix/Alois (c) 2015-06-01
  */
 public final class Timers extends JPanel {
 
