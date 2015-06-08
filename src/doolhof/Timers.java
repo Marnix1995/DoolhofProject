@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -16,20 +18,22 @@ import javax.swing.Timer;
 public final class Timers extends JPanel {
 
     private int teller;
-    private int stopGetal = 0;   
+    private int stopGetal = 0;
     private int ms = 1000;
     private Font font = new Font("Century gothic", Font.BOLD, 30);
     private Color color = (Color.BLUE);
     private JLabel tijdLabel;
     private Timer timer;
     private Timer timerExtra;
+    private Timer timerMunitie;
     private JLabel munitieLabel;
     private ArrayList<JLabel> labels = new ArrayList<>();
     private int munitie;
-    int loopTeller = 0;
+    private int loopTeller = 0;
+    private int strafTijd;
 
     public Timers() {
-        
+
 
         this.munitieLabel = new JLabel(" ");
         this.tijdLabel = new JLabel(" ");
@@ -39,32 +43,31 @@ public final class Timers extends JPanel {
 
         for (JLabel l : labels) {
 
+            l.setAlignmentX(CENTER_ALIGNMENT);
             l.setFont(font);
             l.setForeground(color);
             this.add(l);
-        }        
-     
-    ActionListener listener = new ActionListener() {
+        }
 
-        
-           @Override
+        ActionListener listener = new ActionListener() {
+
+            @Override
             public void actionPerformed(ActionEvent e) {
 
                 String text = getTijdAfhalen(getFormaat());
-                tijdLabel.setText("    Time: " + text);
-                munitieLabel.setText("   Munitie: " + munitie);
-
+                tijdLabel.setText("     Time: " + text);
+                munitieLabel.setText("   Munitie: " + munitie);               
+                
                 if (teller < stopGetal) {
-                    stop();
                     tijdLabel.setText("    Game Over!");
+                    timer.removeActionListener(this);
                 }
-           }
-           };
-        
-        timer = new Timer(ms, listener);
-        loopTeller = 0;      
-}
+            }
+        };
 
+        timer = new Timer(ms, listener);
+
+    }
 
     public int setMunitie(int i) {
 
@@ -74,17 +77,16 @@ public final class Timers extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 munitie++;
-                munitieLabel.setText(" Munitie: " + munitie);
+                munitieLabel.setText("   Munitie: " + munitie);
+
 
             }
         };
-        Timer timerMunitie = new Timer(25, listener);
+        timerMunitie = new Timer(1, listener);
         timerMunitie.start();
 
-        munitie += i;
         return munitie;
     }
-    
 
     public int getStartGetal() {
 
@@ -111,7 +113,7 @@ public final class Timers extends JPanel {
     }
 
     public void hervat() {
-       timer.start();
+        timer.start();
     }
 
     public void pauze() {
@@ -133,32 +135,32 @@ public final class Timers extends JPanel {
         return str;
     }
 
-    public void getExtraTijdAfhalen(final int t) {
+    public void getExtraTijdAfhalen(int t) {
 
+        this.strafTijd = t;
         ActionListener listener = new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                loopTeller += 2;
                 teller--;
-                loopTeller+=2;
-                          
-                tijdLabel.setText("    Time: " + getTijdAfhalen(getFormaat()));
-              
-                
-                if (loopTeller > t) {
 
-                    timerExtra.stop();
+                tijdLabel.setText("     Time: " + getTijdAfhalen(getFormaat()));             
+                if (loopTeller > strafTijd) {
                     loopTeller = 0;
+                    timerExtra.removeActionListener(this);
+
                 }
-                if (teller < stopGetal) {                    
-                    timerExtra.stop();                    
+                if (teller < stopGetal) {
+                    timerExtra.stop();
                     tijdLabel.setText("    Game Over!");
+                    timer.removeActionListener(this);
+                   
                 }
             }
         };
-        timerExtra = new Timer(1, listener);
+ 
+        timerExtra = new Timer(5, listener);
         timerExtra.start();
-        
-    }    
+    }
 }

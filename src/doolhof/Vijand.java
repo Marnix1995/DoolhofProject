@@ -33,8 +33,7 @@ public class Vijand extends SpelObject {
     }        
            
    public void Beweeg(int x, int y){
-       
-            
+                
        
    }    
     

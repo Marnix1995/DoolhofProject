@@ -15,7 +15,7 @@ import javax.swing.*;
       
     private static int breedte = 760;
     private static int hoogte = 820;   
-    private static JFrame frame;
+    private static JFrame frame = new JFrame("Doolhof");
     private static JPanel startPanel;
     private static JPanel knoppenPanel;    
     private static JPanel level;    
@@ -176,9 +176,7 @@ import javax.swing.*;
     }
             
     public static void doolhofFrame() {
-      
-        frame = new Doolhof();
-        frame.setTitle("Doolhof");
+            
         frame.setResizable(false);
         frame.setSize(breedte, hoogte);
         frame.setVisible(true);
