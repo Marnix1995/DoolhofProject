@@ -5,6 +5,7 @@
 package doolhof;
 
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -19,7 +20,35 @@ public class Pacman extends SpelObject {
     private Image imgBoven = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerBoven.png")).getImage();
     private Image imgOnder = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerOnder.png")).getImage();
     private int dir;
+    private int munitie = 5;
+    private int x;
+    private int y;
     
+    Kogel kogel;
+    ArrayList<Kogel> store_kogelOp = new ArrayList<>(); //array list met kogels
+    
+    public ArrayList<Kogel> getBULLETS() //get kogels array
+    { return store_kogelOp; }
+    
+    public void setBULLETS(Kogel value) //zet kogels
+    { store_kogelOp.add(value); }
+    
+    public void schiet()
+    {
+        kogel = new Kogel(this.getX() ,this.getY()); // nieuwe kogel
+        store_kogelOp.add(kogel);    //opslaan in araylist
+    }
+    
+    public int getX() { 
+        
+        System.out.println(x + "positie");       
+        return x;        
+    }
+    
+    public int getY() {
+        
+        return y;
+    }
     
 
     @Override
