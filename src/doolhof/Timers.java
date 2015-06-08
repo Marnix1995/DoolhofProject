@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -12,51 +13,110 @@ import javax.swing.Timer;
  *
  * @author Marnix/Alois (c) 2015-05-29
  */
-public class Timers extends JPanel {
+public final class Timers extends JPanel implements ActionListener {
 
-    private int startGetal;
+    private int teller;
     private int stopGetal = 0;
-    private int ExtraTijd = 3;    //Dit is hoeveel er van de tijd afgehaald mag worden. Dit is later nodig voor de vijand.
+    private int ExtraTijd;    //Dit is hoeveel er van de tijd afgehaald mag worden. Dit is later nodig voor de vijand.
     private Timer timer;
     private int ms = 1000;
     private Font font = new Font("Century gothic", Font.BOLD, 30);
     private Color color = (Color.BLUE);
-    private JLabel label;    
-   
+    private JLabel tijdLabel;
+    private JLabel munitieLabel;
+    private ArrayList<JLabel> labels = new ArrayList<>();
+    private int munitie;
+    
 
     public Timers() {
 
-        this.label = new JLabel();
-        label.setFont(font);
-        label.setForeground(color);
-        add(label);
+        starten();
+        
+        this.munitieLabel = new JLabel();
+        this.tijdLabel = new JLabel();
+
+        labels.add(tijdLabel);
+        labels.add(munitieLabel);
+
+        for (JLabel l : labels) {
+
+            l.setFont(font);
+            l.setForeground(color);
+            this.add(l);
+        }
+    }
+    
+    //Dit is voor de munitielabel (schieten) ik weet alleen nog niet of dit gaat werken!
+    
+    //**********************************************************************************
+    
+    
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//        Thread t = new Thread(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//
+//                munitieLabel.setText("Processing");
+//                System.out.println(munitie);
+//                munitie++;
+//
+//                munitieLabel.setText("" + munitie);
+//            }
+//        });
+//        t.start();
+//    }
+
+    
+    public void starten() {
 
         ActionListener listener = new ActionListener() {
-                                  
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                 String text = getTijdAfhalen(getFormaat());
-                 label.setText("    Time: " + text +"             Munitie:  ");
-               
-                if (startGetal < stopGetal) {
+
+                String text = getTijdAfhalen(getFormaat());
+                tijdLabel.setText("    Time: " + text);
+
+                if (teller < stopGetal) {
                     stop();
-                    label.setText("    Game Over!");
+                    tijdLabel.setText("    Game Over!");
                 }
             }
         };
-        timer = new Timer(ms, listener);  
-        
+        timer = new Timer(ms, listener);
+        timer.start();
     }
 
-    public void getExtraTijdAfhalen() {
+    public int setMunitie(int i) {
 
-        startGetal -= ExtraTijd;
+        ActionListener listener = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                munitie++;
+                munitieLabel.setText(" Munitie: " + munitie);
+
+            }
+        };
+        timer = new Timer(25, listener);
+        timer.start();
+
+        munitie += i;
+        return munitie;
+    }
+
+    public void getExtraTijdAfhalen(int i) {
+
+        this.ExtraTijd = i;
+        teller -= ExtraTijd;      
     }
 
     public int getStartGetal() {
 
-        return startGetal;
+        return teller;
     }
 
     public int getStopGetal() {
@@ -67,24 +127,25 @@ public class Timers extends JPanel {
     public String getTijdAfhalen(String formaat) {
 
         formaat = getFormaat();
-        startGetal--;
+        teller--;
 
         return formaat;
     }
 
     public void start(int tijd) {
 
-        this.startGetal = tijd;
+        this.teller = tijd;
         timer.start();
     }
 
     public void hervat() {
         timer.start();
+               
     }
 
     public void pauze() {
         timer.stop();
-        label.setText("    Pauze");
+        tijdLabel.setText("    Pauze");
     }
 
     public void stop() {
@@ -94,11 +155,17 @@ public class Timers extends JPanel {
 
     public String getFormaat() {
 
-        int count = startGetal * ms;
+        int count = teller * ms;
         int minutes = count / (60 * ms);
         int seconds = (count / ms) % 60;
 
         String str = String.format("%d:%02d", minutes, seconds);
         return str;
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      
+    }
 }
+   

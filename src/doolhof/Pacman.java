@@ -19,7 +19,7 @@ public class Pacman extends SpelObject {
     private Image imgBoven = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerBoven.png")).getImage();
     private Image imgOnder = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerOnder.png")).getImage();
     private int dir;
-    private int munitie = 5;
+    
     
 
     @Override
@@ -38,7 +38,6 @@ public class Pacman extends SpelObject {
                 return imgRechts;
         }
     }
-           
        
     
     @Override
@@ -53,7 +52,7 @@ public class Pacman extends SpelObject {
         try {
             Vak target = vak.getBuur(dir);
             SpelObject item = target.getObject();
-
+           
             if (!(item instanceof Muur)) {
 
                 // if(target != null){
@@ -61,15 +60,20 @@ public class Pacman extends SpelObject {
                 vak = target;
             }
 
+            if (item instanceof Vijand) {
+               pakOp(this); 
+               item.haalTijdAf(vak);
+                                           
+            }
+           
         } catch (NullPointerException n) {
             System.out.println("NullPointer");
-        }
+        }         
     }
 
-    // if (item instanceof Exit){         
-    // }
-    //  }
     @Override
     public void pakOp(Pacman p) {
+        
+                 
     }
 }

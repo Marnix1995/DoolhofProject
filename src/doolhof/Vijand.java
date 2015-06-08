@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 public class Vijand extends SpelObject {
 
     private Image img;
-       
+    private int strafTijd = 5;    
   
     
     @Override
@@ -25,9 +25,21 @@ public class Vijand extends SpelObject {
       this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\Enemy.png")).getImage(); 
        return img;
     }
-   
+       
+    @Override
+    public void haalTijdAf(Vak v){
+            
+        v.checkVijandTimer(strafTijd);
+        
+    }        
+           
+   public void Beweeg(int x, int y){
+       
+            
+       
+   }    
     
-   
+    
     @Override
     public boolean isPassable() {
         return true;
@@ -36,5 +48,7 @@ public class Vijand extends SpelObject {
     @Override
     public void pakOp(Pacman p) {
         
+                     
+                
     }
 }

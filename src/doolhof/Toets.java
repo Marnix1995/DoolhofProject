@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
  */
 public class Toets extends KeyAdapter implements KeyBoard {
 
-    private Pacman p;
+    public Pacman p;
     private Level l;
 
     public Toets(Pacman p, Level l) {

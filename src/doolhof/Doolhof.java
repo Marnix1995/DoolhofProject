@@ -18,19 +18,17 @@ import javax.swing.*;
     private static JFrame frame;
     private static JPanel startPanel;
     private static JPanel knoppenPanel;    
-    private static JPanel level;
-    private static JPanel munitiePanel;
-    private static Timers timerPanel;    
-    private static Pacman p = new Pacman();
+    private static JPanel level;    
+    private static Timers timerPanel;     
     private static Font font = new Font("Century gothic", Font.BOLD, 50);
     private static Font fontBtn = new Font("Century gothic", Font.BOLD, 15);
-    private static Color color = (Color.BLACK);
-     
-    private static JLabel label; 
-       
-       
-     public Doolhof(){
-           
+    private static Color color = (Color.BLACK);   
+    private static JLabel label;
+   
+    
+    public Doolhof(){
+                     
+         
      }
     
     public static void main(String[] args) {
@@ -52,7 +50,7 @@ import javax.swing.*;
               
         timerPanel = new Timers();      
          
-        level = new Level(getLevel1(), timerPanel, p);          
+        level = new Level(getLevel1(), timerPanel, new Pacman());          
         level.setVisible(true);
         frame.add(level);
         frame.add(timerPanel, BorderLayout.SOUTH);       
@@ -72,8 +70,8 @@ import javax.swing.*;
         JPanel graphicsPanel = new JPanel();
         graphicsPanel.setLayout(layout);
         graphicsPanel.setVisible(true);
-        
-        label = new JLabel("<html><br><br>Pacman</html>");
+        final String titel = "<html><br><br>Pacman Maze</html>";
+        label = new JLabel(titel);
         label.setFont(font);
         label.setForeground(color);
         graphicsPanel.add(label);         
@@ -146,7 +144,7 @@ import javax.swing.*;
             label.setFont(fontBtn);            
             if(clicks % 2 == 0){          
            
-              label.setText("<html><br><br>Pacman</html>");            
+              label.setText(titel);            
               label.setFont(font);              
             }            
             }
@@ -169,7 +167,7 @@ import javax.swing.*;
              box.setVisible(false);
            
              
-             label.setText("<html><br><br>Pacman</html>");            
+             label.setText(titel);            
              label.setFont(font);    
              
              }             
@@ -195,32 +193,34 @@ import javax.swing.*;
         String e = "e";
         String p = "p";
         String v = "v";
-
+        String b = "b";
+        String h = "h";
+        
         String[][] level1 = new String[][]{
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
-            {w, p, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, p, c, w, c, c, c, c, c, c, c, w, v, c, c, c, c, c, c, c, c, c, c, c, w},
             {w, c, c, w, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w},
-            {w, c, c, w, c, w, w, w, w, w, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, b, c, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w},
+            {w, c, c, w, c, w, w, w, w, w, c, w, c, w, c, c, c, c, v, c, c, c, c, c, w},
             {w, w, c, w, c, c, c, c, c, c, c, w, c, w, c, w, w, w, w, w, w, w, w, w, w},
             {w, c, c, w, w, w, w, w, w, w, w, w, v, w, c, c, c, c, c, c, c, c, c, c, w},
             {w, c, w, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, c, w},
-            {w, c, c, w, w, w, w, w, w, w, w, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, w, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, w, w},
+            {w, v, c, w, w, w, w, w, w, w, w, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, w, c, w, c, c, c, c, c, c, c, w, h, w, c, c, c, c, c, c, c, c, w, w, w},
             {w, c, c, w, c, w, w, w, w, w, w, w, v, w, c, w, w, w, w, w, w, w, w, c, w},
-            {w, c, w, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, c, w},
+            {w, c, w, w, v, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, c, w},
             {w, c, c, w, c, w, c, w, w, w, c, w, c, w, c, w, w, w, w, w, w, w, w, c, w}, 
-            {w, w, c, w, c, c, c, c, c, c, c, w, v, w, c, c, c, c, c, c, c, c, w, c, w},
-            {w, c, c, w, c, c, c, v, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, w},
+            {w, w, c, w, c, c, c, c, c, c, c, w, v, w, c, c, c, c, c, v, c, c, w, c, w},
+            {w, c, c, w, c, c, c, v, c, c, c, c, c, w, c, c, b, c, c, c, c, c, c, c, w},
             {w, c, w, w, w, w, w, w, w, w, w, w, c, w, c, c, w, w, w, w, w, w, w, w, w},
             {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, w},
-            {w, c, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
+            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, v, c, c, c, c, c, w, w},
+            {w, c, c, c, c, b, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
             {w, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, c, c, c, w, c, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, w, w, w, w, w, c, w, e, c, w, c, w},
+            {w, c, c, c, c, c, c, c, v, c, c, c, c, w, w, w, w, w, c, w, e, c, w, c, w},
             {w, w, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, w, w, w, w, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w},           
+            {w, c, c, v, c, c, c, v, c, c, c, c, c, c, c, c, w, c, c, c, v, c, c, c, w},           
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
                         
         };                 
@@ -245,18 +245,18 @@ import javax.swing.*;
             {v, c, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, v},
             {v, c, w, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, c, c, v},
             {v, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, v},
-            {v, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, w, c, c, c, v},
+            {v, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w, v, w, c, c, c, v},
             {v, c, c, c, c, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, v},
             {v, c, c, c, c, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, v},
-            {v, c, c, c, c, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, v},
+            {v, c, c, c, v, c, c, c, c, c, c, c, w, c, c, w, c, w, c, c, c, v},
             {v, c, c, c, c, c, c, c, c, w, c, c, w, c, c, w, c, w, c, c, c, v},
             {v, c, w, c, c, c, c, c, c, w, c, c, w, c, c, w, c, w, c, c, c, v},
-            {v, c, w, c, c, c, c, c, c, w, c, c, c, c, c, w, c, w, c, c, c, v},
-            {v, c, w, c, c, c, c, c, c, w, c, c, c, c, c, w, c, w, c, c, c, v},
+            {v, c, w, c, c, c, c, c, v, w, c, c, c, c, c, w, v, w, c, c, c, v},
+            {v, c, w, c, c, c, c, c, c, w, c, v, c, c, c, w, c, w, c, c, c, v},
             {v, c, w, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, v},
-            {v, c, w, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, v},
-            {v, c, w, c, c, c, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, v},
-            {v, c, w, c, c, c, c, c, c, w, c, c, c, c, e, c, c, c, c, c, c, v},
+            {v, c, w, v, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, v},
+            {v, c, w, c, c, c, w, w, w, w, c, c, c, c, c, c, c, v, c, c, c, v},
+            {v, c, w, c, c, v, c, c, c, w, c, c, c, c, e, c, c, c, c, c, c, v},
             {v, c, w, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, v},
             {v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v},};
 

@@ -4,7 +4,6 @@
  */
 package doolhof;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -21,10 +20,12 @@ public class Vak extends JComponent {
     private int y;
     private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
     private SpelObject speelObject;
-    private Level level;
-
+    public Level level;
+   
+    
     public Vak(Level level, int x, int y) {
-
+        
+        
         this.level = level;
         this.x = x;
         this.y = y;
@@ -67,8 +68,14 @@ public class Vak extends JComponent {
                   return null;   
         }        
     }
-          
-
+                
+    public void checkVijandTimer(int i){
+           
+       level.checkVijandTimer(this, i);     
+       
+    }  
+        
+    
     public void zetObject(SpelObject s) {
         speelObject = s;
 
@@ -79,12 +86,14 @@ public class Vak extends JComponent {
         return speelObject;
     }
 
+    
     //verplaats speelobject, geef vak t mee (zichzelf)
     //Zet speelpobjct op vak op leeg vlak.
     
     public void verplaats(Vak t) {
-        t.zetObject(speelObject);
-        speelObject = null;
+        t.zetObject(speelObject);             
+                
+        speelObject =null;
     }
 
     public void getX(int x) {

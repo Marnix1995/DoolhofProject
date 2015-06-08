@@ -14,23 +14,20 @@ import java.awt.Image;
 public abstract class SpelObject {
         
     public Vak vak;
-    private int munitie;   
-         
+    
+        
     public abstract void pakOp(Pacman p); 
          
     
     public void setVak(Vak v){        
      vak = v;       
-    }
-    
-    public int getMunitie(){
-     
+    }     
         
-        
-    return munitie;      
-    }
     
-    
+    public void haalTijdAf(Vak v){
+                   
+    }    
+           
     public abstract boolean isPassable();
                  
     
