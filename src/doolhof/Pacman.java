@@ -22,22 +22,25 @@ public class Pacman extends SpelObject {
     private int dir;
     private int munitie = 5;
     private int x;
-    private int y;
-    
+    private int y;    
     Kogel kogel;
     ArrayList<Kogel> store_kogelOp = new ArrayList<>(); //array list met kogels
+    
     
     public ArrayList<Kogel> getBULLETS() //get kogels array
     { return store_kogelOp; }
     
-    public void setBULLETS(Kogel value) //zet kogels
+    
+    public void setBULLETS(Kogel value)
     { store_kogelOp.add(value); }
+    
     
     public void schiet()
     {
         kogel = new Kogel(this.getX() ,this.getY()); // nieuwe kogel
         store_kogelOp.add(kogel);    //opslaan in araylist
     }
+    
     
     public int getX() { 
               

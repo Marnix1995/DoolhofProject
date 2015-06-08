@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 public class Vijand extends SpelObject {
 
     private Image img;
-    private int strafTijd = 5;    
+    private int strafTijd = 12;    
   
     
     @Override

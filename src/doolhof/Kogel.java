@@ -48,6 +48,7 @@ public class Kogel extends SpelObject {
         }
     }
 
+    
     @Override
     public Image getImage() {
         this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\Kogel.png")).getImage();

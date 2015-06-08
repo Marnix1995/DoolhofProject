@@ -13,11 +13,10 @@ import javax.swing.Timer;
  *
  * @author Marnix/Alois (c) 2015-05-29
  */
-public final class Timers extends JPanel implements ActionListener {
+public final class Timers extends JPanel {
 
     private int teller;
     private int stopGetal = 0;
-    private int ExtraTijd;    //Dit is hoeveel er van de tijd afgehaald mag worden. Dit is later nodig voor de vijand.
     private Timer timer;
     private int ms = 1000;
     private Font font = new Font("Century gothic", Font.BOLD, 30);
@@ -26,12 +25,12 @@ public final class Timers extends JPanel implements ActionListener {
     private JLabel munitieLabel;
     private ArrayList<JLabel> labels = new ArrayList<>();
     private int munitie;
-    
+    int loopTeller = 0;
 
     public Timers() {
 
         starten();
-        
+
         this.munitieLabel = new JLabel();
         this.tijdLabel = new JLabel();
 
@@ -45,12 +44,9 @@ public final class Timers extends JPanel implements ActionListener {
             this.add(l);
         }
     }
-    
+
     //Dit is voor de munitielabel (schieten) ik weet alleen nog niet of dit gaat werken!
-    
     //**********************************************************************************
-    
-    
 //    @Override
 //    public void actionPerformed(ActionEvent e) {
 //        Thread t = new Thread(new Runnable() {
@@ -67,8 +63,6 @@ public final class Timers extends JPanel implements ActionListener {
 //        });
 //        t.start();
 //    }
-
-    
     public void starten() {
 
         ActionListener listener = new ActionListener() {
@@ -86,6 +80,7 @@ public final class Timers extends JPanel implements ActionListener {
             }
         };
         timer = new Timer(ms, listener);
+        loopTeller = 0;
         timer.start();
     }
 
@@ -106,12 +101,6 @@ public final class Timers extends JPanel implements ActionListener {
 
         munitie += i;
         return munitie;
-    }
-
-    public void getExtraTijdAfhalen(int i) {
-
-        this.ExtraTijd = i;
-        teller -= ExtraTijd;      
     }
 
     public int getStartGetal() {
@@ -140,7 +129,7 @@ public final class Timers extends JPanel implements ActionListener {
 
     public void hervat() {
         timer.start();
-               
+
     }
 
     public void pauze() {
@@ -163,9 +152,32 @@ public final class Timers extends JPanel implements ActionListener {
         return str;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-      
+    public void getExtraTijdAfhalen(final int t) {
+
+        ActionListener listener = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                teller--;
+                loopTeller++;
+
+                tijdLabel.setText("    Time: " + getTijdAfhalen(getFormaat()));
+                System.out.println(loopTeller);
+                if (loopTeller == t) {
+
+                    timer.stop();
+                    loopTeller = 0;
+                }
+                if (teller < stopGetal) {
+                    stop();
+                    timer.stop();
+                    tijdLabel.setText("    Game Over!");
+                }
+            }
+        };
+        timer = new Timer(1, listener);
+        timer.start();
+        
     }
 }
-   
