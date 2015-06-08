@@ -47,7 +47,7 @@ public class Pacman extends SpelObject {
             }
         else
         {
-            boolean heeftMunitie = false;
+             heeftMunitie = false;
         }
             
     }
@@ -97,7 +97,7 @@ public class Pacman extends SpelObject {
            
             if (!(item instanceof Muur)) {
 
-                boolean heeftMunitie = false;
+                heeftMunitie = false;
                 munitie ++;
                 vak.verplaats(target);
                 vak = target;
