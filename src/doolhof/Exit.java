@@ -4,7 +4,6 @@
  */
 package doolhof;
 
-import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -22,8 +21,7 @@ public class Exit extends SpelObject {
       this.img = new ImageIcon(Exit.class.getResource("\\Plaatjes\\finish.png")).getImage(); 
       return img;
       
-    } 
-   
+    }    
     
     @Override
     public boolean isPassable() {
@@ -32,8 +30,9 @@ public class Exit extends SpelObject {
 
     @Override
     public void pakOp(Pacman p) {
-      
-        
-        
+                                   
+                   
+                
+              
     }
 }

@@ -50,7 +50,7 @@ public class Vak extends JComponent {
            
             switch (dir) {
                 case 1:
-                    speelObject.setVak(this);
+                
                     return vakjes[y - 1][x];
                 case 2:
                     return vakjes[y + 1][x];
@@ -69,16 +69,16 @@ public class Vak extends JComponent {
         }        
     }
                 
-    public void checkVijandTimer(int i){
+    public Vak checkVijandTimer(int i){
            
        level.checkVijandTimer(this, i);     
-       
+      return this;
     }  
         
     
     public void zetObject(SpelObject s) {
         speelObject = s;
-
+   
     }
 
     public SpelObject getObject() {
@@ -93,7 +93,7 @@ public class Vak extends JComponent {
     public void verplaats(Vak t) {
         t.zetObject(speelObject);             
                 
-        speelObject =null;
+        speelObject = null;
     }
 
     public void getX(int x) {

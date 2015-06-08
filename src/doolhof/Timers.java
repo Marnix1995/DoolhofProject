@@ -29,7 +29,7 @@ public final class Timers extends JPanel {
     private JLabel munitieLabel;
     private ArrayList<JLabel> labels = new ArrayList<>();
     private int munitie;
-    private int loopTeller = 0;
+    private double loopTeller = 0;
     private int strafTijd;
 
     public Timers() {
@@ -56,8 +56,8 @@ public final class Timers extends JPanel {
 
                 String text = getTijdAfhalen(getFormaat());
                 tijdLabel.setText("     Time: " + text);
-                munitieLabel.setText("   Munitie: " + munitie);               
-                
+                munitieLabel.setText("   Munitie: " + munitie);
+
                 if (teller < stopGetal) {
                     tijdLabel.setText("    Game Over!");
                     timer.removeActionListener(this);
@@ -78,7 +78,6 @@ public final class Timers extends JPanel {
 
                 munitie++;
                 munitieLabel.setText("   Munitie: " + munitie);
-
 
             }
         };
@@ -142,10 +141,10 @@ public final class Timers extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                loopTeller += 2;
+                loopTeller += 2.1;
                 teller--;
 
-                tijdLabel.setText("     Time: " + getTijdAfhalen(getFormaat()));             
+                tijdLabel.setText("     Time: " + getTijdAfhalen(getFormaat()));
                 if (loopTeller > strafTijd) {
                     loopTeller = 0;
                     timerExtra.removeActionListener(this);
@@ -155,12 +154,13 @@ public final class Timers extends JPanel {
                     timerExtra.stop();
                     tijdLabel.setText("    Game Over!");
                     timer.removeActionListener(this);
-                   
+
                 }
             }
         };
- 
+
         timerExtra = new Timer(5, listener);
         timerExtra.start();
+        
     }
 }

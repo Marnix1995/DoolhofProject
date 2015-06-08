@@ -138,8 +138,8 @@ import javax.swing.*;
                     + "De speler kan onderweg vijanden tegen komen, die extra tijd van de timer zullen afhalen.<br>"
                     + "De speler kan, als deze aanwezig zijn, een of meerdere bazooka`s oppakken en hiermee<br>"
                     + "binnenmuren wegschieten om zo sneller en makkelijker bij de Exit te komen.<br>"
-                    + "Gebruikte toetsen: ↓  →  ↑  ←  ESC,  P en  S.<br><br>"
-                    + "© 2015</html>");
+                    + "Gebruikte toetsen: ↓  →  ↑  ←  ESC,  P en  S.</html>");
+                    
               
             label.setFont(fontBtn);            
             if(clicks % 2 == 0){          
@@ -199,7 +199,7 @@ import javax.swing.*;
             {w, p, c, w, c, c, c, c, c, c, c, w, v, c, c, c, c, c, c, c, c, c, c, c, w},
             {w, c, c, w, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
             {w, v, c, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w},
-            {w, c, c, w, c, w, w, w, w, w, c, w, c, w, c, c, c, c, v, c, c, c, c, c, w},
+            {w, e, c, w, c, w, w, w, w, w, c, w, c, w, c, c, c, c, v, c, c, c, c, c, w},
             {w, w, c, w, c, c, c, c, c, c, c, w, c, w, c, w, w, w, w, w, w, w, w, w, w},
             {w, c, c, w, w, w, w, w, w, w, w, w, v, w, c, c, c, c, c, c, c, c, c, c, w},
             {w, c, w, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, c, w},

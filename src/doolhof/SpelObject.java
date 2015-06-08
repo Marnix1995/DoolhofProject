@@ -22,11 +22,8 @@ public abstract class SpelObject {
     public void setVak(Vak v){        
      vak = v;       
     }     
-        
-    
-    public void haalTijdAf(Vak v){
-      vak = v;             
-    }    
+          
+  
            
     public abstract boolean isPassable();
                  

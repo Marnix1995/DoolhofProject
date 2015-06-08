@@ -17,7 +17,7 @@ public class Vijand extends SpelObject {
 
     private Image img;
     private int strafTijd = 25;    
-  
+    
     
     @Override
     public Image getImage() {
@@ -25,19 +25,12 @@ public class Vijand extends SpelObject {
        return img;
     }
        
-    @Override
-    public void haalTijdAf(Vak v){
-            
-        v.checkVijandTimer(strafTijd);
-        
-    }        
+  
            
    public void Beweeg(int x, int y){
-                
-       
+            
    }    
-    
-    
+        
     @Override
     public boolean isPassable() {
         return true;
@@ -46,7 +39,7 @@ public class Vijand extends SpelObject {
     @Override
     public void pakOp(Pacman p) {
         
+       vak.checkVijandTimer(strafTijd);
                      
-                
     }
 }

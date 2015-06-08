@@ -12,7 +12,6 @@ import javax.swing.ImageIcon;
  *
  * @author Marnix
  */
-
 public class Pacman extends SpelObject {
 
     private Image imgRechts = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerRechts.png")).getImage();
@@ -24,44 +23,40 @@ public class Pacman extends SpelObject {
     boolean heeftMunitie = false;
     private int x;
     private int y;
-
     Kogel kogel;
-    ArrayList<Kogel> store_kogelOp = new ArrayList<>(); //array list met kogels
+    ArrayList<Kogel> store_kogelOp = new ArrayList<>();
+
     
     
     public ArrayList<Kogel> getBULLETS() //get kogels array
-    { return store_kogelOp; }
-    
-    
-    public void setBULLETS(Kogel value)
-    { store_kogelOp.add(value); }
-    
-    
-    public void schiet()
     {
-        if (heeftMunitie = true && ( munitie > 0 ))
-            {
-        kogel = new Kogel(this.getX() ,this.getY()); // nieuwe kogel
-        munitie --;
-        store_kogelOp.add(kogel);    //opslaan in araylist
-            }
-        else
-        {
-             heeftMunitie = false;
-        }            
+        return store_kogelOp;
     }
-    
-    
-    public int getX() { 
-              
-        return x;        
+
+    public void setBULLETS(Kogel value) {
+        store_kogelOp.add(value);
     }
-    
+
+    public void schiet() {
+        if (heeftMunitie = true && (munitie > 0)) {
+            kogel = new Kogel(this.getX(), this.getY()); // nieuwe kogel
+            munitie--;
+            store_kogelOp.add(kogel);    //opslaan in araylist
+        } else {
+            heeftMunitie = false;
+        }
+    }
+
+    public int getX() {
+
+        return x;
+    }
+
     public int getY() {
-        
+
         return y;
     }
-    
+
     @Override
     public Image getImage() {
 
@@ -78,47 +73,46 @@ public class Pacman extends SpelObject {
                 return imgRechts;
         }
     }
-       
-    
+
     @Override
     public boolean isPassable() {
         return true;
     }
-    
+
     public void move(int dir) {
 
         this.dir = dir;
+       
+        Vak target = vak.getBuur(dir);
+        SpelObject item = target.getObject();
+ 
+        if (!(item instanceof Muur)) {
 
-        try {
-            Vak target = vak.getBuur(dir);
-            SpelObject item = target.getObject();
+            vak.verplaats(target);
+            vak = target;
            
-            if (!(item instanceof Muur)) {
-
-                vak.verplaats(target);
-                vak = target;
-            }
-
+            
             if (item instanceof Vijand) {
                
-               item.haalTijdAf(vak);
-                                           
+                item.setVak(vak);
+                item.pakOp(this);
             }
-            
+            if (item instanceof Exit) {
+
+                item.pakOp(this);
+
+            }
             if (item instanceof Bazooka) {
 
                 heeftMunitie = false;
-                munitie ++;
+                munitie++;
             }
-           
-        } catch (NullPointerException n) {
-            System.out.println("NullPointer");
-        }         
+        }
     }
 
     @Override
     public void pakOp(Pacman p) {
-        
-                 
+             
+       
     }
 }
