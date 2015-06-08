@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
  *
  * @author Alois
  */
+
 public class Kogel extends SpelObject {
 
     private int x, y;
