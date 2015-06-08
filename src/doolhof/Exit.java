@@ -33,5 +33,7 @@ public class Exit extends SpelObject {
     @Override
     public void pakOp(Pacman p) {
       
+        
+        
     }
 }

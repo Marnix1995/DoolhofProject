@@ -16,23 +16,23 @@ import javax.swing.Timer;
 public final class Timers extends JPanel {
 
     private int teller;
-    private int stopGetal = 0;
-    private Timer timer;
+    private int stopGetal = 0;   
     private int ms = 1000;
     private Font font = new Font("Century gothic", Font.BOLD, 30);
     private Color color = (Color.BLUE);
     private JLabel tijdLabel;
+    private Timer timer;
+    private Timer timerExtra;
     private JLabel munitieLabel;
     private ArrayList<JLabel> labels = new ArrayList<>();
     private int munitie;
     int loopTeller = 0;
 
     public Timers() {
+        
 
-        starten();
-
-        this.munitieLabel = new JLabel();
-        this.tijdLabel = new JLabel();
+        this.munitieLabel = new JLabel(" ");
+        this.tijdLabel = new JLabel(" ");
 
         labels.add(tijdLabel);
         labels.add(munitieLabel);
@@ -42,47 +42,29 @@ public final class Timers extends JPanel {
             l.setFont(font);
             l.setForeground(color);
             this.add(l);
-        }
-    }
+        }        
+     
+    ActionListener listener = new ActionListener() {
 
-    //Dit is voor de munitielabel (schieten) ik weet alleen nog niet of dit gaat werken!
-    //**********************************************************************************
-//    @Override
-//    public void actionPerformed(ActionEvent e) {
-//        Thread t = new Thread(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//
-//                munitieLabel.setText("Processing");
-//                System.out.println(munitie);
-//                munitie++;
-//
-//                munitieLabel.setText("" + munitie);
-//            }
-//        });
-//        t.start();
-//    }
-    public void starten() {
-
-        ActionListener listener = new ActionListener() {
-
-            @Override
+        
+           @Override
             public void actionPerformed(ActionEvent e) {
 
                 String text = getTijdAfhalen(getFormaat());
                 tijdLabel.setText("    Time: " + text);
+                munitieLabel.setText("   Munitie: " + munitie);
 
                 if (teller < stopGetal) {
                     stop();
                     tijdLabel.setText("    Game Over!");
                 }
-            }
-        };
+           }
+           };
+        
         timer = new Timer(ms, listener);
-        loopTeller = 0;
-        timer.start();
-    }
+        loopTeller = 0;      
+}
+
 
     public int setMunitie(int i) {
 
@@ -96,12 +78,13 @@ public final class Timers extends JPanel {
 
             }
         };
-        timer = new Timer(25, listener);
-        timer.start();
+        Timer timerMunitie = new Timer(25, listener);
+        timerMunitie.start();
 
         munitie += i;
         return munitie;
     }
+    
 
     public int getStartGetal() {
 
@@ -128,8 +111,7 @@ public final class Timers extends JPanel {
     }
 
     public void hervat() {
-        timer.start();
-
+       timer.start();
     }
 
     public void pauze() {
@@ -138,7 +120,6 @@ public final class Timers extends JPanel {
     }
 
     public void stop() {
-
         timer.stop();
     }
 
@@ -160,24 +141,24 @@ public final class Timers extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 teller--;
-                loopTeller++;
-
+                loopTeller+=2;
+                          
                 tijdLabel.setText("    Time: " + getTijdAfhalen(getFormaat()));
-                System.out.println(loopTeller);
-                if (loopTeller == t) {
+              
+                
+                if (loopTeller > t) {
 
-                    timer.stop();
+                    timerExtra.stop();
                     loopTeller = 0;
                 }
-                if (teller < stopGetal) {
-                    stop();
-                    timer.stop();
+                if (teller < stopGetal) {                    
+                    timerExtra.stop();                    
                     tijdLabel.setText("    Game Over!");
                 }
             }
         };
-        timer = new Timer(1, listener);
-        timer.start();
+        timerExtra = new Timer(1, listener);
+        timerExtra.start();
         
-    }
+    }    
 }

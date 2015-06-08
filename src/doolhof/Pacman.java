@@ -48,8 +48,7 @@ public class Pacman extends SpelObject {
         else
         {
              heeftMunitie = false;
-        }
-            
+        }            
     }
     
     
@@ -104,7 +103,7 @@ public class Pacman extends SpelObject {
             }
 
             if (item instanceof Vijand) {
-               pakOp(this); 
+               
                item.haalTijdAf(vak);
                                            
             }

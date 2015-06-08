@@ -23,7 +23,7 @@ public class Level extends JPanel implements ActionListener {
     public Vak[][] vakjes = new Vak[n][n];
     public Doolhof doolhof;
     private String[][] levelScan;
-    private int tijd = 400;
+    private int tijd = 350;
     private Timers timer;
     private int druktOpPauze = 0;
     private Pacman p;
@@ -64,8 +64,6 @@ public class Level extends JPanel implements ActionListener {
 
                     case "v":
                         vakjes[i][j].zetObject(new Vijand());
-
-
                         break;
 
                     case "h":
@@ -101,7 +99,7 @@ public class Level extends JPanel implements ActionListener {
                 timer.pauze();
 
                 if (druktOpPauze % 2 == 0) {
-                    repaintTimer.start();
+                    repaintTimer.start();                   
                     timer.hervat();
                 }
         }
@@ -131,7 +129,6 @@ public class Level extends JPanel implements ActionListener {
             }
         }
     }
-
     private void updateKogel() {
 
         ArrayList<Kogel> ms = p.getBULLETS(); //nieuwe array ms krijgt de kogels.
@@ -139,8 +136,6 @@ public class Level extends JPanel implements ActionListener {
         for (int i = 0; i < ms.size(); i++) { // array ms Kogels wordt getekend.
 
             Kogel m = ms.get(i);
-
-
             m.SHOOT_MOVE();
 
         }
@@ -153,7 +148,7 @@ public class Level extends JPanel implements ActionListener {
         updateKogel(); // Kogel methode om de kogel te laten bewegen
 
         if (timer.getStopGetal() == timer.getStartGetal()) {
-            repaintTimer.stop();
+             repaintTimer.removeActionListener(this);
 
         }
     }
