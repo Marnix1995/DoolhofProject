@@ -20,10 +20,11 @@ public class Pacman extends SpelObject {
     private Image imgBoven = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerBoven.png")).getImage();
     private Image imgOnder = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerOnder.png")).getImage();
     private int dir;
-    private int munitie = 5;
+    private int munitie = 3;
+    boolean heeftMunitie = true;
     private int x;
     private int y;
-    
+
     Kogel kogel;
     ArrayList<Kogel> store_kogelOp = new ArrayList<>(); //array list met kogels
     
@@ -35,8 +36,13 @@ public class Pacman extends SpelObject {
     
     public void schiet()
     {
+        if (heeftMunitie = true && ( munitie > 0 ))
+            {
         kogel = new Kogel(this.getX() ,this.getY()); // nieuwe kogel
+        munitie --;
         store_kogelOp.add(kogel);    //opslaan in araylist
+        System.out.println(munitie + "aantal ammo");
+            }
     }
     
     public int getX() { 
