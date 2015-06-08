@@ -13,8 +13,8 @@ import javax.swing.ImageIcon;
  *
  * @author Alois
  */
-public class Kogel extends SpelObject
-{
+public class Kogel extends SpelObject {
+
     private int x, y;
     private int dx = 1;
     private Image img;
@@ -25,12 +25,12 @@ public class Kogel extends SpelObject
         this.y = y;
     }
 
-       //move my bullet
-    public void SHOOT_MOVE()  //move Kogels
+    //move my bullet
+    public void SHOOT_MOVE() //move Kogels
     {
         this.x += dx;
     }
-    
+
     public void move(int dir) { // move Kogels via vakkjes werkt nog niet om dat vak.getX(); 0 geeft met een NullPointer
 
         this.dir = dir;
@@ -40,33 +40,29 @@ public class Kogel extends SpelObject
             SpelObject item = target.getObject();
 
             if (!(item instanceof Muur)) {
-
-                
             }
 
         } catch (NullPointerException n) {
             System.out.println("NullPointer");
         }
     }
-    
+
     @Override
     public Image getImage() {
-      this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\Kogel.png")).getImage(); 
-       return img;
+        this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\Kogel.png")).getImage();
+        return img;
     }
-    
+
     public void draw(Graphics g) {
-		g.drawImage(getImage(), x, y, null);
-	}
-    
+        g.drawImage(getImage(), x, y, null);
+    }
 
     @Override
     public void pakOp(Pacman p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public boolean isPassable() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 }

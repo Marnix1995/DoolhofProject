@@ -8,7 +8,6 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -16,6 +15,7 @@ import javax.swing.Timer;
  *
  * @author Marnix/Alois
  */
+
 public class Level extends JPanel implements ActionListener {
 
     private int n = 25;    //aantal * n vakjes
@@ -64,8 +64,8 @@ public class Level extends JPanel implements ActionListener {
 
                     case "v":
                         vakjes[i][j].zetObject(new Vijand());
-                        
-                        
+
+
                         break;
 
                     case "h":
@@ -80,13 +80,11 @@ public class Level extends JPanel implements ActionListener {
         }
     }
 
-    
     public void checkVijandTimer(Vak v, int i) {
 
         timer.getExtraTijdAfhalen(i);
     }
-   
-    
+
     public void toets(int toets) {
 
         druktOpPauze++;
@@ -126,35 +124,37 @@ public class Level extends JPanel implements ActionListener {
         ArrayList<Kogel> ms = p.getBULLETS(); // nieuwe array ms krijgt de kogels.
 
         for (Kogel m : ms) // array ms Kogels wordt getekent.
-        for(int i = 0; i < ms.size(); i++)
         {
-               m.draw(g);
-            
+            for (int i = 0; i < ms.size(); i++) {
+                m.draw(g);
+
+            }
         }
     }
-    
+
     private void updateKogel() {
 
         ArrayList<Kogel> ms = p.getBULLETS(); //nieuwe array ms krijgt de kogels.
 
-        for (int i = 0; i < ms.size(); i++) { // array ms Kogels wordt getekent.
+        for (int i = 0; i < ms.size(); i++) { // array ms Kogels wordt getekend.
 
             Kogel m = ms.get(i);
 
-           
-                m.SHOOT_MOVE();
-            
+
+            m.SHOOT_MOVE();
+
         }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-      
-         this.repaint();
-         updateKogel(); // Kogel methode om de kogel te laten bewegen
-            
-         if (timer.getStopGetal() == timer.getStartGetal()) {
-           repaintTimer.stop();
-        
+
+        this.repaint();
+        updateKogel(); // Kogel methode om de kogel te laten bewegen
+
+        if (timer.getStopGetal() == timer.getStartGetal()) {
+            repaintTimer.stop();
+
+        }
     }
 }

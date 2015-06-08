@@ -40,8 +40,7 @@ public class Pacman extends SpelObject {
     }
     
     public int getX() { 
-        
-        System.out.println(x + "positie");       
+              
         return x;        
     }
     
