@@ -41,7 +41,6 @@ public class Pacman extends SpelObject {
         kogel = new Kogel(this.getX() ,this.getY()); // nieuwe kogel
         munitie --;
         store_kogelOp.add(kogel);    //opslaan in araylist
-        System.out.println(munitie + "aantal ammo");
             }
         else
         {
