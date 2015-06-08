@@ -39,7 +39,7 @@ public class Pacman extends SpelObject {
     
     public void schiet()
     {
-        if (heeftMunitie = true && ( munitie > 1 ))
+        if (heeftMunitie = true && ( munitie > 0 ))
             {
         kogel = new Kogel(this.getX() ,this.getY()); // nieuwe kogel
         munitie --;
@@ -96,8 +96,6 @@ public class Pacman extends SpelObject {
            
             if (!(item instanceof Muur)) {
 
-                heeftMunitie = false;
-                munitie ++;
                 vak.verplaats(target);
                 vak = target;
             }
@@ -106,6 +104,12 @@ public class Pacman extends SpelObject {
                
                item.haalTijdAf(vak);
                                            
+            }
+            
+            if (item instanceof Bazooka) {
+
+                heeftMunitie = false;
+                munitie ++;
             }
            
         } catch (NullPointerException n) {
