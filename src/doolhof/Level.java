@@ -52,7 +52,6 @@ public class Level extends JPanel implements ActionListener {
 
                     case "e":
                         vakjes[i][j].zetObject(new Exit());
-
                         break;
 
                     case "p":
@@ -82,7 +81,7 @@ public class Level extends JPanel implements ActionListener {
     }
 
     public void UpdateLevel() {
-       
+
         this.removeAll();
         this.setVisible(false);
         timer.setVisible(false);
@@ -97,7 +96,6 @@ public class Level extends JPanel implements ActionListener {
         timer.pauze();
     }
 
-    
     public void hervat() {
 
         repaintTimer.start();
@@ -111,15 +109,24 @@ public class Level extends JPanel implements ActionListener {
         switch (toets) {
 
             case 1:
-
                 UpdateLevel();
                 Doolhof.startPanel();
+                System.out.println("toets 1: " + toets);
+                break;
 
             case 2:
                 pauzeer();
+                System.out.println("toets 2: " + toets);
                 if (druktOpPauze % 2 == 0 && timer.getStartGetal() > timer.getStopGetal()) {
-                   hervat();
+                    hervat();
                 }
+                break;
+
+            case 3:
+                System.out.println("toets 3: " + toets);
+                Doolhof.levelPanel(1);
+                UpdateLevel();
+                break;
         }
     }
 

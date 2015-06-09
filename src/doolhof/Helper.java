@@ -16,7 +16,10 @@ public class Helper extends SpelObject {
    private Image img;     
     
     public void showRouteToExit(){
-                
+       
+        
+        
+        
     }
       
 

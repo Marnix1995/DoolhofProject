@@ -124,6 +124,7 @@ public final class Timers extends JPanel {
     public void pauze() {
         timer.stop();
         tijdLabel.setText("    Pauze");
+        munitieLabel.setText("");
     }
 
     public void stop() {

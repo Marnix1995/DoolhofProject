@@ -26,8 +26,7 @@ public class Pacman extends SpelObject {
     public Kogel kogel;
     private ArrayList<Kogel> store_kogelOp = new ArrayList<>();
 
-    
-    
+        
     public ArrayList<Kogel> getBULLETS() //get kogels array
     {
         return store_kogelOp;

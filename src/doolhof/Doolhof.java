@@ -179,7 +179,11 @@ public class Doolhof extends JFrame {
                         + "De speler kan onderweg vijanden tegen komen, die extra tijd van de timer zullen afhalen.<br>"
                         + "De speler kan, als deze aanwezig zijn, een of meerdere bazooka`s oppakken en hiermee<br>"
                         + "binnenmuren wegschieten om zo sneller en makkelijker bij de Exit te komen.<br>"
-                        + "Gebruikte toetsen: ↓  →  ↑  ←  ESC,  P en  S.</html>");
+                        + "Gebruikte toetsen: ↓  →  ↑  ←  ESC,  P en  Space.<br><br>"
+                        + "P =  pauze toets<br>"                       
+                        + "R =  Restart level<br>"
+                        + "Space =  Schieten<br></html>");                       
+                       
 
 
                 label.setFont(fontBtn);
@@ -198,7 +202,7 @@ public class Doolhof extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 clicks++;
-                label.setText("<html><br><br><br><br>Kies hier het levelnummer.</html>");
+                label.setText("<html><br><br><br><br>Kies hier het levelnummer en klik op start.</html>");
                 label.setFont(fontBtn);
 
                 box.setVisible(true);

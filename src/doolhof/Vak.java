@@ -49,8 +49,7 @@ public class Vak extends JComponent {
         try{
            
             switch (dir) {
-                case 1:
-                
+                case 1:                
                     return vakjes[y - 1][x];
                 case 2:
                     return vakjes[y + 1][x];
