@@ -37,10 +37,7 @@ public class Exit extends SpelObject {
      
      Doolhof.levelPanel(levelNummer);           
      vak.level.UpdateLevel();    
-      if(levelNummer > 3) { 
-          
-        levelNummer -=2;
-      }  
+    
     }    
     
     
