@@ -71,6 +71,7 @@ public final class Timers extends JPanel {
         timer = new Timer(ms, listener);
     }
 
+    
     public void setMunitie(int i) {
 
         this.munitie = i;
@@ -80,9 +81,13 @@ public final class Timers extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                munitieCount++;                
+                munitieCount++; 
+                 
+                if (munitie < 0){                    
+                  munitieCount--;
+                }                
                 munitieLabel.setText("   Munitie: +" + munitieCount);
-
+                                 
                 if (munitieCount == munitie) {
 
                     som = munitie + som;  
