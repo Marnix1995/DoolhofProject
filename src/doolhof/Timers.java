@@ -5,8 +5,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -159,7 +157,7 @@ public final class Timers extends JPanel {
             }
         };
 
-        timerExtra = new Timer(5, listener);
+        timerExtra = new Timer(25, listener);
         timerExtra.start();
         
     }

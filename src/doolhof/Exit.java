@@ -11,10 +11,11 @@ import javax.swing.ImageIcon;
  *
  * @author Marnix
  */
+
 public class Exit extends SpelObject {
 
     private Image img;
-    
+      
     
    @Override
     public Image getImage() {
@@ -28,11 +29,25 @@ public class Exit extends SpelObject {
       return true;
     }
 
+    
+    public void exitChecker(){
+              
+     int levelNummer = Doolhof.checkHuidigLevel();  
+     levelNummer++; 
+     
+     Doolhof.levelPanel(levelNummer);           
+     vak.level.UpdateLevel();    
+      if(levelNummer > 3) { 
+          
+        levelNummer -=2;
+      }  
+    }    
+    
+    
     @Override
     public void pakOp(Pacman p) {
-                                   
-                   
-                
+                       
+        exitChecker();        
               
     }
 }

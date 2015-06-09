@@ -30,7 +30,8 @@ public class Vijand extends SpelObject {
      
        
    }    
-        
+       
+   
     @Override
     public boolean isPassable() {
         return true;

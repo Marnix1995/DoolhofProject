@@ -15,7 +15,6 @@ import javax.swing.Timer;
  *
  * @author Marnix/Alois
  */
-
 public class Level extends JPanel implements ActionListener {
 
     private int n = 25;    //aantal * n vakjes
@@ -23,20 +22,18 @@ public class Level extends JPanel implements ActionListener {
     public Vak[][] vakjes = new Vak[n][n];
     public Doolhof doolhof;
     private String[][] levelScan;
-    //private int tijd = 350;
     private Timers timer;
     private int druktOpPauze = 0;
     private Pacman p;
 
     public Level(String[][] level, Timers timer, Pacman p, int tijd) {
 
-        
         this.timer = timer;
         this.levelScan = level;
         this.p = p;
         timer.start(tijd);
 
-        repaintTimer.start();
+        repaintTimer.restart();
 
         addKeyListener(new Toets(p, this));
         setFocusable(true);
@@ -81,8 +78,30 @@ public class Level extends JPanel implements ActionListener {
 
     public void checkVijandTimer(Vak v, int i) {
 
-         timer.getExtraTijdAfhalen(i);
+        timer.getExtraTijdAfhalen(i);
+    }
+
+    public void UpdateLevel() {
        
+        this.removeAll();
+        this.setVisible(false);
+        timer.setVisible(false);
+        timer.removeAll();
+
+        repaintTimer.removeActionListener(this);
+
+    }
+
+    public void pauzeer() {
+        repaintTimer.stop();
+        timer.pauze();
+    }
+
+    
+    public void hervat() {
+
+        repaintTimer.start();
+        timer.hervat();
     }
 
     public void toets(int toets) {
@@ -92,17 +111,14 @@ public class Level extends JPanel implements ActionListener {
         switch (toets) {
 
             case 1:
-                this.setVisible(false);
-                timer.setVisible(false);
+
+                UpdateLevel();
                 Doolhof.startPanel();
 
             case 2:
-                repaintTimer.stop();
-                timer.pauze();
-
-                if (druktOpPauze % 2 == 0) {
-                    repaintTimer.start();                   
-                    timer.hervat();
+                pauzeer();
+                if (druktOpPauze % 2 == 0 && timer.getStartGetal() > timer.getStopGetal()) {
+                   hervat();
                 }
         }
     }
@@ -131,7 +147,7 @@ public class Level extends JPanel implements ActionListener {
             }
         }
     }
-    
+
     private void updateKogel() {
 
         ArrayList<Kogel> ms = p.getBULLETS(); //nieuwe array ms krijgt de kogels.
@@ -147,11 +163,14 @@ public class Level extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        repaintTimer.restart();
         this.repaint();
+
         updateKogel(); // Kogel methode om de kogel te laten bewegen
 
-        if (timer.getStopGetal() == timer.getStartGetal()) {
-             repaintTimer.removeActionListener(this);
+        if (timer.getStartGetal() < timer.getStopGetal()) {
+
+            repaintTimer.removeActionListener(this);
 
         }
     }

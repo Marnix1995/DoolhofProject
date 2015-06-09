@@ -97,15 +97,20 @@ public class Pacman extends SpelObject {
                 item.pakOp(this);
             }
             if (item instanceof Exit) {
-
+                item.setVak(vak);
                 item.pakOp(this);
 
             }
             if (item instanceof Bazooka) {
 
+                item.pakOp(this);
                 heeftMunitie = false;
                 munitie++;
             }
+            if (item instanceof Helper) {
+
+                item.pakOp(this);
+            }            
         }
     }
 

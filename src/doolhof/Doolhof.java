@@ -8,13 +8,14 @@ import javax.swing.*;
 
 /**
  *
- * @author Marnix /Alois
- */
+ * @author Marnix / Alois
+ *///Pacman Maze
 public class Doolhof extends JFrame {
 
     private static int breedte = 760;
     private static int hoogte = 820;
-    private static JFrame frame = new JFrame("Doolhof");
+    private static String title = "Doolhof";
+    private static JFrame frame = new JFrame();
     private static JPanel startPanel;
     private static JPanel knoppenPanel;
     private static JPanel level;
@@ -22,7 +23,8 @@ public class Doolhof extends JFrame {
     private static Font font = new Font("Century gothic", Font.BOLD, 50);
     private static Font fontBtn = new Font("Century gothic", Font.BOLD, 15);
     private static Color color = (Color.BLACK);
-    private static JLabel label;
+    private static JLabel label;  
+    private static int checkLevel;
 
     public Doolhof() {
     }
@@ -43,26 +45,44 @@ public class Doolhof extends JFrame {
 
     public static void levelPanel(int levelNummer) {
 
+
         Pacman p = new Pacman();
-        timerPanel = new Timers();
+        Doolhof.checkLevel = levelNummer;
 
         if (levelNummer == 1) {
-            level = new Level(getLevel1(), timerPanel, p, 120);
-        }
 
-        if (levelNummer == 2) {
+            timerPanel = new Timers();
+            level = new Level(getLevel1(), timerPanel, p, 250);
+            frame.setTitle("Level 1");
+            frame.add(level);           
+
+        } else if (levelNummer == 2) {
+
+            timerPanel = new Timers();
             level = new Level(getLevel2(), timerPanel, p, 350);
+            frame.setTitle("Level 2");
+            frame.add(level);          
 
-        }
-        if (levelNummer == 3) {
+        } else if (levelNummer == 3) {
+
+            timerPanel = new Timers();
             level = new Level(getLevel3(), timerPanel, p, 460);
-
+            frame.setTitle("Level 3");
+            frame.add(level);
+            
+        }  
+        else{
+             startPanel();             
         }
+                                 
+            frame.add(timerPanel, BorderLayout.SOUTH);  
+          
+    }
 
-        level.setVisible(true);
-        frame.add(level);
-        frame.add(timerPanel, BorderLayout.SOUTH);
+    public static int checkHuidigLevel() {
 
+        int huidig = Doolhof.checkLevel;
+        return huidig;
     }
 
     public static void startPanel() {
@@ -71,11 +91,12 @@ public class Doolhof extends JFrame {
 
         FlowLayout layout = new FlowLayout();
 
+        frame.setTitle(title);
         startPanel = new JPanel();
         startPanel.setLayout(layout);
         startPanel.setVisible(true);
 
-        JPanel graphicsPanel = new JPanel();
+        final JPanel graphicsPanel = new JPanel();
         graphicsPanel.setLayout(layout);
         graphicsPanel.setVisible(true);
         final String titel = "<html><br><br>Pacman Maze</html>";
@@ -120,27 +141,19 @@ public class Doolhof extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 int levelNummer = box.getSelectedIndex();
-               
+
                 if (levelNummer == 0) {
-
                     levelPanel(1);
-                    frame.setTitle("Level 1");
                 }
-
                 if (levelNummer == 1) {
-
                     levelPanel(2);
-                    frame.setTitle("Level 2");
                 }
-
                 if (levelNummer == 2) {
 
                     levelPanel(3);
-                    frame.setTitle("Level 3");
                 }
-                 
                 startPanel.setVisible(false);
-                
+                graphicsPanel.setVisible(false);
             }
         });
 
@@ -261,9 +274,9 @@ public class Doolhof extends JFrame {
 
         String[][] level2 = new String[][]{
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
-            {w, p, w, c, c, c, c, c, c, c, c, w, c, c, e, c, c, c, c, c, c, c, c, c, w},
+            {w, p, w, c, v, c, c, c, c, c, v, w, v, c, e, c, c, c, c, c, c, c, c, c, w},
             {w, c, c, c, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, w, w, w, v, w, w, w, w, w, w, w, w},
+            {w, c, c, c, v, c, v, c, c, w, c, c, c, w, w, w, v, w, w, w, w, w, w, w, w},
             {w, c, c, v, c, w, w, w, w, w, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
             {w, w, c, c, c, c, c, c, c, c, c, w, c, w, c, w, w, w, v, w, w, w, w, w, w},
             {w, c, c, c, w, w, w, w, w, w, w, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
@@ -287,9 +300,8 @@ public class Doolhof extends JFrame {
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},};
         return level2;
     }
-    
-    
-     public static String[][] getLevel3() {
+
+    public static String[][] getLevel3() {
 
         String w = "w";
         String c = "c";
@@ -300,7 +312,6 @@ public class Doolhof extends JFrame {
         String h = "h";
 
         String[][] level3 = new String[][]{
-            
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
             {w, p, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
             {w, c, c, c, c, w, w, w, w, w, w, w, c, c, c, c, c, c, v, c, c, c, c, c, w},
@@ -325,9 +336,7 @@ public class Doolhof extends JFrame {
             {w, c, c, c, c, c, c, c, c, c, c, c, c, w, w, w, w, w, c, w, c, c, w, c, w},
             {w, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, w, w, w, w, c, w},
             {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w},
-            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
-        };
+            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},};
         return level3;
-    }  
-    
+    }
 }

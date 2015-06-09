@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 public class Kogel extends SpelObject {
 
     private int x, y;
-    private int dx = 1;
+    private int dx = 15;
     private Image img;
     private int dir;
 
@@ -31,6 +31,7 @@ public class Kogel extends SpelObject {
     public void SHOOT_MOVE() //move Kogels
     {
         this.x += dx;
+        
     }
 
     public void move(int dir) { // move Kogels via vakkjes werkt nog niet om dat vak.getX(); 0 geeft met een NullPointer

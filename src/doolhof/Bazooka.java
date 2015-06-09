@@ -14,8 +14,7 @@ import javax.swing.ImageIcon;
 public class Bazooka extends SpelObject {
 
     private Image img;
-   
-    
+       
 
     @Override
     public Image getImage() {
@@ -23,8 +22,7 @@ public class Bazooka extends SpelObject {
         return img;
     }
 
-   
-    
+       
     @Override
     public boolean isPassable() {
         return true;
