@@ -24,8 +24,7 @@ public class Vak extends JComponent {
    
     
     public Vak(Level level, int x, int y) {
-        
-        
+                
         this.level = level;
         this.x = x;
         this.y = y;
@@ -41,6 +40,7 @@ public class Vak extends JComponent {
         }
     }
 
+    
     //Vraag de buurvakjes op. Geef dir mee.  
     
     public Vak getBuur(int dir) {

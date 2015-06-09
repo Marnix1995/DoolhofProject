@@ -38,8 +38,13 @@ public class Level extends JPanel implements ActionListener {
         addKeyListener(new Toets(p, this));
         setFocusable(true);
 
-
-        for (int i = 0; i < n; i++) {
+        setObjectPosities();                
+    }
+    
+    public final void setObjectPosities(){
+        
+        
+         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
                 vakjes[i][j] = new Vak(this, j, i);
@@ -56,7 +61,7 @@ public class Level extends JPanel implements ActionListener {
 
                     case "p":
                         vakjes[i][j].zetObject(p);
-                        p.setVak(vakjes[i][j]);
+                        p.setVak(vakjes[i][j]);                       
                         break;
 
                     case "v":
@@ -72,10 +77,11 @@ public class Level extends JPanel implements ActionListener {
                         break;
                 }
             }
-        }
-    }
-
-    public void checkVijandTimer(Vak v, int i) {
+         }       
+    }   
+    
+    
+       public void checkVijandTimer(Vak v, int i) {
 
         timer.getExtraTijdAfhalen(i);
     }
@@ -110,20 +116,18 @@ public class Level extends JPanel implements ActionListener {
 
             case 1:
                 UpdateLevel();
-                Doolhof.startPanel();
-                System.out.println("toets 1: " + toets);
+                Doolhof.startPanel();               
                 break;
 
             case 2:
-                pauzeer();
-                System.out.println("toets 2: " + toets);
+                pauzeer();               
                 if (druktOpPauze % 2 == 0 && timer.getStartGetal() > timer.getStopGetal()) {
                     hervat();
                 }
                 break;
 
             case 3:
-                System.out.println("toets 3: " + toets);
+               
                 Doolhof.levelPanel(1);
                 UpdateLevel();
                 break;
