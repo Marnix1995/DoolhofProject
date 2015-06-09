@@ -19,12 +19,12 @@ public class Pacman extends SpelObject {
     private Image imgBoven = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerBoven.png")).getImage();
     private Image imgOnder = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerOnder.png")).getImage();
     private int dir;
-    private int munitie = 0;
+    private int munitie = 45;
     boolean heeftMunitie = false;
     private int x;
     private int y;
-    Kogel kogel;
-    ArrayList<Kogel> store_kogelOp = new ArrayList<>();
+    public Kogel kogel;
+    private ArrayList<Kogel> store_kogelOp = new ArrayList<>();
 
     
     
@@ -102,10 +102,13 @@ public class Pacman extends SpelObject {
 
             }
             if (item instanceof Bazooka) {
-
+               
+                //item.setVak(vak);
                 item.pakOp(this);
+                
                 heeftMunitie = false;
-                munitie++;
+                
+                vak.level.timer.setMunitie(munitie);
             }
             if (item instanceof Helper) {
 

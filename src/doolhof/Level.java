@@ -22,7 +22,7 @@ public class Level extends JPanel implements ActionListener {
     public Vak[][] vakjes = new Vak[n][n];
     public Doolhof doolhof;
     private String[][] levelScan;
-    private Timers timer;
+    public Timers timer;
     private int druktOpPauze = 0;
     private Pacman p;
 
