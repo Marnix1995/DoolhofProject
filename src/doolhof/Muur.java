@@ -19,7 +19,13 @@ public class Muur extends SpelObject {
   
 private Image img;    
 private boolean vernietigbaar;    
-       
+     
+
+public Muur(boolean vernietigbaar){
+    
+    this.vernietigbaar = vernietigbaar;
+    
+}
 
     @Override
     public Image getImage() {

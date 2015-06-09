@@ -235,33 +235,35 @@ public class Doolhof extends JFrame {
         String v = "v";
         String b = "b";
         String h = "h";
-
+        String x = "x";
+        
         String[][] level1 = new String[][]{
-            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
-            {w, p, c, c, c, c, c, c, c, c, c, w, v, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, b, c, w, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, v, c, w, c, c, c, c, c, c, c, c, h, w, w, w, w, w, w, w, w, w, w, w, w},
-            {w, c, c, w, c, w, w, w, w, w, c, w, c, w, c, c, c, c, v, c, c, c, c, c, w},
-            {w, w, c, w, c, c, c, c, c, c, c, w, c, w, c, w, w, w, w, w, w, w, w, w, w},
-            {w, c, c, w, w, w, w, w, w, w, w, w, v, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, w, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, c, w},
-            {w, c, c, w, w, w, w, w, w, w, w, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, w, w},
-            {w, c, c, w, c, w, w, w, w, w, w, w, v, w, c, w, w, w, w, w, w, w, w, c, w},
-            {w, c, w, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, c, w},
-            {w, c, c, w, c, w, c, w, w, w, c, w, c, w, c, w, w, w, w, w, w, w, w, c, w},
-            {w, w, c, w, c, c, c, c, c, c, c, w, v, w, c, c, c, c, c, v, c, c, w, c, w},
-            {w, c, c, w, c, c, c, v, c, c, c, c, c, w, c, c, b, c, c, c, c, c, c, c, w},
-            {w, c, w, w, w, w, w, w, w, w, w, w, c, w, c, c, w, w, w, w, w, w, w, w, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, v, c, c, c, c, c, w, w},
-            {w, c, c, c, c, b, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
-            {w, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, c, c, c, w, c, c, c, c, w},
-            {w, c, c, c, c, c, c, c, v, c, c, c, c, w, w, w, w, w, c, w, e, c, w, c, w},
-            {w, w, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, w, w, w, w, c, w},
-            {w, c, c, v, c, c, c, v, c, c, c, c, c, c, c, c, w, c, c, c, v, c, c, c, w},
-            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},};
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
+            {x, p, c, c, c, c, c, c, c, c, c, w, v, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, b, c, w, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, v, c, w, c, c, c, c, c, c, c, c, h, w, w, w, w, w, w, w, w, w, w, w, x},
+            {x, c, c, w, c, w, w, w, w, w, c, w, c, w, c, c, c, c, v, c, c, c, c, c, x},
+            {x, w, c, w, c, c, c, c, c, c, c, w, c, w, c, w, w, w, w, w, w, w, w, w, x},
+            {x, c, c, w, w, w, w, w, w, w, w, w, v, w, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, w, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, c, x},
+            {x, c, c, w, w, w, w, w, w, w, w, w, c, w, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, w, x},
+            {x, c, c, w, c, w, w, w, w, w, w, w, v, w, c, w, w, w, w, w, w, w, w, c, x},
+            {x, c, w, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, c, x},
+            {x, c, c, w, c, w, c, w, w, w, c, w, c, w, c, w, w, w, w, w, w, w, w, c, x},
+            {x, w, c, w, c, c, c, c, c, c, c, w, v, w, c, c, c, c, c, v, c, c, w, c, x},
+            {x, c, c, w, c, c, c, v, c, c, c, c, c, w, c, c, b, c, c, c, c, c, c, c, x},
+            {x, c, w, w, w, w, w, w, w, w, w, w, c, w, c, c, w, w, w, w, w, w, w, w, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, v, c, c, c, c, c, w, x},
+            {x, c, c, c, c, b, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w, w, x},
+            {x, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, c, c, c, w, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, v, c, c, c, c, w, w, w, w, w, c, w, e, c, w, c, x},
+            {x, w, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, w, w, w, w, c, x},
+            {x, c, c, v, c, c, c, v, c, c, c, c, c, c, c, c, w, c, c, c, v, c, c, c, x},
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
+        };
 
         return level1;
     }
@@ -277,6 +279,7 @@ public class Doolhof extends JFrame {
         String h = "h";
 
         String[][] level2 = new String[][]{
+            
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
             {w, p, w, c, v, c, c, c, c, w, v, w, v, c, w, c, c, c, c, w, c, c, e, c, w},
             {w, c, c, c, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, w, w, c, c, c, w},

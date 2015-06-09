@@ -27,31 +27,18 @@ public class Kogel extends SpelObject {
     }
 
     
-    //move my bullet
+   
     public void SHOOT_MOVE() //move Kogels
     {
-        this.x += dx;
-        
+        this.x += dx;        
     }
 
     public void move(int dir) { // move Kogels via vakkjes werkt nog niet om dat vak.getX(); 0 geeft met een NullPointer
+        
 
-        this.dir = dir;
-
-        try {
-            Vak target = vak.getBuur(dir);
-            SpelObject item = target.getObject();
-
-            if (!(item instanceof Muur)) {
-                vak.verplaats(target);
-                vak = target;
-            }
-
-        } catch (NullPointerException n) {
-            System.out.println("NullPointer");
-        }
-    }
-
+    }   
+    
+    
     
     @Override
     public Image getImage() {
@@ -65,6 +52,8 @@ public class Kogel extends SpelObject {
 
     @Override
     public void pakOp(Pacman p) {
+        
+        
     }
 
     @Override

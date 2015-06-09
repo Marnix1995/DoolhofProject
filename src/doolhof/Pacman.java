@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
  *
  * @author Marnix
  */
+
 public class Pacman extends SpelObject {
 
     private Image imgRechts = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerRechts.png")).getImage();
@@ -102,7 +103,7 @@ public class Pacman extends SpelObject {
             }
             if (item instanceof Bazooka) {
                
-                //item.setVak(vak);
+                item.setVak(vak);
                 item.pakOp(this);
                 
                 heeftMunitie = false;                
@@ -118,7 +119,6 @@ public class Pacman extends SpelObject {
 
     @Override
     public void pakOp(Pacman p) {
-             
-       
+                    
     }
 }
