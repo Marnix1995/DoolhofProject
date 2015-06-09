@@ -11,13 +11,14 @@ import javax.swing.Timer;
 
 /**
  *
- * @author Marnix/Alois (c) 2015-06-01
+ * @author Marnix(c) 2015-06-01
  */
+
 public final class Timers extends JPanel {
 
     private int teller;
     private int stopGetal = 0;
-    private int ms = 1000;
+    private int ms = 1000; //seconden
     private Font font = new Font("Century gothic", Font.BOLD, 30);
     private Color color = (Color.BLUE);
     private JLabel tijdLabel;
@@ -60,6 +61,8 @@ public final class Timers extends JPanel {
 
                 if (teller < stopGetal) {
                     tijdLabel.setText("    Game Over!");
+                 munitieLabel.setText("   Munitie:   " + munitieCount);                
+                                     
                     timer.removeActionListener(this);
                 }
             }
@@ -77,9 +80,8 @@ public final class Timers extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                munitieCount++;
-                
-                munitieLabel.setText("   Munitie:+" + munitieCount);
+                munitieCount++;                
+                munitieLabel.setText("   Munitie: +" + munitieCount);
 
                 if (munitieCount == munitie) {
 

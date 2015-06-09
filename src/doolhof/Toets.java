@@ -22,7 +22,6 @@ public class Toets extends KeyAdapter implements KeyBoard {
         this.l = l;
     }
 
-    
     @Override
     public void keyPressed(KeyEvent e) {
 
@@ -53,11 +52,10 @@ public class Toets extends KeyAdapter implements KeyBoard {
 
             l.toets(2);
         }
-          if (waardeKey == KeyEvent.VK_R) {
+        if (waardeKey == KeyEvent.VK_R) {
 
             l.toets(3);
-        }        
-        
+        }
         if (waardeKey == KeyEvent.VK_SPACE) {
 
             p.schiet();

@@ -78,7 +78,7 @@ public class Level extends JPanel implements ActionListener {
                 }
             }
          }       
-    }   
+    }  
     
     
        public void checkVijandTimer(Vak v, int i) {
@@ -125,10 +125,9 @@ public class Level extends JPanel implements ActionListener {
                     hervat();
                 }
                 break;
-
             case 3:
                
-                Doolhof.levelPanel(1);
+                Doolhof.levelPanel(Doolhof.checkHuidigLevel());
                 UpdateLevel();
                 break;
         }

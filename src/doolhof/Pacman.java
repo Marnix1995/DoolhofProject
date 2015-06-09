@@ -110,7 +110,8 @@ public class Pacman extends SpelObject {
                 vak.level.timer.setMunitie(munitie);
             }
             if (item instanceof Helper) {
-
+                
+                item.setVak(vak);
                 item.pakOp(this);
             }            
         }

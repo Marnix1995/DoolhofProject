@@ -10,6 +10,7 @@ import javax.swing.*;
  *
  * @author Marnix / Alois
  *///Pacman Maze
+
 public class Doolhof extends JFrame {
 
     private static int breedte = 760;
@@ -52,7 +53,7 @@ public class Doolhof extends JFrame {
         if (levelNummer == 1) {
 
             timerPanel = new Timers();
-            level = new Level(getLevel1(), timerPanel, p, 250);
+            level = new Level(getLevel1(), timerPanel, p, 280);
             frame.setTitle("Level 1");
             frame.add(level);           
 
@@ -66,7 +67,7 @@ public class Doolhof extends JFrame {
         } else if (levelNummer == 3) {
 
             timerPanel = new Timers();
-            level = new Level(getLevel3(), timerPanel, p, 460);
+            level = new Level(getLevel3(), timerPanel, p, 260);
             frame.setTitle("Level 3");
             frame.add(level);
             
@@ -75,8 +76,7 @@ public class Doolhof extends JFrame {
              startPanel();             
         }
                                  
-            frame.add(timerPanel, BorderLayout.SOUTH);  
-          
+            frame.add(timerPanel, BorderLayout.SOUTH);       
     }
 
     public static int checkHuidigLevel() {
@@ -85,6 +85,7 @@ public class Doolhof extends JFrame {
         return huidig;
     }
 
+    
     public static void startPanel() {
 
         ArrayList<JButton> knoppen = new ArrayList<>();
@@ -180,12 +181,11 @@ public class Doolhof extends JFrame {
                         + "De speler kan, als deze aanwezig zijn, een of meerdere bazooka`s oppakken en hiermee<br>"
                         + "binnenmuren wegschieten om zo sneller en makkelijker bij de Exit te komen.<br>"
                         + "Gebruikte toetsen: ↓  →  ↑  ←  ESC,  P en  Space.<br><br>"
-                        + "P =  pauze toets<br>"                       
-                        + "R =  Restart level<br>"
-                        + "Space =  Schieten<br></html>");                       
+                        + "P      =  pauze toets<br>"                       
+                        + "R      =  Restart level<br>"
+                        + "Space  =  Schieten<br>"
+                        + "Esc    =  Terug naar startscherm.</html>");                       
                        
-
-
                 label.setFont(fontBtn);
                 if (clicks % 2 == 0) {
 
@@ -238,15 +238,15 @@ public class Doolhof extends JFrame {
 
         String[][] level1 = new String[][]{
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
-            {w, p, c, w, c, c, c, c, c, c, c, w, v, c, c, c, c, c, c, c, c, c, c, c, w},
+            {w, p, c, c, c, c, c, c, c, c, c, w, v, c, c, c, c, c, c, c, c, c, c, c, w},
             {w, b, c, w, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, v, c, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w},
+            {w, v, c, w, c, c, c, c, c, c, c, c, h, w, w, w, w, w, w, w, w, w, w, w, w},
             {w, c, c, w, c, w, w, w, w, w, c, w, c, w, c, c, c, c, v, c, c, c, c, c, w},
             {w, w, c, w, c, c, c, c, c, c, c, w, c, w, c, w, w, w, w, w, w, w, w, w, w},
             {w, c, c, w, w, w, w, w, w, w, w, w, v, w, c, c, c, c, c, c, c, c, c, c, w},
             {w, c, w, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, c, w},
             {w, c, c, w, w, w, w, w, w, w, w, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, w, c, c, c, c, c, c, c, w, h, w, c, c, c, c, c, c, c, c, w, w, w},
+            {w, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, w, w},
             {w, c, c, w, c, w, w, w, w, w, w, w, v, w, c, w, w, w, w, w, w, w, w, c, w},
             {w, c, w, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, c, w},
             {w, c, c, w, c, w, c, w, w, w, c, w, c, w, c, w, w, w, w, w, w, w, w, c, w},
@@ -278,11 +278,11 @@ public class Doolhof extends JFrame {
 
         String[][] level2 = new String[][]{
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
-            {w, p, w, c, v, c, c, c, c, c, v, w, v, c, e, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, c, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
-            {w, c, c, c, v, c, v, c, c, w, c, c, c, w, w, w, v, w, w, w, w, w, w, w, w},
+            {w, p, w, c, v, c, c, c, c, w, v, w, v, c, w, c, c, c, c, w, c, c, e, c, w},
+            {w, c, c, c, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, w, w, c, c, c, w},
+            {w, c, c, c, v, c, v, c, c, w, c, c, c, w, w, w, v, w, w, w, w, w, w, c, w},
             {w, c, c, v, c, w, w, w, w, w, c, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
-            {w, w, c, c, c, c, c, c, c, c, c, w, c, w, c, w, w, w, v, w, w, w, w, w, w},
+            {w, w, c, c, c, c, c, c, c, w, c, w, c, w, c, w, w, w, v, w, w, w, w, w, w},
             {w, c, c, c, w, w, w, w, w, w, w, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
             {w, c, w, w, c, c, w, w, w, c, c, c, c, w, w, w, w, w, w, w, w, w, w, c, w},
             {w, c, c, w, w, w, w, w, w, w, w, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
@@ -319,25 +319,25 @@ public class Doolhof extends JFrame {
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
             {w, p, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
             {w, c, c, c, c, w, w, w, w, w, w, w, c, c, c, c, c, c, v, c, c, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w},
-            {w, w, w, c, c, w, w, w, w, w, c, w, c, w, v, c, c, c, c, c, c, c, c, c, w},
+            {w, c, c, v, c, v, c, c, c, c, c, v, c, w, w, w, w, w, w, w, w, w, w, v, w},
+            {w, w, w, c, c, w, w, w, w, w, c, w, c, w, v, v, c, w, c, c, c, c, c, c, w},
             {w, w, c, w, c, c, c, c, c, c, c, w, c, w, c, w, w, w, w, w, w, w, w, w, w},
-            {w, c, c, c, w, w, w, w, w, w, w, w, c, w, c, c, c, e, c, c, c, c, c, c, w},
-            {w, c, w, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, c, w},
+            {w, c, c, c, w, w, w, w, w, w, w, w, c, w, c, w, v, e, v, c, c, c, c, c, w},
+            {w, v, w, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, v, w},
             {w, c, c, w, w, w, w, w, w, w, w, w, c, w, c, c, c, c, c, c, c, c, c, c, w},
             {w, c, c, w, v, c, c, c, c, v, c, w, c, c, c, c, c, c, c, c, c, c, w, w, w},
             {w, c, c, w, c, c, w, w, w, w, w, w, c, w, c, w, w, w, w, w, w, w, w, c, w},
-            {w, c, w, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, c, w},
+            {w, c, w, w, c, c, c, c, c, v, c, w, c, w, c, c, c, c, c, c, c, c, w, c, w},
             {w, c, c, w, c, w, c, w, w, w, c, w, c, w, c, w, w, w, w, w, w, w, w, c, w},
             {w, w, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, w, c, w},
             {w, v, c, w, c, c, c, c, c, c, c, c, c, w, c, c, b, c, c, c, c, c, c, c, w},
             {w, c, c, c, c, w, c, c, w, w, w, w, c, w, c, c, w, w, w, w, w, w, w, w, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, v, c, c, c, c, c, c, c, c, w},
-            {w, w, c, c, w, w, w, w, w, w, c, c, c, c, c, c, c, c, w, w, w, w, c, c, w},
+            {w, c, c, v, c, c, c, c, c, c, c, c, c, c, c, v, c, c, c, c, c, c, c, c, w},
+            {w, w, c, c, w, w, w, w, w, w, c, c, c, c, c, c, c, v, w, w, w, w, c, c, w},
             {w, c, c, c, c, v, c, c, c, c, c, c, c, v, c, c, c, c, c, c, c, c, c, w, w},
-            {w, c, c, c, c, b, c, c, c, c, c, w, w, w, w, w, w, c, w, w, w, w, w, w, w},
-            {w, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, h, c, c, w, c, c, c, c, w},
-            {w, c, c, c, c, c, c, c, c, c, c, c, c, w, w, w, w, w, c, w, c, c, w, c, w},
+            {w, c, v, c, c, b, c, c, c, c, c, w, w, w, w, w, w, c, w, w, w, w, w, w, w},
+            {w, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, h, v, c, w, c, c, c, c, w},
+            {w, c, c, c, c, c, c, c, c, c, c, v, c, w, w, w, w, w, c, w, c, c, w, c, w},
             {w, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, w, w, w, w, c, w},
             {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w},
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},};

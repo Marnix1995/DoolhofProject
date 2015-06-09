@@ -39,7 +39,9 @@ public class Vak extends JComponent {
             g.drawImage(speelObject.getImage(), x * size, y * size, this);
         }
     }
-
+    
+     
+    
     
     //Vraag de buurvakjes op. Geef dir mee.  
     
