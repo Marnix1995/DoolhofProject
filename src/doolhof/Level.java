@@ -78,8 +78,7 @@ public class Level extends JPanel implements ActionListener {
                 }
             }
          }       
-    }  
-    
+    }      
     
        public void checkVijandTimer(Vak v, int i) {
 

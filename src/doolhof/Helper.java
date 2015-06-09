@@ -5,6 +5,7 @@
 package doolhof;
 
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -17,11 +18,12 @@ public class Helper extends SpelObject {
    private Image img;     
     
    
-    public void zoekPad(){
+    public void zoekPad(Vak vak, ArrayList pad){
            
-       SpelObject object = vak.getObject();                
-       if(object instanceof Muur){
-                
+       SpelObject object = vak.getObject();                  
+       if(!(object instanceof Muur) && !(pad.contains(vak))){
+           
+                                           
            
     }
        //vak.contains(null); 
@@ -45,7 +47,7 @@ public class Helper extends SpelObject {
     @Override
     public void pakOp(Pacman p) {
       
-     zoekPad();
+   //  zoekPad(Vak v,Level level);
         
     }
 }
