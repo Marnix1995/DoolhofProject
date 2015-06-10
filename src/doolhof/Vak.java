@@ -6,6 +6,7 @@ package doolhof;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
@@ -19,60 +20,74 @@ public class Vak extends JComponent {
     private int x;
     private int y;
     private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
+    private Image imgKortsteRoute = new ImageIcon(Vak.class.getResource("\\Plaatjes\\kortsteRoute.png")).getImage();
     public SpelObject speelObject;
     public Level level;
-    public Vak vak;
+    public static ArrayList<Vak> richting = new ArrayList<>();
+        
     
     public Vak(Level level, int x, int y) {
-                
+
         this.level = level;
         this.x = x;
         this.y = y;
-
     }
 
     public void tekenVakjes(Graphics g) {
 
-        g.drawImage(img, x * size, y * size, this);
-
+                
+       // for(Vak v : speelObject.kortstePad){         
+            
+       // g.drawImage(imgKortsteRoute, x * size, y * size, this);            
+       // }     
         
-           if (speelObject != null) {
+                        
+        g.drawImage(img, x * size, y * size, this);
+              
+        if (speelObject != null) {
             g.drawImage(speelObject.getImage(), x * size, y * size, this);
         }
     }
-            
-    
-    //Vraag de buurvakjes op. Geef dir mee.  
-    
-    public Vak getBuur(int dir) {
-        Vak[][] vakjes = level.getVakjes();
 
-        try{
-           
+    public ArrayList getRichtingen(){
+                        
+        return richting;
+    }
+  
+
+    //Vraag de buurvakjes op. Geef dir mee.  
+    public Vak getBuur(int dir) {
+        Vak[][] vakjes = level.getVakjes();      
+        
+        try {
+
             switch (dir) {
-                case 1:                
+                case 1:
                     return vakjes[y - 1][x];
                 case 2:
+
                     return vakjes[y + 1][x];
                 case 3:
+
                     return vakjes[y][x - 1];
                 case 4:
+
                     return vakjes[y][x + 1];
+
                 default:
-                    return null;                    
+                    return null;
             }
-           
-        }catch(ArrayIndexOutOfBoundsException a){
-            
+
+        } catch (ArrayIndexOutOfBoundsException a) {
+
             System.out.println("Buiten bereik van doolhof!");
-                  return null;   
-        }        
+            return null;
+        }
     }
-      
-    
+
     public void zetObject(SpelObject s) {
         speelObject = s;
-   
+
     }
 
     public SpelObject getObject() {
@@ -80,13 +95,12 @@ public class Vak extends JComponent {
         return speelObject;
     }
 
-    
     //verplaats speelobject, geef vak t mee (zichzelf)
     //Zet speelpobjct op vak op leeg vlak.
     
     public void verplaats(Vak t) {
-        t.zetObject(speelObject);             
-                
+        t.zetObject(speelObject);
+
         speelObject = null;
     }
 

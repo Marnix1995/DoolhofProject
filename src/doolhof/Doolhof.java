@@ -258,16 +258,16 @@ public class Doolhof extends JFrame {
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
             {x, c, p, c, c, c, c, c, c, c, c, w, v, c, c, c, c, c, c, c, c, c, c, c, x},
             {x, b, c, w, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, c, c, c, c, c, x},
-            {x, v, c, w, c, c, c, c, c, c, c, c, h, w, w, w, w, w, w, w, w, w, w, w, x},
+            {x, v, c, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, w, x},
             {x, c, c, w, c, w, w, w, w, w, c, w, c, w, c, c, c, c, v, c, c, c, c, c, x},
-            {x, w, c, w, c, c, c, c, c, c, c, w, c, w, c, w, w, w, w, w, w, w, w, w, x},
+            {x, w, c, c, c, c, c, c, c, c, c, w, c, w, c, w, w, w, w, w, w, w, w, w, x},
             {x, c, c, w, w, w, w, w, w, w, w, w, v, w, c, c, c, c, c, c, c, c, c, c, x},
             {x, c, w, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, w, w, c, x},
             {x, c, c, w, w, w, w, w, w, w, w, w, c, w, c, c, c, c, c, c, c, c, c, c, x},
             {x, c, c, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, w, x},
             {x, c, c, w, c, w, w, w, w, w, w, w, v, w, c, w, w, w, w, w, w, w, w, c, x},
             {x, c, w, w, c, c, c, c, c, c, c, w, c, w, c, c, c, c, c, c, c, c, w, c, x},
-            {x, c, c, w, c, w, c, w, w, w, c, w, c, w, c, w, w, w, w, w, w, w, w, c, x},
+            {x, c, c, w, c, w, c, w, w, w, c, w, c, w, h, w, w, w, w, w, w, w, w, c, x},
             {x, w, c, w, c, c, c, c, c, c, c, w, v, w, c, c, c, c, c, v, c, c, w, c, x},
             {x, c, c, w, c, c, c, v, c, c, c, c, c, w, c, c, b, c, c, c, c, c, c, c, x},
             {x, c, w, w, w, w, w, w, w, w, w, w, c, w, c, c, w, w, w, w, w, w, w, w, x},
@@ -404,6 +404,5 @@ public class Doolhof extends JFrame {
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
         };
         return level0;
-    }    
-    
+    }  
 }

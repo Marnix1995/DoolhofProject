@@ -57,7 +57,7 @@ public final class Timers extends JPanel {
             public void actionPerformed(ActionEvent e) {
                
                 String text = getTijdAfhalen(getFormaat());
-                tijdLabel.setText("     Time: " + text);
+                tijdLabel.setText("     Tijd: " + text);
                 munitieLabel.setText("   Munitie:  " + som);
                              
                 
@@ -163,7 +163,7 @@ public final class Timers extends JPanel {
                 loopTeller += 2.1;
                 teller--;
                                                  
-                tijdLabel.setText("     Time: " + getTijdAfhalen(getFormaat()));
+                tijdLabel.setText("     Tijd: " + getTijdAfhalen(getFormaat()));
                 
                 
                 if (loopTeller > strafTijd) {

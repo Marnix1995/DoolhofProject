@@ -48,7 +48,7 @@ public class Pacman extends SpelObject {
     public void schiet(){
              
      if(heeftMunitie){            
-      gebruiktMuntie(this);
+    
       
      }     
     }  

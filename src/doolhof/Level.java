@@ -143,19 +143,17 @@ public class Level extends JPanel implements ActionListener {
                 vakjes[i][j].tekenVakjes(g);
             }
         }
-
     }
-
   
-
+     
+    
+    
     @Override
     public void actionPerformed(ActionEvent e) {
 
         repaintTimer.restart();
         this.repaint();
-
-        // updateKogel(); // Kogel methode om de kogel te laten bewegen
-
+       
         if (timer.getStartGetal() < timer.getStopGetal()) {
 
             repaintTimer.removeActionListener(this);

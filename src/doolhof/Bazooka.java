@@ -17,7 +17,7 @@ public class Bazooka extends SpelObject {
     public int munitie = 58;
             
       
-    @Override
+  
     public void munitieVullen() {
            
       vak.level.timer.setMunitie(munitie);  //munitieLabel teller.        

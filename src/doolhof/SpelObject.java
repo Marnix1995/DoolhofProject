@@ -15,18 +15,9 @@ import java.util.ArrayList;
 public abstract class SpelObject {
         
     public Vak vak;  
-   
+    public ArrayList<Vak> kortstePad;
       
-    
-   public void munitieVullen(){
-     
-       
-   }
-    
-   public void gebruiktMuntie(Pacman p){
-      
-             
-   }
+          
    
     public abstract void pakOp(Pacman p); 
          
