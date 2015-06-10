@@ -17,8 +17,7 @@ public class Doolhof extends JFrame {
     private static int hoogte = 830;
     private static String title = "Pacman-Maze";
     private static JFrame frame = new JFrame();
-    private static JPanel startPanel;
-    private static JPanel knoppenPanel;
+    private static JPanel startPanel;    
     private static JPanel level;
     private static Timers timerPanel;
     private static Font font = new Font("Century gothic", Font.BOLD, 50);
@@ -28,9 +27,7 @@ public class Doolhof extends JFrame {
     private static JLabel fotoLabel;
     private static int checkLevel;  
     private static ImageIcon img = new ImageIcon(Doolhof.class.getResource("\\Plaatjes\\startFrame.png"));
-    
-      
-
+       
     public static void main(String[] args) {
 
 
