@@ -40,7 +40,7 @@ public class Vijand extends SpelObject {
     @Override
     public void pakOp(Pacman p) {
         
-       vak.checkVijandTimer(strafTijd);
+       vak.level.timer.getExtraTijdAfhalen(strafTijd);
                      
     }
 }

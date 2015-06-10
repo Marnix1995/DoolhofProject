@@ -7,7 +7,6 @@ package doolhof;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -20,11 +19,11 @@ public class Level extends JPanel implements ActionListener {
     private int n = 25;    //aantal * n vakjes
     private Timer repaintTimer = new Timer(25, this);
     public Vak[][] vakjes = new Vak[n][n];
-    public Doolhof doolhof;
     private String[][] levelScan;
     public Timers timer;
     private int druktOpPauze = 0;
     private Pacman p;
+    public Doolhof doolhof;
 
     public Level(String[][] level, Timers timer, Pacman p, int tijd) {
 
@@ -57,7 +56,7 @@ public class Level extends JPanel implements ActionListener {
                     case "x":
                         vakjes[i][j].zetObject(new Muur(false));
                         break;
-                        
+
                     case "e":
                         vakjes[i][j].zetObject(new Exit());
                         break;
@@ -83,12 +82,7 @@ public class Level extends JPanel implements ActionListener {
         }
     }
 
-    public void checkVijandTimer(Vak v, int i) {
-
-        timer.getExtraTijdAfhalen(i);
-    }
-
-    public void UpdateLevel() {
+    public void updateLevel() {
 
         this.removeAll();
         this.setVisible(false);
@@ -117,7 +111,7 @@ public class Level extends JPanel implements ActionListener {
         switch (toets) {
 
             case 1:
-                UpdateLevel();
+                updateLevel();
                 Doolhof.startPanel();
                 break;
 
@@ -130,7 +124,7 @@ public class Level extends JPanel implements ActionListener {
             case 3:
 
                 Doolhof.levelPanel(Doolhof.checkHuidigLevel());
-                UpdateLevel();
+                updateLevel();
                 break;
         }
     }
@@ -149,28 +143,10 @@ public class Level extends JPanel implements ActionListener {
                 vakjes[i][j].tekenVakjes(g);
             }
         }
-        ArrayList<Kogel> ms = p.getBULLETS(); // nieuwe array ms krijgt de kogels.
 
-        for (Kogel m : ms) // array ms Kogels wordt getekent.
-        {
-            for (int i = 0; i < ms.size(); i++) {
-                m.draw(g);
-
-            }
-        }
     }
 
-    private void updateKogel() {
-
-        ArrayList<Kogel> ms = p.getBULLETS(); //nieuwe array ms krijgt de kogels.
-
-        for (int i = 0; i < ms.size(); i++) { // array ms Kogels wordt getekend.
-
-            Kogel k = ms.get(i);
-            k.SHOOT_MOVE();
-
-        }
-    }
+  
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -178,7 +154,7 @@ public class Level extends JPanel implements ActionListener {
         repaintTimer.restart();
         this.repaint();
 
-        updateKogel(); // Kogel methode om de kogel te laten bewegen
+        // updateKogel(); // Kogel methode om de kogel te laten bewegen
 
         if (timer.getStartGetal() < timer.getStopGetal()) {
 

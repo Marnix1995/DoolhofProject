@@ -19,9 +19,9 @@ public class Vak extends JComponent {
     private int x;
     private int y;
     private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
-    private SpelObject speelObject;
+    public SpelObject speelObject;
     public Level level;
-   
+    public Vak vak;
     
     public Vak(Level level, int x, int y) {
                 
@@ -68,13 +68,7 @@ public class Vak extends JComponent {
                   return null;   
         }        
     }
-                
-    public void checkVijandTimer(int i){
-           
-      level.checkVijandTimer(this, i);     
       
-    }  
-        
     
     public void zetObject(SpelObject s) {
         speelObject = s;

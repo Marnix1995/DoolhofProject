@@ -11,11 +11,20 @@ import javax.swing.ImageIcon;
  *
  * @author Marnix
  */
-
 public class Bazooka extends SpelObject {
-
+     
     private Image img;
-       
+    public int munitie = 58;
+  
+          
+      
+    @Override
+    public void munitieVullen() {
+           
+      vak.level.timer.setMunitie(munitie);  //munitieLabel teller.        
+    }
+      
+    
 
     @Override
     public Image getImage() {
@@ -23,7 +32,6 @@ public class Bazooka extends SpelObject {
         return img;
     }
 
-       
     @Override
     public boolean isPassable() {
         return true;
@@ -31,6 +39,7 @@ public class Bazooka extends SpelObject {
 
     @Override
     public void pakOp(Pacman p) {
-      
+
+        munitieVullen();
     }
 }

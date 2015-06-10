@@ -44,6 +44,11 @@ public class Toets extends KeyAdapter implements KeyBoard {
 
             p.move(4);
         }
+         if (waardeKey == KeyEvent.VK_SPACE) {
+            
+            p.schiet();             
+        }    
+        
         if (waardeKey == KeyEvent.VK_ESCAPE) {
 
             l.toets(1);
@@ -56,9 +61,6 @@ public class Toets extends KeyAdapter implements KeyBoard {
 
             l.toets(3);
         }
-        if (waardeKey == KeyEvent.VK_SPACE) {
-            
-            p.schiet();
-        }
+       
     }
 }

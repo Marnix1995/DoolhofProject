@@ -5,6 +5,7 @@
 package doolhof;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,9 +14,20 @@ import java.awt.Image;
 
 public abstract class SpelObject {
         
-    public Vak vak;
+    public Vak vak;  
+   
+      
     
-        
+   public void munitieVullen(){
+     
+       
+   }
+    
+   public void gebruiktMuntie(Pacman p){
+      
+             
+   }
+   
     public abstract void pakOp(Pacman p); 
          
     
@@ -23,8 +35,7 @@ public abstract class SpelObject {
      vak = v;       
     }     
           
-  
-           
+            
     public abstract boolean isPassable();
                  
     
