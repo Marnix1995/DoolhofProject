@@ -104,13 +104,12 @@ public class Vak extends JComponent {
         speelObject = null;
     }
 
-    public void getX(int x) {
-
-        this.x = x;
+    public void zetVakSpelObjectLeeg(Vak t) {  // haal spel object weg van eeen vakje         
+                
+        speelObject = null;
     }
-
-    public void getY(int y) {
-
-        this.y = y;
+    
+    public void verplaatsLeeg(Vak t) {   // verplaats van vakje zonder op het in te nemen.        
+                
     }
 }
