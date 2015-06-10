@@ -15,8 +15,7 @@ public class Bazooka extends SpelObject {
      
     private Image img;
     public int munitie = 58;
-  
-          
+            
       
     @Override
     public void munitieVullen() {

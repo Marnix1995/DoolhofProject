@@ -29,10 +29,7 @@ public class Doolhof extends JFrame {
     private static int checkLevel;  
     private static ImageIcon img = new ImageIcon(Doolhof.class.getResource("\\Plaatjes\\startFrame.png"));
     
-    
-    public Doolhof() {
-        
-    }
+      
 
     public static void main(String[] args) {
 
@@ -74,8 +71,16 @@ public class Doolhof extends JFrame {
             level = new Level(getLevel3(), timerPanel, p, 460);
             frame.setTitle("Level 3");
             frame.add(level);
-            
-        }  
+                     
+        
+         } else if (levelNummer == 0) {
+
+            timerPanel = new Timers();
+            level = new Level(getLevel0(), timerPanel, p, 60);
+            frame.setTitle("Level 0");
+            frame.add(level);            
+         }         
+        
         else{
              startPanel();             
         }                                 
@@ -121,12 +126,14 @@ public class Doolhof extends JFrame {
         JButton buttonCheat = new JButton("Cheats");
 
         final JComboBox box = new JComboBox();
+        box.addItem("Demo");
         box.addItem("Level 1");
         box.addItem("Level 2");
         box.addItem("Level 3");
         box.setFont(fontBtn);
         box.setVisible(false);
-
+        box.setSelectedIndex(1);
+        
         knoppen.add(buttonStart);
         knoppen.add(buttonExit);
         knoppen.add(buttonRead);
@@ -151,13 +158,17 @@ public class Doolhof extends JFrame {
 
                 int levelNummer = box.getSelectedIndex();
 
-                if (levelNummer == 0) {
+                 if (levelNummer == 0) {
+                    levelPanel(0);
+                }
+                
+                if (levelNummer == 1) {
                     levelPanel(1);
                 }
-                if (levelNummer == 1) {
+                if (levelNummer == 2) {
                     levelPanel(2);
                 }
-                if (levelNummer == 2) {
+                if (levelNummer == 3) {
                     levelPanel(3);
                 }
                 startPanel.setVisible(false);
@@ -187,7 +198,7 @@ public class Doolhof extends JFrame {
                         + "De speler kan onderweg vijanden tegen komen, die extra tijd van de timer zullen afhalen.<br>"
                         + "De speler kan, als deze aanwezig zijn, een of meerdere bazooka`s oppakken en hiermee<br>"
                         + "binnenmuren wegschieten om zo sneller en makkelijker bij de Exit te komen.<br>"
-                        + "Gebruikte toetsen: ↓  →  ↑  ←  ESC,  P en  Space.<br><br>"
+                        + "Gebruikte toetsen: ↓  →  ↑  ←  ESC,  P, R  en  Space.<br><br>"
                         + "P      =  pauze toets<br>"                       
                         + "R      =  Restart level<br>"
                         + "Space  =  Schieten<br>"
@@ -285,9 +296,9 @@ public class Doolhof extends JFrame {
         String v = "v";
         String b = "b";
         String h = "h";
-
-        String[][] level2 = new String[][]{
-            
+        String x = "x";
+        
+        String[][] level2 = new String[][]{            
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
             {w, p, w, c, v, c, c, c, c, w, v, w, v, c, w, c, c, c, c, w, c, c, e, c, w},
             {w, c, c, c, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, w, w, c, c, c, w},
@@ -326,7 +337,8 @@ public class Doolhof extends JFrame {
         String v = "v";
         String b = "b";
         String h = "h";
-
+        String x = "x";
+        
         String[][] level3 = new String[][]{
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
             {w, p, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
@@ -356,4 +368,45 @@ public class Doolhof extends JFrame {
         };
         return level3;
     }
+    public static String[][] getLevel0() {
+
+        String w = "w";
+        String c = "c";
+        String e = "e";
+        String p = "p";
+        String v = "v";
+        String b = "b";
+        String h = "h";
+        String x = "x";
+
+        String[][] level0 = new String[][]{
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
+            {x, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, c, x},
+            {x, c, c, w, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, w, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, w, c, v, c, c, c, c, c, c, c, w, c, c, c, c, c, v, c, c, x},
+            {x, c, c, c, c, w, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, c, c, c, c, c, c, p, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, w, w, w, w, w, w, w, c, c, c, c, w, w, w, w, c, w, w, w, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, w, w, w, w, c, c, w, w, w, w, w, w, w, w, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, e, c, c, c, c, c, c, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, w, w, w, c, c, c, c, c, c, c, c, c, c, x},
+            {x, w, w, w, w, w, w, w, c, c, c, c, c, w, w, w, w, w, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
+        };
+        return level0;
+    }    
+    
 }
