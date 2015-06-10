@@ -19,7 +19,8 @@ public class Pacman extends SpelObject {
     private Image imgBoven = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerBoven.png")).getImage();
     private Image imgOnder = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerOnder.png")).getImage();
     private int dir;
-    private boolean heeftMunitie = false;  
+    private boolean heeftMunitie = false;
+    private int munitie = 0;
     
 
     @Override
@@ -50,7 +51,7 @@ public class Pacman extends SpelObject {
         Vak adf = null;
         adf = vak;
  
-        while (heeftMunitie) {
+        while (heeftMunitie && (munitie > 0)) {
             
             Vak target = adf.getBuur(this.dir);
             SpelObject item = target.getObject();
@@ -60,6 +61,7 @@ public class Pacman extends SpelObject {
             if (item instanceof Muur) {
                 
                 target.zetVakSpelObjectLeeg(target);
+                munitie--;
                 break;
             } 
         }
@@ -92,7 +94,8 @@ public class Pacman extends SpelObject {
                
                 item.setVak(vak);
                 item.pakOp(this);
-                this.heeftMunitie = true;                  
+                this.heeftMunitie = true;  
+                munitie++;
               
             }
             if (item instanceof Helper) {
