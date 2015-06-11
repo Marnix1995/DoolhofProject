@@ -14,7 +14,7 @@ import javax.swing.*;
 public class Doolhof extends JFrame {
 
     private static int breedte = 760;
-    private static int hoogte = 830;
+    private static int hoogte = 750;
     private static String title = "Pacman-Maze";
     private static JFrame frame = new JFrame();
     private static JPanel startPanel;    
