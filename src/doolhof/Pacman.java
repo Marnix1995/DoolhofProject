@@ -11,7 +11,6 @@ import javax.swing.ImageIcon;
  *
  * @author Marnix
  */
-
 public class Pacman extends SpelObject {
 
     private Image imgRechts = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerRechts.png")).getImage();
@@ -21,7 +20,6 @@ public class Pacman extends SpelObject {
     private int dir;
     private boolean heeftMunitie = false;
     private int munitie = 0;
-    
 
     @Override
     public Image getImage() {
@@ -34,7 +32,7 @@ public class Pacman extends SpelObject {
             case 3:
                 return imgLinks;
             case 4:
-                return imgRechts;                
+                return imgRechts;
             default:
                 return imgRechts;
         }
@@ -45,41 +43,41 @@ public class Pacman extends SpelObject {
         return true;
     }
 
-     
     public void schiet(int dir) {
-        
-      // Vak vak =  
-        while (heeftMunitie && (munitie > 0)) {
-            
-          //  Vak target = adf.getBuur(this.dir);
-           // SpelObject item = target.getObject();
-           // vak.verplaatsLeeg(target);
-         //   adf = target;
 
-          //  if (item instanceof Muur) {
-                                
-             //   target.zetVakSpelObjectLeeg(target);
+        Vak adf = null;
+        adf = vak;
+
+        while (heeftMunitie && (munitie > 0)) {
+            Vak target = adf.getBuur(this.dir);
+            SpelObject item = target.getObject();
+            if (!(item instanceof Muur))
+            
+            vak.verplaatsLeeg(target);
+            adf = target;
+
+            if (item instanceof Muur) {
+                target.zetVakSpelObjectLeeg(target);
                 munitie--;
                 break;
-            } 
+            }
         }
-   // }  
-                 
-    
+    }
+
     public void move(int dir) {
 
         this.dir = dir;
-       
+
         Vak target = vak.getBuur(dir);
         SpelObject item = target.getObject();
-  
+
         if (!(item instanceof Muur)) {
 
             vak.verplaats(target);
             vak = target;
-                
+
             if (item instanceof Vijand) {
-               
+
                 item.setVak(vak);
                 item.pakOp(this);
             }
@@ -89,24 +87,23 @@ public class Pacman extends SpelObject {
 
             }
             if (item instanceof Bazooka) {
-               
+
                 item.setVak(vak);
                 item.pakOp(this);
-                this.heeftMunitie = true;  
+                this.heeftMunitie = true;
                 munitie++;
-              
+
             }
             if (item instanceof Helper) {
-                
+
                 item.setVak(vak);
                 item.pakOp(this);
-            }            
+            }
         }
     }
 
     @Override
     public void pakOp(Pacman p) {
-       
-       
+
     }
 }
