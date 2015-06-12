@@ -11,40 +11,40 @@ import javax.swing.ImageIcon;
 /**
  *
  * @author Marnix
- */
+ *///Mutator is een methode om private atrributen van een methode in een andere klas te bereiken.
+//Accesor is  een methode om private atrributen van een andere klas te bereiken.
 
 public class Helper extends SpelObject {
 
     private Image img;
-    public ArrayList<Vak> pad = new ArrayList<>();
-   
-    private int padLengte;
-    int dir = 2;
-       
+    private ArrayList<Vak> kortstePad = new ArrayList<>();
+    private int padLengte = Integer.MAX_VALUE;
+
     
-    public void zoekPad(Vak vak, ArrayList pad) {
+    public void zoekPad(Vak vak, ArrayList<Vak> pad) {
 
-        this.pad = pad;       
+        if (!(vak.getObject() instanceof Muur) && !(pad.contains(vak))) {
 
-        SpelObject object = vak.getObject();
+            pad.add(vak);
 
-        if (!(object instanceof Muur) && !(pad.contains(vak))) { 
-            
-             pad.add(vak);
-                          
-             if(object instanceof Exit){
-                 
-                 if(pad.size() < padLengte ){ 
-                     
-                     kortstePad = (ArrayList<Vak>)pad.clone();
-                     padLengte = pad.size();                     
-             }             
-        }   else{                 
-                 
-                System.out.println(pad.size());
-                zoekPad(vak.getBuur(dir), pad);            
-             }  
-        }             
+            if (vak.getObject() instanceof Exit) {
+
+                if (pad.size() < padLengte) {
+
+                    kortstePad = (ArrayList<Vak>)pad.clone();
+                    this.padLengte = pad.size();
+                    
+                }
+            } else {
+                
+                zoekPad(vak.getBuur(1), pad);
+                zoekPad(vak.getBuur(2), pad);
+                zoekPad(vak.getBuur(3), pad);
+                zoekPad(vak.getBuur(4), pad);
+                
+            }            
+        }
+        //pad.remove(vak);
     }
 
     
@@ -57,14 +57,17 @@ public class Helper extends SpelObject {
 
     @Override
     public boolean isPassable() {
-        
         return true;
     }
 
     @Override
     public void pakOp(Pacman p) {
-        
-     zoekPad(vak, pad);
-        
+
+        zoekPad(vak, new ArrayList<Vak>());
+
+        for (Vak v : kortstePad) {
+            v.setKortste(true);
+
+        }
     }
 }

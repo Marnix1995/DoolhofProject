@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public abstract class SpelObject {
         
     public Vak vak;  
-    public ArrayList<Vak> kortstePad;
+   
       
           
    

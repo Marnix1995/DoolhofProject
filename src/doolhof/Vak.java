@@ -24,8 +24,8 @@ public class Vak extends JComponent {
     public SpelObject speelObject;
     public Level level;
     public static ArrayList<Vak> richting = new ArrayList<>();
-        
-    
+    private boolean kortste = false;
+
     public Vak(Level level, int x, int y) {
 
         this.level = level;
@@ -33,32 +33,34 @@ public class Vak extends JComponent {
         this.y = y;
     }
 
+    public void setKortste(boolean kortste) {
+        
+        this.kortste = kortste;
+    }
+
     public void tekenVakjes(Graphics g) {
 
-                
-       // for(Vak v : speelObject.kortstePad){         
-            
-       // g.drawImage(imgKortsteRoute, x * size, y * size, this);            
-       // }     
-        
-                        
         g.drawImage(img, x * size, y * size, this);
-              
+        
+        if (kortste == true) {
+            
+            g.drawImage(imgKortsteRoute, x * size, y * size, this);
+        }
+
         if (speelObject != null) {
             g.drawImage(speelObject.getImage(), x * size, y * size, this);
         }
     }
 
-    public ArrayList getRichtingen(){
-                        
+    public ArrayList getRichtingen() {
+
         return richting;
     }
-  
 
     //Vraag de buurvakjes op. Geef dir mee.  
     public Vak getBuur(int dir) {
-        Vak[][] vakjes = level.getVakjes();      
-        
+        Vak[][] vakjes = level.getVakjes();
+
         try {
 
             switch (dir) {
@@ -97,7 +99,6 @@ public class Vak extends JComponent {
 
     //verplaats speelobject, geef vak t mee (zichzelf)
     //Zet speelpobjct op vak op leeg vlak.
-    
     public void verplaats(Vak t) {
         t.zetObject(speelObject);
 
@@ -105,11 +106,10 @@ public class Vak extends JComponent {
     }
 
     public void zetVakSpelObjectLeeg(Vak t) {  // haal spel object weg van eeen vakje         
-                
+
         speelObject = null;
     }
-    
+
     public void verplaatsLeeg(Vak t) {   // verplaats van vakje zonder op het in te nemen.        
-                
     }
 }

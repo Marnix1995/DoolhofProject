@@ -53,6 +53,7 @@ public class Level extends JPanel implements ActionListener {
                     case "w":
                         vakjes[i][j].zetObject(new Muur(true));
                         break;
+                        
                     case "x":
                         vakjes[i][j].zetObject(new Muur(false));
                         break;
@@ -143,8 +144,7 @@ public class Level extends JPanel implements ActionListener {
                 vakjes[i][j].tekenVakjes(g);
             }
         }
-    }
-  
+    } 
      
     
     

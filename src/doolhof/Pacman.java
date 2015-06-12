@@ -47,25 +47,23 @@ public class Pacman extends SpelObject {
 
      
     public void schiet(int dir) {
-
-        Vak adf = null;
-        adf = vak;
- 
+        
+      // Vak vak =  
         while (heeftMunitie && (munitie > 0)) {
             
-            Vak target = adf.getBuur(this.dir);
-            SpelObject item = target.getObject();
-            vak.verplaatsLeeg(target);
-            adf = target;
+          //  Vak target = adf.getBuur(this.dir);
+           // SpelObject item = target.getObject();
+           // vak.verplaatsLeeg(target);
+         //   adf = target;
 
-            if (item instanceof Muur) {
-                
-                target.zetVakSpelObjectLeeg(target);
+          //  if (item instanceof Muur) {
+                                
+             //   target.zetVakSpelObjectLeeg(target);
                 munitie--;
                 break;
             } 
         }
-    }  
+   // }  
                  
     
     public void move(int dir) {

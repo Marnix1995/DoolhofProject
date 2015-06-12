@@ -16,15 +16,13 @@ public class Bazooka extends SpelObject {
     private Image img;
     public int munitie = 58;
             
-      
-  
+        
     public void munitieVullen() {
            
       vak.level.timer.setMunitie(munitie);  //munitieLabel teller.        
     }
       
     
-
     @Override
     public Image getImage() {
         this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\rocket_launcher.png")).getImage();
