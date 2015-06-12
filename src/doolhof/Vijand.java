@@ -31,11 +31,7 @@ public class Vijand extends SpelObject {
        
    }    
        
-   
-    @Override
-    public boolean isPassable() {
-        return true;
-    }
+ 
 
     @Override
     public void pakOp(Pacman p) {

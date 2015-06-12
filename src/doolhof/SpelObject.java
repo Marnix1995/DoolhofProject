@@ -16,8 +16,7 @@ public abstract class SpelObject {
         
     public Vak vak;  
    
-      
-          
+              
    
     public abstract void pakOp(Pacman p); 
          
@@ -25,10 +24,7 @@ public abstract class SpelObject {
     public void setVak(Vak v){        
      vak = v;       
     }     
-          
-            
-    public abstract boolean isPassable();
-                 
+                  
     
     public abstract Image getImage();    
     

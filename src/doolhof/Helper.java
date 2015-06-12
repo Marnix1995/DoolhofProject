@@ -5,8 +5,11 @@
 package doolhof;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 
 /**
  *
@@ -19,6 +22,8 @@ public class Helper extends SpelObject {
     private Image img;
     private ArrayList<Vak> kortstePad = new ArrayList<>();
     private int padLengte = Integer.MAX_VALUE;
+    private Timer timer;
+    private int aantalSecondenZichtbaar = 5;
 
     
     public void zoekPad(Vak vak, ArrayList<Vak> pad) {
@@ -31,23 +36,22 @@ public class Helper extends SpelObject {
 
                 if (pad.size() < padLengte) {
 
-                    kortstePad = (ArrayList<Vak>)pad.clone();
-                    this.padLengte = pad.size();
-                    
+                    kortstePad = (ArrayList<Vak>) pad.clone();
+                    padLengte = pad.size();
+
                 }
             } else {
-                
+
                 zoekPad(vak.getBuur(1), pad);
                 zoekPad(vak.getBuur(2), pad);
                 zoekPad(vak.getBuur(3), pad);
                 zoekPad(vak.getBuur(4), pad);
-                
-            }            
+
+            }
         }
         //pad.remove(vak);
     }
 
-    
     @Override
     public Image getImage() {
         this.img = new ImageIcon(Helper.class.getResource("\\Plaatjes\\friend.png")).getImage();
@@ -56,18 +60,26 @@ public class Helper extends SpelObject {
     }
 
     @Override
-    public boolean isPassable() {
-        return true;
-    }
-
-    @Override
     public void pakOp(Pacman p) {
 
         zoekPad(vak, new ArrayList<Vak>());
 
+        ActionListener listener = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                for (Vak v : kortstePad) {
+                    v.setKortste(false);
+                }
+            }
+        };
+        
+        timer = new Timer(aantalSecondenZichtbaar * 1000, listener);
+        timer.start();
+
         for (Vak v : kortstePad) {
             v.setKortste(true);
-
         }
     }
 }

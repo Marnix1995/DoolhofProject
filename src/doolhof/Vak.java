@@ -6,7 +6,6 @@ package doolhof;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
@@ -22,8 +21,7 @@ public class Vak extends JComponent {
     private Image img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\grass.png")).getImage();
     private Image imgKortsteRoute = new ImageIcon(Vak.class.getResource("\\Plaatjes\\kortsteRoute.png")).getImage();
     public SpelObject speelObject;
-    public Level level;
-    public static ArrayList<Vak> richting = new ArrayList<>();
+    public Level level;    
     private boolean kortste = false;
 
     public Vak(Level level, int x, int y) {
@@ -34,27 +32,22 @@ public class Vak extends JComponent {
     }
 
     public void setKortste(boolean kortste) {
-        
+
         this.kortste = kortste;
     }
 
     public void tekenVakjes(Graphics g) {
-
-        g.drawImage(img, x * size, y * size, this);
         
-        if (kortste == true) {
-            
+        g.drawImage(img, x * size, y * size, this);
+                         
+        if(kortste == true){
             g.drawImage(imgKortsteRoute, x * size, y * size, this);
         }
+        
 
         if (speelObject != null) {
             g.drawImage(speelObject.getImage(), x * size, y * size, this);
         }
-    }
-
-    public ArrayList getRichtingen() {
-
-        return richting;
     }
 
     //Vraag de buurvakjes op. Geef dir mee.  

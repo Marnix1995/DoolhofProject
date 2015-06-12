@@ -17,6 +17,7 @@ import javax.swing.Timer;
 public final class Timers extends JPanel {
 
     private int teller;
+    private int telling;
     private int stopGetal = 0;
     private int ms = 1000; //seconden
     private Font font = new Font("Century gothic", Font.BOLD, 30);
@@ -55,7 +56,9 @@ public final class Timers extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-               
+                                             
+                telling++;
+                
                 String text = getTijdAfhalen(getFormaat());
                 tijdLabel.setText("     Tijd: " + text);
                 munitieLabel.setText("   Munitie:  " + som);
@@ -72,7 +75,6 @@ public final class Timers extends JPanel {
 
         timer = new Timer(ms, listener);
     }
-
     
     public void setMunitie(int i) {
 
@@ -103,6 +105,12 @@ public final class Timers extends JPanel {
     }
     
 
+    public int getTelling(){        
+      
+              
+        return telling;
+    }
+    
     public int getStartGetal() {
 
         return teller;

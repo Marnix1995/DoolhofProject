@@ -24,11 +24,7 @@ public class Exit extends SpelObject {
       
     }    
     
-    @Override
-    public boolean isPassable() {
-      return true;
-    }
-
+  
     
     public void exitChecker(){
               

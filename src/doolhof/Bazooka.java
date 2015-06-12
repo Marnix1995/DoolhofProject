@@ -29,10 +29,7 @@ public class Bazooka extends SpelObject {
         return img;
     }
 
-    @Override
-    public boolean isPassable() {
-        return true;
-    }
+   
 
     @Override
     public void pakOp(Pacman p) {

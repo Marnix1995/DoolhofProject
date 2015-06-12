@@ -38,10 +38,7 @@ public class Pacman extends SpelObject {
         }
     }
 
-    @Override
-    public boolean isPassable() {
-        return true;
-    }
+   
 
     public void schiet(int dir) {
 

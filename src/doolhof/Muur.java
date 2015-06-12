@@ -33,11 +33,6 @@ public Muur(boolean vernietigbaar){
     }
       
 
-    @Override
-    public boolean isPassable() {
-       return false;
-    }
-
     
     @Override
     public void pakOp(Pacman p) {
