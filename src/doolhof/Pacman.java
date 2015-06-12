@@ -58,7 +58,6 @@ public class Pacman extends SpelObject {
 
             if (item instanceof Muur) {
                 target.zetVakSpelObjectLeeg(target);
-                System.out.println("schieten muur");
                 munitie--;
                 break;
             }
