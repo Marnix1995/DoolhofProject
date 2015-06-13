@@ -3,7 +3,10 @@ package doolhof;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.*;
 
 /**
@@ -27,7 +30,8 @@ public class Doolhof extends JFrame {
     private static JLabel fotoLabel;
     private static int checkLevel;  
     private static ImageIcon img = new ImageIcon(Doolhof.class.getResource("\\Plaatjes\\startFrame.png"));
-       
+   
+    
     public static void main(String[] args) {
 
 
@@ -43,15 +47,14 @@ public class Doolhof extends JFrame {
     }
 
     public static void levelPanel(int levelNummer) {
-
-        Vijand v = new Vijand();
+      
         Pacman p = new Pacman();
         Doolhof.checkLevel = levelNummer;
 
         if (levelNummer == 1) {
 
             timerPanel = new Timers();
-            level = new Level(getLevel1(), timerPanel, p, 280);
+            level = new Level(getLevel1(), timerPanel, p, 290);
             frame.setTitle("Level 1");
             frame.add(level);           
 
@@ -227,8 +230,7 @@ public class Doolhof extends JFrame {
 
                     box.setVisible(false);
                     label.setText(titel);
-                    label.setFont(font);
-                    
+                    label.setFont(font);                    
                 }
             }
         });
@@ -254,6 +256,7 @@ public class Doolhof extends JFrame {
         String h = "h";
         String x = "x";
         
+                   
         String[][] level1 = new String[][]{
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
             {x, c, p, c, c, c, c, c, c, c, c, w, v, c, c, c, c, c, c, c, c, c, c, c, x},

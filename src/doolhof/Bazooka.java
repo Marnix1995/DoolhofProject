@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
  *
  * @author Marnix
  */
+
 public class Bazooka extends SpelObject {
      
     private Image img;
