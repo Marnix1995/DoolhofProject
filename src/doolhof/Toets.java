@@ -15,9 +15,9 @@ public class Toets extends KeyAdapter implements KeyBoard {
 
     public Pacman p;
     private Level l;
-
+    
     public Toets(Pacman p, Level l) {
-
+      
         this.p = p;
         this.l = l;
     }
@@ -29,14 +29,15 @@ public class Toets extends KeyAdapter implements KeyBoard {
         if (waardeKey == KeyEvent.VK_UP) {
 
             p.move(1);
+          
         }
         if (waardeKey == KeyEvent.VK_DOWN) {
-
+           
             p.move(2);
 
         }
         if (waardeKey == KeyEvent.VK_LEFT) {
-
+ 
             p.move(3);
 
         }

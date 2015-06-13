@@ -22,14 +22,17 @@ public class Level extends JPanel implements ActionListener {
     private String[][] levelScan;
     public Timers timer;
     private int druktOpPauze = 0;
-    private Pacman p;
-    public Doolhof doolhof;
+    private Pacman p;   
+    public Doolhof doolhof; 
 
+    
     public Level(String[][] level, Timers timer, Pacman p, int tijd) {
-
+ 
         this.timer = timer;
         this.levelScan = level;
         this.p = p;
+        
+       
         timer.start(tijd);
 
         repaintTimer.restart();
@@ -68,7 +71,8 @@ public class Level extends JPanel implements ActionListener {
                         break;
 
                     case "v":
-                        vakjes[i][j].zetObject(new Vijand());
+                        vakjes[i][j].zetObject(new Vijand());                                                   
+                                      
                         break;
 
                     case "h":
@@ -141,6 +145,7 @@ public class Level extends JPanel implements ActionListener {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
+             
                 vakjes[i][j].tekenVakjes(g);
             }
         }

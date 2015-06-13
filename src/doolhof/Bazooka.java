@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class Bazooka extends SpelObject {
      
     private Image img;
-    public int munitie = 58;
+    public int munitie = 5;
             
         
     public void munitieVullen() {
@@ -28,7 +28,6 @@ public class Bazooka extends SpelObject {
         this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\rocket_launcher.png")).getImage();
         return img;
     }
-
    
 
     @Override

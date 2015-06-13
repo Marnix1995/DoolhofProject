@@ -46,7 +46,6 @@ public class Helper extends SpelObject {
                 zoekPad(vak.getBuur(2), pad);
                 zoekPad(vak.getBuur(3), pad);
                 zoekPad(vak.getBuur(4), pad);
-
             }
         }
         //pad.remove(vak);

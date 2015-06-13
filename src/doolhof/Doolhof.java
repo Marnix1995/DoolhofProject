@@ -44,7 +44,7 @@ public class Doolhof extends JFrame {
 
     public static void levelPanel(int levelNummer) {
 
-
+        Vijand v = new Vijand();
         Pacman p = new Pacman();
         Doolhof.checkLevel = levelNummer;
 
@@ -335,6 +335,7 @@ public class Doolhof extends JFrame {
         String b = "b";
         String h = "h";
         String x = "x";
+        
         
         String[][] level3 = new String[][]{
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},

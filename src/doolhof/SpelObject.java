@@ -5,7 +5,6 @@
 package doolhof;
 
 import java.awt.Image;
-import java.util.ArrayList;
 
 /**
  *
@@ -15,8 +14,7 @@ import java.util.ArrayList;
 public abstract class SpelObject {
         
     public Vak vak;  
-   
-              
+                 
    
     public abstract void pakOp(Pacman p); 
          
@@ -24,7 +22,8 @@ public abstract class SpelObject {
     public void setVak(Vak v){        
      vak = v;       
     }     
-                  
+     
+   
     
     public abstract Image getImage();    
     

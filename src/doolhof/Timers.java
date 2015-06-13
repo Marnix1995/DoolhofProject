@@ -13,7 +13,6 @@ import javax.swing.Timer;
  *
  * @author Marnix(c) 2015-06-01
  */
-
 public final class Timers extends JPanel {
 
     private int teller;
@@ -24,17 +23,13 @@ public final class Timers extends JPanel {
     private Color color = (Color.BLUE);
     private JLabel tijdLabel;
     private Timer timer;
-    private Timer timerExtra;
-    private Timer timerMunitie;
+    private Timer timerExtra;  
     private JLabel munitieLabel;
     private ArrayList<JLabel> labels = new ArrayList<>();
     private int munitie;
-    private int munitieCount = 0;
-    private int som;
     private double loopTeller = 0;
     private int strafTijd;
-   
-    
+
     public Timers() {
 
 
@@ -52,65 +47,53 @@ public final class Timers extends JPanel {
             this.add(l);
         }
 
+        setMunitie(munitie);
+
         ActionListener listener = new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                                             
+
                 telling++;
-                
+
                 String text = getTijdAfhalen(getFormaat());
                 tijdLabel.setText("     Tijd: " + text);
-                munitieLabel.setText("   Munitie:  " + som);
-                             
-                
-                if (teller < stopGetal) {
-                    tijdLabel.setText("    Game Over!");
-                    munitieLabel.setText("   Munitie:   " + munitieCount);
 
+                if (teller < stopGetal) {
+                    tijdLabel.setText("    Game Over!");                  
                     timer.removeActionListener(this);
                 }
             }
         };
-
         timer = new Timer(ms, listener);
     }
-    
+
     public void setMunitie(int i) {
 
         this.munitie = i;
-
         ActionListener listener = new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                munitieCount++;
-
-                if (munitie < 0) {
-                    munitieCount--;
-                }
-                munitieLabel.setText("   Munitie: +" + munitieCount);
-
-                if (munitieCount == munitie) {
-
-                    som = munitie + som;
-                    munitieCount = 0;
-                    timerMunitie.removeActionListener(this);
-                }
+                munitieLabel.setText("   Munitie:  " + munitie);                
             }
         };
-        timerMunitie = new Timer(25, listener);
-        timerMunitie.start();
+        timer = new Timer(25, listener);
+        timer.start();
     }
-    
 
-    public int getTelling(){        
-      
-              
+    public int getMunitie() {
+
+
+        return munitie;
+    }
+
+    public int getTelling() {
+
+
         return telling;
     }
-    
+
     public int getStartGetal() {
 
         return teller;
@@ -141,8 +124,7 @@ public final class Timers extends JPanel {
 
     public void pauze() {
         timer.stop();
-        tijdLabel.setText("    Pauze");
-        munitieLabel.setText("");
+        tijdLabel.setText("    Pauze");       
     }
 
     public void stop() {
@@ -166,14 +148,14 @@ public final class Timers extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                          
-                
+
+
                 loopTeller += 2.1;
                 teller--;
-                                                 
+
                 tijdLabel.setText("     Tijd: " + getTijdAfhalen(getFormaat()));
-                
-                
+
+
                 if (loopTeller > strafTijd) {
                     loopTeller = 0;
                     timerExtra.removeActionListener(this);
@@ -183,8 +165,8 @@ public final class Timers extends JPanel {
                     timerExtra.stop();
                     tijdLabel.setText("    Game Over!");
                     timer.removeActionListener(this);
-                }          
-            
+                }
+
             }
         };
 
