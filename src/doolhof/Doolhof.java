@@ -234,7 +234,7 @@ public class Doolhof extends JFrame {
                 }
             }
         });
-    }
+    }    
 
     public static void doolhofFrame() {
 
