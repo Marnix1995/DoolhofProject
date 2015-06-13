@@ -14,12 +14,14 @@ import javax.swing.ImageIcon;
 public class Bazooka extends SpelObject {
      
     private Image img;
-    public int munitie = 5;
+    private int munitie = 5;
+    private int som;
             
         
-    public void munitieVullen() {
-           
-      vak.level.timer.setMunitie(munitie);  //munitieLabel teller.        
+    public void munitieVullen() { 
+      
+      som = vak.level.timer.getMunitie() + munitie;                
+      vak.level.timer.setMunitie(som);   
     }
       
     
@@ -27,12 +29,10 @@ public class Bazooka extends SpelObject {
     public Image getImage() {
         this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\rocket_launcher.png")).getImage();
         return img;
-    }
-   
+    }   
 
     @Override
     public void pakOp(Pacman p) {
-
         munitieVullen();
     }
 }

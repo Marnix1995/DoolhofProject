@@ -28,8 +28,7 @@ public class Pacman extends SpelObject {
        
     private int dir;   
     private boolean mondIsDicht = false;
-    private int munitie;
-    
+      
     private Timer timer;
 
     
@@ -66,13 +65,18 @@ public class Pacman extends SpelObject {
   
     public void schiet(int dir) {
 
+       int munitie = vak.level.timer.getMunitie();      
+       munitie --;
+      
+       
         Vak adf;
         adf = vak;
-
-        while (munitie > 0) {
-
+        while (munitie >= 0) {                   
+            
             Vak target = adf.getBuur(this.dir);
-            SpelObject item = target.getObject();
+            SpelObject item = target.getObject();                        
+            vak.level.timer.setMunitie(munitie);
+                       
             if (!(item instanceof Muur)) {
                 vak.verplaatsLeeg(target);
             }
@@ -80,9 +84,7 @@ public class Pacman extends SpelObject {
             adf = target;
 
             if (item instanceof Muur) {
-                target.zetVakSpelObjectLeeg(target);
-                munitie --;
-                vak.level.timer.setMunitie(munitie);
+                target.zetVakSpelObjectLeeg(target);               
                 break;
             }
         }
@@ -107,9 +109,8 @@ public class Pacman extends SpelObject {
 
     public void move(int dir) {
 
-        wakaWakaWaka();
-      
-        this.munitie = vak.level.timer.getMunitie();
+        wakaWakaWaka();      
+       
         this.dir = dir;
 
         Vak target = vak.getBuur(dir);
@@ -135,8 +136,7 @@ public class Pacman extends SpelObject {
 
                 item.setVak(vak);
                 item.pakOp(this);               
-                munitie++;
-
+               
             }
             if (item instanceof Helper) {
 
@@ -148,5 +148,7 @@ public class Pacman extends SpelObject {
 
     @Override
     public void pakOp(Pacman p) {
+        
+        
     }
 }

@@ -23,15 +23,15 @@ public final class Timers extends JPanel {
     private Color color = (Color.BLUE);
     private JLabel tijdLabel;
     private Timer timer;
-    private Timer timerExtra;  
+    private Timer timerExtra;
     private JLabel munitieLabel;
     private ArrayList<JLabel> labels = new ArrayList<>();
-    private int munitie;
+    private int munitie;    
     private double loopTeller = 0;
     private int strafTijd;
 
+    
     public Timers() {
-
 
         this.munitieLabel = new JLabel(" ");
         this.tijdLabel = new JLabel(" ");
@@ -60,36 +60,36 @@ public final class Timers extends JPanel {
                 tijdLabel.setText("     Tijd: " + text);
 
                 if (teller < stopGetal) {
-                    tijdLabel.setText("    Game Over!");                  
+                    tijdLabel.setText("    Game Over!");
                     timer.removeActionListener(this);
                 }
             }
         };
         timer = new Timer(ms, listener);
     }
-
+    
     public void setMunitie(int i) {
 
-        this.munitie = i;
+        this.munitie = i;      
         ActionListener listener = new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                munitieLabel.setText("   Munitie:  " + munitie);                
+                               
+                munitieLabel.setText("   Munitie:  " + munitie);
             }
         };
         timer = new Timer(25, listener);
         timer.start();
     }
 
+    
     public int getMunitie() {
-
 
         return munitie;
     }
 
     public int getTelling() {
-
 
         return telling;
     }
@@ -124,7 +124,7 @@ public final class Timers extends JPanel {
 
     public void pauze() {
         timer.stop();
-        tijdLabel.setText("    Pauze");       
+        tijdLabel.setText("    Pauze");
     }
 
     public void stop() {
@@ -169,7 +169,6 @@ public final class Timers extends JPanel {
 
             }
         };
-
         timerExtra = new Timer(25, listener);
         timerExtra.start();
 
