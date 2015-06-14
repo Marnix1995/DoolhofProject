@@ -26,7 +26,7 @@ public final class Vijand extends SpelObject {
     
   
     public void beweeg(int dir) {
-              
+            
         
         Vak target = vak.getBuur(dir);
         SpelObject object = target.getObject();

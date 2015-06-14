@@ -14,9 +14,9 @@ import javax.swing.Timer;
 /**
  *
  * @author Marnix
- *///Mutator is een methode om private atrributen van een methode in een andere klas te bereiken.
-//Accesor is  een methode om private atrributen van een andere klas te bereiken.
-
+ */
+//Mutator is een methode om private atrributen van een methode in een andere klas te bereiken. 
+//Accesor is  een methode om private atrributen van een andere klas te bereiken. 
 public class Helper extends SpelObject {
 
     private Image img;
@@ -25,8 +25,8 @@ public class Helper extends SpelObject {
     private Timer timer;
     private int aantalSecondenZichtbaar = 5;
 
-    
     public void zoekPad(Vak vak, ArrayList<Vak> pad) {
+
 
         if (!(vak.getObject() instanceof Muur) && !(pad.contains(vak))) {
 
@@ -48,7 +48,7 @@ public class Helper extends SpelObject {
                 zoekPad(vak.getBuur(4), pad);
             }
         }
-        //pad.remove(vak);
+        //pad.remove(vak); 
     }
 
     @Override
@@ -63,17 +63,19 @@ public class Helper extends SpelObject {
 
         zoekPad(vak, new ArrayList<Vak>());
 
+
         ActionListener listener = new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+
 
                 for (Vak v : kortstePad) {
                     v.setKortste(false);
                 }
             }
         };
-        
+
         timer = new Timer(aantalSecondenZichtbaar * 1000, listener);
         timer.start();
 

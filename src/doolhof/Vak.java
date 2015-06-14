@@ -13,6 +13,7 @@ import javax.swing.JComponent;
  *
  * @author Marnix
  */
+
 public class Vak extends JComponent {
 
     private int size = 30;  //Afmeting van een vakje 
@@ -80,7 +81,6 @@ public class Vak extends JComponent {
     public void zetObject(SpelObject s) {
 
         speelObject = s;
-
     }
 
     public SpelObject getObject() {
@@ -91,8 +91,7 @@ public class Vak extends JComponent {
       //Zet speelpobjct op vak op leeg vlak.
     
     public void verplaats(Vak t) {
-        
-             
+                  
         t.zetObject(speelObject);
         speelObject = null;
     }

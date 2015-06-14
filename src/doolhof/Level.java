@@ -24,8 +24,7 @@ public class Level extends JPanel implements ActionListener {
     private int druktOpPauze = 0;
     private Pacman p;   
     public Doolhof doolhof;
-   
-   
+      
     
     public Level(String[][] level, Timers timer, Pacman p, int tijd) {
  
@@ -91,7 +90,7 @@ public class Level extends JPanel implements ActionListener {
         this.setVisible(false);                
         repaintTimer.removeActionListener(this);
         timer.removeAll(); 
-        timer = new Timers();     
+        timer = new Timers();   
 
     }
 
