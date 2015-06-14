@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 public class Bazooka extends SpelObject {
      
     private Image img;
-    private int munitie = 5;
+    private int munitie = 15;
     private int som;
             
         

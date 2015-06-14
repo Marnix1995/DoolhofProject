@@ -20,26 +20,24 @@ public class Level extends JPanel implements ActionListener {
     private Timer repaintTimer = new Timer(25, this);
     public Vak[][] vakjes = new Vak[n][n];
     private String[][] levelScan;
-    public Timers timer;
+    public Timers timer;   
     private int druktOpPauze = 0;
     private Pacman p;   
-    public Doolhof doolhof; 
-
+    public Doolhof doolhof;
+   
+   
     
     public Level(String[][] level, Timers timer, Pacman p, int tijd) {
  
-        this.timer = timer;
+        this.timer = timer;      
         this.levelScan = level;
-        this.p = p;
-        
-       
+        this.p = p;       
         timer.start(tijd);
 
-        repaintTimer.restart();
+        repaintTimer.start();
 
         addKeyListener(new Toets(p, this));
-        setFocusable(true);
-
+        setFocusable(true);  
         setObjectPosities();
     }
 
@@ -88,23 +86,23 @@ public class Level extends JPanel implements ActionListener {
     }
 
     public void updateLevel() {
-
+             
         this.removeAll();
-        this.setVisible(false);
-        timer.setVisible(false);
-        timer.removeAll();
-
+        this.setVisible(false);                
         repaintTimer.removeActionListener(this);
+        timer.removeAll(); 
+        timer = new Timers();     
 
     }
 
-    public void pauzeer() {
-        repaintTimer.stop();
-        timer.pauze();
+    public void pauzeer() {        
+      
+        repaintTimer.stop();      
+        timer.pauze();          
     }
 
     public void hervat() {
-
+       
         repaintTimer.start();
         timer.hervat();
     }
@@ -112,7 +110,7 @@ public class Level extends JPanel implements ActionListener {
     public void toets(int toets) {
 
         druktOpPauze++;
-        this.repaint();
+     
         switch (toets) {
 
             case 1:
@@ -121,10 +119,13 @@ public class Level extends JPanel implements ActionListener {
                 break;
 
             case 2:
-                pauzeer();
+                pauzeer();   
+                
                 if (druktOpPauze % 2 == 0 && timer.getStartGetal() > timer.getStopGetal()) {
-                    hervat();
+                    
+                hervat();
                 }
+                
                 break;
             case 3:
 
@@ -144,25 +145,20 @@ public class Level extends JPanel implements ActionListener {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-
              
                 vakjes[i][j].tekenVakjes(g);
             }
         }
     } 
-     
-    
     
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        repaintTimer.restart();
+                            
         this.repaint();
-       
+                      
         if (timer.getStartGetal() < timer.getStopGetal()) {
-
-            repaintTimer.removeActionListener(this);
-
+            this.removeAll();
+            repaintTimer.stop();           
         }
     }
 }

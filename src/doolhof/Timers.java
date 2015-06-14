@@ -16,7 +16,6 @@ import javax.swing.Timer;
 public final class Timers extends JPanel {
 
     private int teller;
-    private int telling;
     private int stopGetal = 0;
     private int ms = 1000; //seconden
     private Font font = new Font("Century gothic", Font.BOLD, 30);
@@ -24,12 +23,14 @@ public final class Timers extends JPanel {
     private JLabel tijdLabel;
     private Timer timer;
     private Timer timerExtra;
+    private Timer munitieTeller;
     private JLabel munitieLabel;
     private ArrayList<JLabel> labels = new ArrayList<>();
-    private int munitie;    
+    private int munitie;
     private double loopTeller = 0;
+    private int counter = 0;
     private int strafTijd;
-
+  
     
     public Timers() {
 
@@ -54,44 +55,46 @@ public final class Timers extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                telling++;
-
-                String text = getTijdAfhalen(getFormaat());
+                String text = getTijdAfhalen();
                 tijdLabel.setText("     Tijd: " + text);
 
                 if (teller < stopGetal) {
                     tijdLabel.setText("    Game Over!");
+                    munitieLabel.setText(" ");
+                    munitieTeller.stop();
                     timer.removeActionListener(this);
                 }
             }
         };
         timer = new Timer(ms, listener);
     }
-    
+
     public void setMunitie(int i) {
 
-        this.munitie = i;      
+        this.munitie = i;
+
         ActionListener listener = new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                               
-                munitieLabel.setText("   Munitie:  " + munitie);
+
+                counter++;
+                munitieLabel.setText("   Munitie:  " + counter);
+
+                if (counter >= munitie) {
+                    munitieLabel.setText("   Munitie:  " + munitie);
+                    counter = munitie;
+                    munitieTeller.setRepeats(false);
+                }               
             }
         };
-        timer = new Timer(25, listener);
-        timer.start();
+        munitieTeller = new Timer(25, listener);
+        munitieTeller.start();
     }
 
-    
     public int getMunitie() {
 
         return munitie;
-    }
-
-    public int getTelling() {
-
-        return telling;
     }
 
     public int getStartGetal() {
@@ -104,9 +107,9 @@ public final class Timers extends JPanel {
         return stopGetal;
     }
 
-    public String getTijdAfhalen(String formaat) {
+    public String getTijdAfhalen() {
 
-        formaat = getFormaat();
+        String formaat = getFormaat();
         teller--;
 
         return formaat;
@@ -123,12 +126,14 @@ public final class Timers extends JPanel {
     }
 
     public void pauze() {
-        timer.stop();
+
+        timer.stop();             
         tijdLabel.setText("    Pauze");
+              
     }
 
-    public void stop() {
-        timer.stop();
+    public void stop() {        
+        timer.stop();       
     }
 
     public String getFormaat() {
@@ -149,12 +154,10 @@ public final class Timers extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
                 loopTeller += 2.1;
                 teller--;
 
-                tijdLabel.setText("     Tijd: " + getTijdAfhalen(getFormaat()));
-
+                tijdLabel.setText("     Tijd: " + getTijdAfhalen());
 
                 if (loopTeller > strafTijd) {
                     loopTeller = 0;
@@ -164,13 +167,13 @@ public final class Timers extends JPanel {
                 if (teller < stopGetal) {
                     timerExtra.stop();
                     tijdLabel.setText("    Game Over!");
+                    munitieTeller.stop();
+                    munitieLabel.setText(" ");
                     timer.removeActionListener(this);
                 }
-
             }
         };
         timerExtra = new Timer(25, listener);
         timerExtra.start();
-
     }
 }

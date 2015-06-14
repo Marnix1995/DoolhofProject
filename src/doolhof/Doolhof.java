@@ -7,33 +7,33 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
  *
  * @author Marnix / Alois
  *///Pacman Maze
-
 public class Doolhof extends JFrame {
 
     private static int breedte = 760;
     private static int hoogte = 830;
     private static String title = "Pacman-Maze";
     private static JFrame frame = new JFrame();
-    private static JPanel startPanel;    
+    private static JPanel startPanel;
     private static JPanel level;
     private static Timers timerPanel;
     private static Font font = new Font("Century gothic", Font.BOLD, 50);
     private static Font fontBtn = new Font("Century gothic", Font.BOLD, 15);
     private static Color color = (Color.BLACK);
-    private static JLabel label; 
+    private static JLabel label;   
     private static JLabel fotoLabel;
-    private static int checkLevel;  
+    private static int checkLevel;
     private static ImageIcon img = new ImageIcon(Doolhof.class.getResource("\\Plaatjes\\startFrame.png"));
-   
-    
-    public static void main(String[] args) {
+    private static Scanner s;
+ 
 
+    public static void main(String[] args) {
 
         EventQueue.invokeLater(new Runnable() {
 
@@ -47,44 +47,44 @@ public class Doolhof extends JFrame {
     }
 
     public static void levelPanel(int levelNummer) {
-      
+
         Pacman p = new Pacman();
         Doolhof.checkLevel = levelNummer;
 
+
         if (levelNummer == 1) {
 
-            timerPanel = new Timers();
+            timerPanel = new Timers();         
+          
             level = new Level(getLevel1(), timerPanel, p, 290);
             frame.setTitle("Level 1");
-            frame.add(level);           
+            frame.add(level);
 
         } else if (levelNummer == 2) {
 
-            timerPanel = new Timers();
+            timerPanel = new Timers();           
             level = new Level(getLevel2(), timerPanel, p, 350);
             frame.setTitle("Level 2");
-            frame.add(level);          
+            frame.add(level);
 
         } else if (levelNummer == 3) {
 
-            timerPanel = new Timers();
+            timerPanel = new Timers();          
             level = new Level(getLevel3(), timerPanel, p, 460);
             frame.setTitle("Level 3");
             frame.add(level);
-                     
-        
-         } else if (levelNummer == 0) {
 
-            timerPanel = new Timers();
+        } else if (levelNummer == 0) {
+
+            timerPanel = new Timers();          
             level = new Level(getLevel0(), timerPanel, p, 60);
             frame.setTitle("Level 0");
-            frame.add(level);            
-         }         
-        
-        else{
-             startPanel();             
-        }                                 
-            frame.add(timerPanel, BorderLayout.SOUTH);       
+            frame.add(level);
+        } else {
+            startPanel();
+            
+        }
+        frame.add(timerPanel, BorderLayout.SOUTH);
     }
 
     public static int checkHuidigLevel() {
@@ -93,13 +93,12 @@ public class Doolhof extends JFrame {
         return huidig;
     }
 
-    
     public static void startPanel() {
 
         ArrayList<JButton> knoppen = new ArrayList<>();
 
         FlowLayout layout = new FlowLayout();
-                
+
         frame.setTitle(title);
         startPanel = new JPanel();
         startPanel.setLayout(layout);
@@ -109,17 +108,17 @@ public class Doolhof extends JFrame {
         graphicsPanel.setLayout(layout);
         graphicsPanel.setVisible(true);
         final String titel = "<html><br>Pacman Maze<br><br><br></html>";
-        label = new JLabel(titel);
+        label = new JLabel(titel);       
         fotoLabel = new JLabel();
-        
-        fotoLabel.setIcon(img); 
-        
-        label.setFont(font);        
+
+        fotoLabel.setIcon(img);     
+
+        label.setFont(font);
         label.setForeground(color);
-        
+
         graphicsPanel.add(label);
         graphicsPanel.add(fotoLabel, BorderLayout.SOUTH);
-        
+
         JButton buttonStart = new JButton("Start");
         JButton buttonExit = new JButton("Exit");
         JButton buttonRead = new JButton("Read me");
@@ -133,12 +132,11 @@ public class Doolhof extends JFrame {
         box.setFont(fontBtn);
         box.setVisible(false);
         box.setSelectedIndex(1);
-        
+
         knoppen.add(buttonStart);
         knoppen.add(buttonExit);
         knoppen.add(buttonRead);
         knoppen.add(buttonCheat);
-
 
         for (JButton b : knoppen) {
 
@@ -147,7 +145,7 @@ public class Doolhof extends JFrame {
             startPanel.add(b);
         }
 
-        startPanel.add(box);
+        startPanel.add(box);     
         frame.add(startPanel, BorderLayout.NORTH);
         frame.add(graphicsPanel, BorderLayout.CENTER);
 
@@ -158,10 +156,10 @@ public class Doolhof extends JFrame {
 
                 int levelNummer = box.getSelectedIndex();
 
-                 if (levelNummer == 0) {
+                if (levelNummer == 0) {
                     levelPanel(0);
                 }
-                
+
                 if (levelNummer == 1) {
                     levelPanel(1);
                 }
@@ -199,17 +197,16 @@ public class Doolhof extends JFrame {
                         + "De speler kan, als deze aanwezig zijn, een of meerdere bazooka`s oppakken en hiermee<br>"
                         + "binnenmuren wegschieten om zo sneller en makkelijker bij de Exit te komen.<br>"
                         + "Gebruikte toetsen: ↓  →  ↑  ←  ESC,  P, R  en  Space.<br><br>"
-                        + "P      =  pauze toets<br>"                       
+                        + "P      =  pauze toets<br>"
                         + "R      =  Restart level<br>"
                         + "Space  =  Schieten<br>"
-                        + "Esc    =  Terug naar startscherm.<br><br></html>");                       
-                 
+                        + "Esc    =  Terug naar startscherm.<br><br></html>");
+
                 label.setFont(fontBtn);
                 if (clicks % 2 == 0) {
 
                     label.setText(titel);
                     label.setFont(font);
-                
                 }
             }
         });
@@ -223,18 +220,18 @@ public class Doolhof extends JFrame {
                 clicks++;
                 label.setText("<html><br><br>Kies hier het levelnummer en klik op start.<br><br><br><br><br><br><br><br><br><br></html>");
                 label.setFont(fontBtn);
-                
+
                 box.setVisible(true);
 
                 if (clicks % 2 == 0) {
 
                     box.setVisible(false);
                     label.setText(titel);
-                    label.setFont(font);                    
+                    label.setFont(font);
                 }
             }
         });
-    }    
+    }
 
     public static void doolhofFrame() {
 
@@ -255,8 +252,7 @@ public class Doolhof extends JFrame {
         String b = "b";
         String h = "h";
         String x = "x";
-        
-                   
+
         String[][] level1 = new String[][]{
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
             {x, c, p, c, c, c, c, c, c, c, c, w, v, c, c, c, c, c, c, c, c, c, c, c, x},
@@ -282,8 +278,7 @@ public class Doolhof extends JFrame {
             {x, c, c, c, c, c, c, c, v, c, c, c, c, w, w, w, w, w, c, w, e, c, w, c, x},
             {x, w, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, w, w, w, w, c, x},
             {x, c, c, v, c, c, c, v, c, c, c, c, c, c, c, c, w, c, c, c, v, c, c, c, x},
-            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
-        };
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},};
         return level1;
     }
 
@@ -297,8 +292,8 @@ public class Doolhof extends JFrame {
         String b = "b";
         String h = "h";
         String x = "x";
-        
-        String[][] level2 = new String[][]{            
+
+        String[][] level2 = new String[][]{
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
             {w, p, w, c, v, c, c, c, c, w, v, w, v, c, w, c, c, c, c, w, c, c, e, c, w},
             {w, c, c, c, c, w, w, w, w, w, w, w, c, c, c, c, c, c, c, w, w, c, c, c, w},
@@ -323,8 +318,7 @@ public class Doolhof extends JFrame {
             {w, c, c, v, c, c, v, c, c, c, c, c, c, w, w, w, w, w, c, w, c, c, w, c, w},
             {w, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, w, w, w, w, c, w},
             {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w},
-            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
-        };
+            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},};
         return level2;
     }
 
@@ -338,8 +332,8 @@ public class Doolhof extends JFrame {
         String b = "b";
         String h = "h";
         String x = "x";
-        
-        
+
+
         String[][] level3 = new String[][]{
             {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
             {w, p, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, w},
@@ -365,10 +359,10 @@ public class Doolhof extends JFrame {
             {w, c, c, c, c, c, c, c, c, c, c, v, c, w, w, w, w, w, c, w, c, c, w, c, w},
             {w, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, w, w, w, w, c, w},
             {w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w},
-            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},
-        };
+            {w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w},};
         return level3;
     }
+
     public static String[][] getLevel0() {
 
         String w = "w";
@@ -405,8 +399,7 @@ public class Doolhof extends JFrame {
             {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
             {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
             {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
-            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
-        };
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},};
         return level0;
-    }  
+    }
 }
