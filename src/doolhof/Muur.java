@@ -21,10 +21,16 @@ private boolean vernietigbaar;
      
 
 public Muur(boolean vernietigbaar){
+         
     
     this.vernietigbaar = vernietigbaar;
     
+    if(vernietigbaar == false){
+        
+        
+    }
 }
+
 
     @Override
     public Image getImage() {
@@ -32,7 +38,6 @@ public Muur(boolean vernietigbaar){
        return img;
     }
       
-
     
     @Override
     public void pakOp(Pacman p) {

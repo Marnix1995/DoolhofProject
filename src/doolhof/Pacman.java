@@ -67,8 +67,7 @@ public class Pacman extends SpelObject {
 
        int munitie = vak.level.timer.getMunitie();      
        munitie --;
-      
-       
+             
         Vak adf;
         adf = vak;
         while (munitie >= 0) {                   
@@ -100,7 +99,7 @@ public class Pacman extends SpelObject {
             mondIsDicht = false;               
             }
         };
-        timer = new Timer(50, listener);
+        timer = new Timer(25, listener);
         timer.start();    
         mondIsDicht = true;              
         timer.setRepeats(false);
