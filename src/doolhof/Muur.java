@@ -21,14 +21,12 @@ private boolean vernietigbaar;
      
 
 public Muur(boolean vernietigbaar){
-         
-    
-    this.vernietigbaar = vernietigbaar;
-    
-    if(vernietigbaar == false){
        
-        
-    }
+   
+    this.vernietigbaar = vernietigbaar;
+      
+    
+    
 }
 
     @Override

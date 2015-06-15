@@ -76,8 +76,7 @@ public class Vak extends JComponent {
             return null;
         }
     }
-       
-    
+           
     public void zetObject(SpelObject s) {
 
         speelObject = s;

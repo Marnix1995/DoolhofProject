@@ -31,6 +31,7 @@ public class Pacman extends SpelObject {
       
     private Timer timer;
 
+        
     
     @Override
     public Image getImage() {

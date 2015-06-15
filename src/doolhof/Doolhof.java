@@ -15,6 +15,7 @@ import javax.swing.*;
  *
  * @author Marnix / Alois
  *///Pacman Maze
+
 public class Doolhof extends JFrame {
 
     private static int breedte = 760;
@@ -56,7 +57,7 @@ public class Doolhof extends JFrame {
         if (levelNummer == 1) {
 
             timerPanel = new Timers();
-            level = new Level(getLevel1(), timerPanel, p, 250);
+            level = new Level(getLevel1(), timerPanel, p, 270);
             frame.setTitle("Level 1");
             frame.add(level);
 
@@ -74,7 +75,7 @@ public class Doolhof extends JFrame {
             insert(timerPanel.getHighScore(), 2);
             snelsteTijd();
             timerPanel = new Timers();
-            level = new Level(getLevel3(), timerPanel, p, 600);
+            level = new Level(getLevel3(), timerPanel, p, 670);
             frame.setTitle("Level 3");
             frame.add(level);
 
@@ -126,7 +127,6 @@ public class Doolhof extends JFrame {
 
         list.setFont(fontBtn);
         list.setForeground(color);
-
 
         graphicsPanel.add(label);
         graphicsPanel.add(fotoLabel, BorderLayout.SOUTH);
@@ -257,7 +257,7 @@ public class Doolhof extends JFrame {
             Doolhof.list.setModel(datamodel);
 
             String query = "SELECT MAX(TIME_FORMAT(score1,'%H:%i')) AS score1, MAX(TIME_FORMAT(score2,'%H:%i'))"
-                    + " AS score2, MAX(TIME_FORMAT(score3, '%H:%i')) As score3 from Level;";
+                    + " AS score2, MAX(TIME_FORMAT(score3, '%H:%i')) AS score3 from Level;";
 
             //Vanaf database:
 
@@ -273,7 +273,6 @@ public class Doolhof extends JFrame {
                 String s3 = results.getString("score3");
 
                 Object[] rij = {s1, s2, s3};
-
               
                 datamodel.addElement("Snelste tijden:");
                 datamodel.addElement("________________");
