@@ -60,7 +60,7 @@ public class Doolhof extends JFrame {
             timerPanel = new Timers();
             level = new Level(getLevel1(), timerPanel, p, 290);
             frame.setTitle("Level 1");
-            frame.add(level);          
+            frame.add(level);
 
         } else if (levelNummer == 2) {
 
@@ -73,25 +73,25 @@ public class Doolhof extends JFrame {
 
         } else if (levelNummer == 3) {
 
-            insert(timerPanel.getHighScore(), 2); 
+            insert(timerPanel.getHighScore(), 2);
             snelsteTijd();
             timerPanel = new Timers();
             level = new Level(getLevel3(), timerPanel, p, 460);
             frame.setTitle("Level 3");
             frame.add(level);
 
-            
+
         } else if (levelNummer == 0) {
 
             timerPanel = new Timers();
             level = new Level(getLevel0(), timerPanel, p, 60);
             frame.setTitle("Level 0");
             frame.add(level);
-            
+
         } else {
-            
-            insert(timerPanel.getHighScore(), 3); 
-            snelsteTijd();           
+
+            insert(timerPanel.getHighScore(), 3);
+            snelsteTijd();
             startPanel();
 
         }
@@ -142,11 +142,11 @@ public class Doolhof extends JFrame {
         JButton buttonCheat = new JButton("Cheats");
 
         final JComboBox box = new JComboBox();
-        box.addItem("Demo"); 
+        box.addItem("Demo");
         box.addItem("Level 1");
         box.setSelectedIndex(1);
-        box.setFont(fontBtn);        
-        box.setVisible(false);       
+        box.setFont(fontBtn);
+        box.setVisible(false);
 
         knoppen.add(buttonStart);
         knoppen.add(buttonExit);
@@ -173,13 +173,13 @@ public class Doolhof extends JFrame {
                 int levelNummer = box.getSelectedIndex();
 
                 if (levelNummer == 0) {
-                    levelPanel(0);            
+                    levelPanel(0);
                 }
-                
+
                 if (levelNummer == 1) {
-                    levelPanel(1);            
+                    levelPanel(1);
                 }
-                    
+
                 startPanel.setVisible(false);
                 graphicsPanel.setVisible(false);
             }
@@ -273,12 +273,20 @@ public class Doolhof extends JFrame {
                 String s1 = results.getString("score1");
                 String s2 = results.getString("score2");
                 String s3 = results.getString("score3");
-                
+
                 Object[] rij = {s1, s2, s3};
-                         
-                datamodel.addElement("level 1 :  "+s1);
-                datamodel.addElement("level 2 :  "+s2);
-                datamodel.addElement("level 3 :  "+s3);
+
+                datamodel.addElement("____________________");
+                datamodel.addElement("Snelste tijd Level 1:");
+                datamodel.addElement(s1);
+                datamodel.addElement("____________________");
+                datamodel.addElement("Snelste tijd Level 2:");
+                datamodel.addElement(s2);
+                datamodel.addElement("____________________");
+                datamodel.addElement("Snelste tijd Level 3:");
+                datamodel.addElement(s3);
+                datamodel.addElement("____________________");
+
             }
 
             Doolhof.list.setModel(datamodel);
@@ -305,14 +313,14 @@ public class Doolhof extends JFrame {
                 statement.setString(1, tijd);
                 int rows = statement.executeUpdate();
             }
-            
+
             if (levelNummer == 3) {
                 String query = "insert into Level (score3) values(?)";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1, tijd);
                 int rows = statement.executeUpdate();
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Doolhof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
