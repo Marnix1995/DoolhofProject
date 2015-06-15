@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.logging.Logger;
 import javax.swing.*;
 
@@ -31,8 +30,7 @@ public class Doolhof extends JFrame {
     private static JLabel label;
     private static JLabel fotoLabel;
     private static int checkLevel;
-    private static ImageIcon img = new ImageIcon(Doolhof.class.getResource("\\Plaatjes\\startFrame.png"));
-    private static Scanner s;
+    private static ImageIcon img = new ImageIcon(Doolhof.class.getResource("\\Plaatjes\\startFrame.png"));  
     private static JList list = new JList();
 
     public static void main(String[] args) {
@@ -79,7 +77,6 @@ public class Doolhof extends JFrame {
             level = new Level(getLevel3(), timerPanel, p, 600);
             frame.setTitle("Level 3");
             frame.add(level);
-
 
         } else if (levelNummer == 0) {
 
@@ -277,16 +274,18 @@ public class Doolhof extends JFrame {
 
                 Object[] rij = {s1, s2, s3};
 
-                datamodel.addElement("____________________");
-                datamodel.addElement("Snelste tijd Level1:");
+              
+                datamodel.addElement("Snelste tijden:");
+                datamodel.addElement("________________");
+                datamodel.addElement("Level 1:");
                 datamodel.addElement(s1);
-                datamodel.addElement("____________________");
-                datamodel.addElement("Snelste tijd Level2:");
+                datamodel.addElement("________________");
+                datamodel.addElement("Level 2:");
                 datamodel.addElement(s2);
-                datamodel.addElement("____________________");
-                datamodel.addElement("Snelste tijd Level3:");
+                datamodel.addElement("________________");
+                datamodel.addElement("Level 3:");
                 datamodel.addElement(s3);
-                datamodel.addElement("____________________");
+                datamodel.addElement("________________");
 
             }
 

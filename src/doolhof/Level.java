@@ -40,7 +40,7 @@ public class Level extends JPanel implements ActionListener {
         setObjectPosities();
     }
 
-    public final void setObjectPosities() {
+    private void setObjectPosities() {
 
 
         for (int i = 0; i < n; i++) {

@@ -95,8 +95,7 @@ public final class Timers extends JPanel {
 
     public String getHighScore(){
         
-        String formaat = getFormaat();   
-        
+        String formaat = getFormaat();        
         return formaat;
     }
     
