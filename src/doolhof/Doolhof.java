@@ -278,13 +278,13 @@ public class Doolhof extends JFrame {
                 Object[] rij = {s1, s2, s3};
 
                 datamodel.addElement("____________________");
-                datamodel.addElement("Snelste tijd Level 1:");
+                datamodel.addElement("Resterende tijd Level1:");
                 datamodel.addElement(s1);
                 datamodel.addElement("____________________");
-                datamodel.addElement("Snelste tijd Level 2:");
+                datamodel.addElement("Resterende tijd Level2:");
                 datamodel.addElement(s2);
                 datamodel.addElement("____________________");
-                datamodel.addElement("Snelste tijd Level 3:");
+                datamodel.addElement("Resterende tijd Level3:");
                 datamodel.addElement(s3);
                 datamodel.addElement("____________________");
 
