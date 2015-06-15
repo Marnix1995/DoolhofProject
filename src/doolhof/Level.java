@@ -84,14 +84,15 @@ public class Level extends JPanel implements ActionListener {
         }
     }
 
-    public void updateLevel() {
+    public boolean updateLevel() {
              
         this.removeAll();
         this.setVisible(false);                
         repaintTimer.removeActionListener(this);
         timer.removeAll(); 
-        timer = new Timers();   
-
+        timer = new Timers(); 
+        
+        return true;
     }
 
     public void pauzeer() {        

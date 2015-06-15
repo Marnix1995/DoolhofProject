@@ -26,11 +26,10 @@ public Muur(boolean vernietigbaar){
     this.vernietigbaar = vernietigbaar;
     
     if(vernietigbaar == false){
-        
+       
         
     }
 }
-
 
     @Override
     public Image getImage() {
