@@ -58,7 +58,7 @@ public class Doolhof extends JFrame {
         if (levelNummer == 1) {
 
             timerPanel = new Timers();
-            level = new Level(getLevel1(), timerPanel, p, 290);
+            level = new Level(getLevel1(), timerPanel, p, 250);
             frame.setTitle("Level 1");
             frame.add(level);
 
@@ -67,7 +67,7 @@ public class Doolhof extends JFrame {
             insert(timerPanel.getHighScore(), 1);
             snelsteTijd();
             timerPanel = new Timers();
-            level = new Level(getLevel2(), timerPanel, p, 350);
+            level = new Level(getLevel2(), timerPanel, p, 400);
             frame.setTitle("Level 2");
             frame.add(level);
 
@@ -76,7 +76,7 @@ public class Doolhof extends JFrame {
             insert(timerPanel.getHighScore(), 2);
             snelsteTijd();
             timerPanel = new Timers();
-            level = new Level(getLevel3(), timerPanel, p, 460);
+            level = new Level(getLevel3(), timerPanel, p, 600);
             frame.setTitle("Level 3");
             frame.add(level);
 
@@ -259,7 +259,8 @@ public class Doolhof extends JFrame {
             DefaultListModel datamodel = new DefaultListModel();
             Doolhof.list.setModel(datamodel);
 
-            String query = "SELECT MAX(score1) AS score1, MAX(score2) AS score2, MAX(score3) AS score3 from Level;";
+            String query = "SELECT MAX(TIME_FORMAT(score1,'%H:%i')) AS score1, MAX(TIME_FORMAT(score2,'%H:%i'))"
+                    + " AS score2, MAX(TIME_FORMAT(score3, '%H:%i')) As score3 from Level;";
 
             //Vanaf database:
 
@@ -304,21 +305,21 @@ public class Doolhof extends JFrame {
                 String query = "insert into Level (score1) values(?)";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1, tijd);
-                int rows = statement.executeUpdate();
+                statement.executeUpdate();
             }
 
             if (levelNummer == 2) {
                 String query = "insert into Level (score2) values(?)";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1, tijd);
-                int rows = statement.executeUpdate();
+                statement.executeUpdate();
             }
 
             if (levelNummer == 3) {
                 String query = "insert into Level (score3) values(?)";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1, tijd);
-                int rows = statement.executeUpdate();
+                statement.executeUpdate();
             }
 
         } catch (SQLException ex) {
