@@ -87,7 +87,7 @@ public class Vak extends JComponent {
         return speelObject;
     }
 
-      //Zet speelpobjct op vak op leeg vlak.
+      //Zet speelpobjct op vak op leeg vak.
     
     public void verplaats(Vak t) {
                   
@@ -95,11 +95,9 @@ public class Vak extends JComponent {
         speelObject = null;
     }
 
-    public void zetVakSpelObjectLeeg(Vak t) {  // haal spel object weg van eeen vakje        
+    public void zetVakSpelObjectLeeg(Vak t) {  
 
         speelObject = null;
-    }
-
-    public void verplaatsLeeg(Vak t) {   // verplaats van vakje zonder op het in te nemen.        
-    }
+              
+    }    
 }

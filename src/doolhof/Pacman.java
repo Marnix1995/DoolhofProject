@@ -77,10 +77,7 @@ public class Pacman extends SpelObject {
             SpelObject item = target.getObject();                        
             vak.level.timer.setMunitie(munitie);
                        
-            if (!(item instanceof Muur)) {
-                vak.verplaatsLeeg(target);
-            }
-            
+                        
             adf = target;
 
             if (item instanceof Muur) {

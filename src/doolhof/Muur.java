@@ -16,26 +16,31 @@ import javax.swing.ImageIcon;
 
 public class Muur extends SpelObject {
   
-private Image img;    
+private Image img;
+private Image imgSteel;
 private boolean vernietigbaar;    
      
 
-public Muur(boolean vernietigbaar){
-       
+public Muur(boolean vernietigbaar){       
    
     this.vernietigbaar = vernietigbaar;
-      
     
-    
-}
+    }
+
 
     @Override
     public Image getImage() {
-       this.img = new ImageIcon(Muur.class.getResource("\\Plaatjes\\crate.png")).getImage(); 
+        
+       if (vernietigbaar == false){
+       
+           this.imgSteel = new ImageIcon(Muur.class.getResource("\\Plaatjes\\steel_wall.png")).getImage();  
+           return imgSteel;
+       }
+        
+       this.img = new ImageIcon(Muur.class.getResource("\\Plaatjes\\crate.png")).getImage();  
        return img;
     }
-      
-    
+          
     @Override
     public void pakOp(Pacman p) {
         
