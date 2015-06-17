@@ -76,7 +76,7 @@ public class Pacman extends SpelObject {
             Vak target = adf.getBuur(this.dir);
             SpelObject item = target.getObject();                        
             vak.level.timer.setMunitie(munitie);
-                       
+               
                         
             adf = target;
 

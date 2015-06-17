@@ -29,18 +29,15 @@ public class Toets extends KeyAdapter {
         int waardeKey = e.getKeyCode();
         if (waardeKey == KeyEvent.VK_UP) {
 
-            p.move(1);
-          
+            p.move(1);          
         }
         if (waardeKey == KeyEvent.VK_DOWN) {
            
             p.move(2);
-
         }
         if (waardeKey == KeyEvent.VK_LEFT) {
  
             p.move(3);
-
         }
         if (waardeKey == KeyEvent.VK_RIGHT) {
 
@@ -49,8 +46,7 @@ public class Toets extends KeyAdapter {
          if (waardeKey == KeyEvent.VK_SPACE) {
             
             p.schiet(0);             
-        }    
-        
+        }       
         if (waardeKey == KeyEvent.VK_ESCAPE) {
 
             l.toets(1);
@@ -62,7 +58,6 @@ public class Toets extends KeyAdapter {
         if (waardeKey == KeyEvent.VK_R) {
 
             l.toets(3);
-        }
-       
+        }       
     }
 }

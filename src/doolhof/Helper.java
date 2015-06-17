@@ -17,7 +17,6 @@ import javax.swing.Timer;
  */
 //Mutator is een methode om private atrributen van een methode in een andere klas te bereiken. 
 //Accesor is  een methode om private atrributen van een andere klas te bereiken. 
-
 public class Helper extends SpelObject {
 
     private Image img;
@@ -48,8 +47,9 @@ public class Helper extends SpelObject {
                 zoekPad(vak.getBuur(3), pad);
                 zoekPad(vak.getBuur(4), pad);
             }
+            //pad.remove(vak);
         }
-        //pad.remove(vak); 
+
     }
 
     @Override

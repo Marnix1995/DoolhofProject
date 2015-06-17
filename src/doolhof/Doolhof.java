@@ -15,23 +15,23 @@ import javax.swing.*;
  *
  * @author Marnix / Alois
  *///Pacman Maze
-
 public class Doolhof extends JFrame {
 
+    
     private static int breedte = 760;
-    private static int hoogte = 830;
+    private static int hoogte = 750;
     private static String title = "Pacman-Maze";
     private static JFrame frame = new JFrame();
     private static JPanel startPanel;
     private static JPanel level;
-    private static Timers timerPanel;
+    private static Timers timerPanel = new Timers();
     private static Font font = new Font("Century gothic", Font.BOLD, 50);
     private static Font fontBtn = new Font("Century gothic", Font.BOLD, 15);
     private static Color color = (Color.BLACK);
     private static JLabel label;
     private static JLabel fotoLabel;
     private static int checkLevel;
-    private static ImageIcon img = new ImageIcon(Doolhof.class.getResource("\\Plaatjes\\startFrame.png"));  
+    private static ImageIcon img = new ImageIcon(Doolhof.class.getResource("\\Plaatjes\\startFrame.png"));
     private static JList list = new JList();
 
     public static void main(String[] args) {
@@ -63,7 +63,7 @@ public class Doolhof extends JFrame {
 
         } else if (levelNummer == 2) {
 
-            insert(timerPanel.getHighScore(), 1);
+            insert();
             snelsteTijd();
             timerPanel = new Timers();
             level = new Level(getLevel2(), timerPanel, p, 400);
@@ -72,7 +72,7 @@ public class Doolhof extends JFrame {
 
         } else if (levelNummer == 3) {
 
-            insert(timerPanel.getHighScore(), 2);
+            insert();
             snelsteTijd();
             timerPanel = new Timers();
             level = new Level(getLevel3(), timerPanel, p, 600);
@@ -88,10 +88,9 @@ public class Doolhof extends JFrame {
 
         } else {
 
-            insert(timerPanel.getHighScore(), 3);
+            insert();
             snelsteTijd();
             startPanel();
-
         }
         frame.add(timerPanel, BorderLayout.SOUTH);
     }
@@ -108,8 +107,9 @@ public class Doolhof extends JFrame {
 
         FlowLayout layout = new FlowLayout();
 
-        frame.setTitle(title);
+        frame.setTitle(title);        
         startPanel = new JPanel();
+        startPanel.setBackground(Color.white);
         startPanel.setLayout(layout);
         startPanel.setVisible(true);
 
@@ -129,6 +129,7 @@ public class Doolhof extends JFrame {
         list.setForeground(color);
 
         graphicsPanel.add(label);
+        graphicsPanel.setBackground(Color.white);
         graphicsPanel.add(fotoLabel, BorderLayout.SOUTH);
         graphicsPanel.add(list);
 
@@ -140,7 +141,11 @@ public class Doolhof extends JFrame {
 
         final JComboBox box = new JComboBox();
         box.addItem("Demo");
-        box.addItem("Level 1");       
+        box.addItem("Level 1");
+        box.addItem("Level 2");
+        box.addItem("Level 3");
+        box.addItem("Verwijder highscore");
+
         box.setSelectedIndex(1);
         box.setFont(fontBtn);
         box.setVisible(false);
@@ -167,17 +172,32 @@ public class Doolhof extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int levelNummer = box.getSelectedIndex();
+                int selectedIndex = box.getSelectedIndex();
 
-                if (levelNummer == 0) {
+                if (selectedIndex == 0) {
                     levelPanel(0);
                 }
 
-                if (levelNummer == 1) {
+                if (selectedIndex == 1) {
                     levelPanel(1);
                 }
 
-                startPanel.setVisible(false);
+                if (selectedIndex == 2) {
+                    levelPanel(2);
+                }
+
+                if (selectedIndex == 3) {
+                    levelPanel(3);
+                }
+
+                if (selectedIndex == 4) {
+                    deleteHighScore();
+                    snelsteTijd();
+                    box.setSelectedIndex(1);
+                    return;
+                } else {
+                    startPanel.setVisible(false);
+                }
                 graphicsPanel.setVisible(false);
             }
         });
@@ -273,53 +293,75 @@ public class Doolhof extends JFrame {
                 String s3 = results.getString("score3");
 
                 Object[] rij = {s1, s2, s3};
-              
+
                 datamodel.addElement("High score");
-                datamodel.addElement("________________");
+                datamodel.addElement("___________");
                 datamodel.addElement("Level 1:");
                 datamodel.addElement(s1);
-                datamodel.addElement("________________");
+                datamodel.addElement("___________");
                 datamodel.addElement("Level 2:");
                 datamodel.addElement(s2);
-                datamodel.addElement("________________");
+                datamodel.addElement("___________");
                 datamodel.addElement("Level 3:");
                 datamodel.addElement(s3);
-                datamodel.addElement("________________");
+                datamodel.addElement("___________");
 
             }
 
             Doolhof.list.setModel(datamodel);
-        } catch (SQLException ex) {               
+        } catch (SQLException ex) {
             Logger.getLogger(Doolhof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-                            
+
         }
     }
 
-    public static void insert(String tijd, int levelNummer) {
+    public static void insert() {
 
         try {
             Connection connection = DataBase.getConnection();
 
-            if (levelNummer == 1) {
+            if (checkHuidigLevel() == 2) {
+
+                String tijd = timerPanel.getHighScore();
                 String query = "insert into Level (score1) values(?)";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1, tijd);
                 statement.executeUpdate();
             }
 
-            if (levelNummer == 2) {
+            if (checkHuidigLevel() == 3) {
+
+                String tijd = timerPanel.getHighScore();
                 String query = "insert into Level (score2) values(?)";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1, tijd);
                 statement.executeUpdate();
             }
 
-            if (levelNummer == 3) {
+            if (checkHuidigLevel() > 3) {
+
+                String tijd = timerPanel.getHighScore();
                 String query = "insert into Level (score3) values(?)";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1, tijd);
                 statement.executeUpdate();
             }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Doolhof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void deleteHighScore() {
+
+        try {
+
+            Connection connection = DataBase.getConnection();
+
+            String query = "DELETE from Level";
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            statement.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(Doolhof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -363,6 +405,8 @@ public class Doolhof extends JFrame {
             {x, w, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, w, w, w, w, c, x},
             {x, c, c, v, c, c, c, v, c, c, c, c, c, c, c, c, w, c, c, c, v, c, c, c, x},
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},};
+
+
         return level1;
     }
 

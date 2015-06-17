@@ -13,7 +13,6 @@ import javax.swing.ImageIcon;
  * @author Marnix
  */
 
-
 public class Muur extends SpelObject {
   
 private Image img;
@@ -25,14 +24,15 @@ public Muur(boolean vernietigbaar){
    
     this.vernietigbaar = vernietigbaar;
     
+    
+    
     }
 
 
     @Override
     public Image getImage() {
         
-       if (vernietigbaar == false){
-       
+       if (vernietigbaar == false){       
            this.imgSteel = new ImageIcon(Muur.class.getResource("\\Plaatjes\\steel_wall.png")).getImage();  
            return imgSteel;
        }
