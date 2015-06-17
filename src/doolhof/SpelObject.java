@@ -23,7 +23,10 @@ public abstract class SpelObject {
      vak = v;       
     }     
      
-       
+    public Vak getVak(){
+        return vak;
+    }
+    
     public abstract Image getImage();    
     
 }

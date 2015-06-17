@@ -20,27 +20,30 @@ public class Level extends JPanel implements ActionListener {
     private Timer repaintTimer = new Timer(25, this);
     public Vak[][] vakjes = new Vak[n][n];
     private String[][] levelScan;
-    public Timers timer;   
+    public Timers timer;
     private int druktOpPauze = 0;
-    private Pacman p = new Pacman();   
+    private Pacman p = new Pacman();
     public Doolhof doolhof;
-      
-    
-    public Level(String[][] level, Timers timer,  int tijd) {
- 
-        this.timer = timer;      
-        this.levelScan = level;             
+
+    public Level(String[][] level, Timers timer, int tijd) {
+
+        this.timer = timer;
+        this.levelScan = level;
         timer.start(tijd);
 
         repaintTimer.start();
 
         addKeyListener(new Toets(p, this));
-        setFocusable(true);  
+        setFocusable(true);
         setObjectPosities();
     }
 
-    private void setObjectPosities() {
+    // testmethode
+    public Pacman getPacman() {
+        return p;
+    }
 
+    private void setObjectPosities() {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -52,7 +55,7 @@ public class Level extends JPanel implements ActionListener {
                     case "w":
                         vakjes[i][j].zetObject(new Muur(true));
                         break;
-                        
+
                     case "x":
                         vakjes[i][j].zetObject(new Muur(false));
                         break;
@@ -67,8 +70,8 @@ public class Level extends JPanel implements ActionListener {
                         break;
 
                     case "v":
-                        vakjes[i][j].zetObject(new Vijand());                                                   
-                                      
+                        vakjes[i][j].zetObject(new Vijand());
+
                         break;
 
                     case "h":
@@ -84,24 +87,24 @@ public class Level extends JPanel implements ActionListener {
     }
 
     public boolean updateLevel() {
-             
+
         this.removeAll();
-        this.setVisible(false);                
+        this.setVisible(false);
         repaintTimer.removeActionListener(this);
-        timer.removeAll(); 
-        timer = new Timers(); 
-        
+        timer.removeAll();
+        timer = new Timers();
+
         return true;
     }
 
-    public void pauzeer() {        
-      
-        repaintTimer.stop();      
-        timer.pauze();          
+    public void pauzeer() {
+
+        repaintTimer.stop();
+        timer.pauze();
     }
 
     public void hervat() {
-       
+
         repaintTimer.start();
         timer.hervat();
     }
@@ -109,7 +112,7 @@ public class Level extends JPanel implements ActionListener {
     public void toets(int toets) {
 
         druktOpPauze++;
-     
+
         switch (toets) {
 
             case 1:
@@ -118,13 +121,13 @@ public class Level extends JPanel implements ActionListener {
                 break;
 
             case 2:
-                pauzeer();   
-                
+                pauzeer();
+
                 if (druktOpPauze % 2 == 0 && timer.getStartGetal() > timer.getStopGetal()) {
-                    
-                hervat();
+
+                    hervat();
                 }
-                
+
                 break;
             case 3:
 
@@ -144,20 +147,20 @@ public class Level extends JPanel implements ActionListener {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-             
+
                 vakjes[i][j].tekenVakjes(g);
             }
         }
-    } 
-    
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-                            
+
         this.repaint();
-                      
+
         if (timer.getStartGetal() < timer.getStopGetal()) {
             this.removeAll();
-            repaintTimer.stop();           
+            repaintTimer.stop();
         }
     }
 }

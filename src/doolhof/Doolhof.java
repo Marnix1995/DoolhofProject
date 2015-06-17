@@ -513,7 +513,7 @@ public class Doolhof extends JFrame {
             {x, c, c, c, c, w, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
             {x, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
             {x, c, c, c, c, c, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, x},
             {x, c, c, w, c, c, c, c, c, c, c, p, c, c, c, w, c, c, c, c, c, c, c, c, x},
             {x, c, c, w, w, w, w, w, w, w, w, c, c, c, c, w, w, w, w, c, w, w, w, c, x},
             {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
