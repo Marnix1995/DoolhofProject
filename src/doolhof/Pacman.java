@@ -20,19 +20,14 @@ public class Pacman extends SpelObject {
     private Image imgDichtOmhoog = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerDichtOmhoog.png")).getImage();
     private Image imgDichtLinks = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerDichtLinks.png")).getImage();
     private Image imgDichtOnder = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerDichtOnder.png")).getImage();
-    
     private Image imgRechts = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerRechts.png")).getImage();
     private Image imgLinks = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerLinks.png")).getImage();
     private Image imgBoven = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerBoven.png")).getImage();
     private Image imgOnder = new ImageIcon(Pacman.class.getResource("\\Plaatjes\\playerOnder.png")).getImage();
-       
-    private int dir;   
+    private int dir;
     private boolean mondIsDicht = false;
-      
     private Timer timer;
 
-        
-    
     @Override
     public Image getImage() {
 
@@ -40,9 +35,9 @@ public class Pacman extends SpelObject {
             case 1:
                 if (mondIsDicht == true) {
                     return imgDichtOmhoog;
-                }                
-                return imgBoven;                
-                
+                }
+                return imgBoven;
+
             case 2:
                 if (mondIsDicht == true) {
                     return imgDichtOnder;
@@ -58,30 +53,35 @@ public class Pacman extends SpelObject {
                 if (mondIsDicht == true) {
                     return imgDichtRechts;
                 }
-                return imgRechts;                
-            default:               
+                return imgRechts;
+            default:
                 return imgRechts;
         }
-    }    
-  
+    }
+
     public void schiet(int dir) {
 
-       int munitie = vak.level.timer.getMunitie();      
-       munitie --;
-             
+        int munitie = vak.level.timer.getMunitie();
+        munitie--;
+
         Vak adf;
         adf = vak;
-        while (munitie >= 0) {                   
-            
+        while (munitie >= 0) {
+
             Vak target = adf.getBuur(this.dir);
-            SpelObject item = target.getObject();                        
+            SpelObject item = target.getObject();
+            Muur muur;
             vak.level.timer.setMunitie(munitie);
-               
-                        
+
             adf = target;
 
             if (item instanceof Muur) {
-                target.zetVakSpelObjectLeeg(target);               
+                muur = (Muur) item;
+
+                if (muur.destroyable()) {
+
+                    target.zetVakSpelObjectLeeg(target);
+                }
                 break;
             }
         }
@@ -94,20 +94,20 @@ public class Pacman extends SpelObject {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-            mondIsDicht = false;               
+                mondIsDicht = false;
             }
         };
         timer = new Timer(25, listener);
-        timer.start();    
-        mondIsDicht = true;              
+        timer.start();
+        mondIsDicht = true;
         timer.setRepeats(false);
-        
+
     }
 
     public void move(int dir) {
 
-        wakaWakaWaka();      
-       
+        wakaWakaWaka();
+
         this.dir = dir;
 
         Vak target = vak.getBuur(dir);
@@ -119,7 +119,7 @@ public class Pacman extends SpelObject {
             vak = target;
 
             if (item instanceof Vijand) {
-              
+
                 item.setVak(vak);
                 item.pakOp(this);
             }
@@ -132,8 +132,8 @@ public class Pacman extends SpelObject {
             if (item instanceof Bazooka) {
 
                 item.setVak(vak);
-                item.pakOp(this);               
-               
+                item.pakOp(this);
+
             }
             if (item instanceof Helper) {
 
@@ -145,7 +145,5 @@ public class Pacman extends SpelObject {
 
     @Override
     public void pakOp(Pacman p) {
-        
-        
     }
 }

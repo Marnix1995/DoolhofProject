@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Stack;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
@@ -20,23 +21,23 @@ import javax.swing.Timer;
 public class Helper extends SpelObject {
 
     private Image img;
-    private ArrayList<Vak> kortstePad = new ArrayList<>();
+    private Stack<Vak> kortstePad = new Stack<>();
     private int padLengte = Integer.MAX_VALUE;
     private Timer timer;
     private int aantalSecondenZichtbaar = 5;
 
-    public void zoekPad(Vak vak, ArrayList<Vak> pad) {
+    public void zoekPad(Vak vak, Stack<Vak> pad) {
 
 
         if (!(vak.getObject() instanceof Muur) && !(pad.contains(vak))) {
 
-            pad.add(vak);
+            pad.push(vak);
 
             if (vak.getObject() instanceof Exit) {
 
                 if (pad.size() < padLengte) {
 
-                    kortstePad = (ArrayList<Vak>) pad.clone();
+                    kortstePad = (Stack<Vak>) pad.clone();
                     padLengte = pad.size();
 
                 }
@@ -47,9 +48,8 @@ public class Helper extends SpelObject {
                 zoekPad(vak.getBuur(3), pad);
                 zoekPad(vak.getBuur(4), pad);
             }
-            //pad.remove(vak);
+            //pad.pop();
         }
-
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Helper extends SpelObject {
     @Override
     public void pakOp(Pacman p) {
 
-        zoekPad(vak, new ArrayList<Vak>());
+        zoekPad(vak, new Stack<Vak>());
 
 
         ActionListener listener = new ActionListener() {

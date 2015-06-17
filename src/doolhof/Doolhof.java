@@ -15,11 +15,11 @@ import javax.swing.*;
  *
  * @author Marnix / Alois
  *///Pacman Maze
+
 public class Doolhof extends JFrame {
 
-    
     private static int breedte = 760;
-    private static int hoogte = 750;
+    private static int hoogte = 830;
     private static String title = "Pacman-Maze";
     private static JFrame frame = new JFrame();
     private static JPanel startPanel;
@@ -50,30 +50,29 @@ public class Doolhof extends JFrame {
 
     public static void levelPanel(int levelNummer) {
 
-       
         Doolhof.checkLevel = levelNummer;
 
 
         if (levelNummer == 1) {
-
+          
             timerPanel = new Timers();
             level = new Level(getLevel1(), timerPanel, 270);
             frame.setTitle("Level 1");
             frame.add(level);
+          
 
         } else if (levelNummer == 2) {
 
-            insert();
-            snelsteTijd();
+            insert();        
             timerPanel = new Timers();
             level = new Level(getLevel2(), timerPanel, 400);
             frame.setTitle("Level 2");
             frame.add(level);
-
+          
+            
         } else if (levelNummer == 3) {
 
-            insert();
-            snelsteTijd();
+            insert();            
             timerPanel = new Timers();
             level = new Level(getLevel3(), timerPanel, 600);
             frame.setTitle("Level 3");
@@ -88,8 +87,7 @@ public class Doolhof extends JFrame {
 
         } else {
 
-            insert();
-            snelsteTijd();
+            insert();          
             startPanel();
         }
         frame.add(timerPanel, BorderLayout.SOUTH);
@@ -107,7 +105,7 @@ public class Doolhof extends JFrame {
 
         FlowLayout layout = new FlowLayout();
 
-        frame.setTitle(title);        
+        frame.setTitle(title);
         startPanel = new JPanel();
         startPanel.setBackground(Color.white);
         startPanel.setLayout(layout);
@@ -137,13 +135,11 @@ public class Doolhof extends JFrame {
         JButton buttonStart = new JButton("Start");
         JButton buttonExit = new JButton("Exit");
         JButton buttonRead = new JButton("Read me");
-        JButton buttonCheat = new JButton("Cheats");
-
+        JButton buttonCheat = new JButton("Instellen");
+        
         final JComboBox box = new JComboBox();
         box.addItem("Demo");
-        box.addItem("Level 1");
-        box.addItem("Level 2");
-        box.addItem("Level 3");
+        box.addItem("Startlevel");       
         box.addItem("Verwijder highscore");
 
         box.setSelectedIndex(1);
@@ -246,7 +242,7 @@ public class Doolhof extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 clicks++;
-                label.setText("<html><br><br>Kies hier het levelnummer en klik op start.<br><br><br><br><br><br><br><br><br><br></html>");
+                label.setText("<html><br><br>Kies hier een optie en klik op start.<br><br><br><br><br><br><br><br><br><br></html>");
                 label.setFont(fontBtn);
 
                 box.setVisible(true);
@@ -277,7 +273,7 @@ public class Doolhof extends JFrame {
             Doolhof.list.setModel(datamodel);
 
             String query = "SELECT MAX(TIME_FORMAT(score1,'%H:%i')) AS score1, MAX(TIME_FORMAT(score2,'%H:%i'))"
-                    + " AS score2, MAX(TIME_FORMAT(score3, '%H:%i')) AS score3 from Level;";
+                    + "AS score2, MAX(TIME_FORMAT(score3, '%H:%i')) AS score3 from Level;";
 
             //Vanaf database:
 
@@ -318,38 +314,36 @@ public class Doolhof extends JFrame {
     public static void insert() {
 
         try {
+
             Connection connection = DataBase.getConnection();
+            String tijd = timerPanel.getHighScore();
 
-            if (checkHuidigLevel() == 2) {
+            if (checkLevel == 2) {
 
-                String tijd = timerPanel.getHighScore();
                 String query = "insert into Level (score1) values(?)";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1, tijd);
                 statement.executeUpdate();
-            }
 
-            if (checkHuidigLevel() == 3) {
+            } else if (checkLevel == 3) {
 
-                String tijd = timerPanel.getHighScore();
                 String query = "insert into Level (score2) values(?)";
-                PreparedStatement statement = connection.prepareStatement(query);
-                statement.setString(1, tijd);
-                statement.executeUpdate();
-            }
+                PreparedStatement statement2 = connection.prepareStatement(query);
+                statement2.setString(1, tijd);
+                statement2.executeUpdate();
 
-            if (checkHuidigLevel() > 3) {
+            } else if (checkLevel > 3) {
 
-                String tijd = timerPanel.getHighScore();
                 String query = "insert into Level (score3) values(?)";
-                PreparedStatement statement = connection.prepareStatement(query);
-                statement.setString(1, tijd);
-                statement.executeUpdate();
+                PreparedStatement statement3 = connection.prepareStatement(query);
+                statement3.setString(1, tijd);
+                statement3.executeUpdate();
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(Doolhof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        snelsteTijd();
     }
 
     public static void deleteHighScore() {

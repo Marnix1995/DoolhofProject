@@ -23,11 +23,15 @@ private boolean vernietigbaar;
 public Muur(boolean vernietigbaar){       
    
     this.vernietigbaar = vernietigbaar;
-    
-    
-    
+        
     }
 
+
+public boolean destroyable(){
+    
+    return vernietigbaar;
+    
+}
 
     @Override
     public Image getImage() {
