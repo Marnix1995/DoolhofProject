@@ -22,15 +22,14 @@ public class Level extends JPanel implements ActionListener {
     private String[][] levelScan;
     public Timers timer;   
     private int druktOpPauze = 0;
-    private Pacman p;   
+    private Pacman p = new Pacman();   
     public Doolhof doolhof;
       
     
-    public Level(String[][] level, Timers timer, Pacman p, int tijd) {
+    public Level(String[][] level, Timers timer,  int tijd) {
  
         this.timer = timer;      
-        this.levelScan = level;
-        this.p = p;       
+        this.levelScan = level;             
         timer.start(tijd);
 
         repaintTimer.start();

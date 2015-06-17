@@ -50,14 +50,14 @@ public class Doolhof extends JFrame {
 
     public static void levelPanel(int levelNummer) {
 
-        Pacman p = new Pacman();
+       
         Doolhof.checkLevel = levelNummer;
 
 
         if (levelNummer == 1) {
 
             timerPanel = new Timers();
-            level = new Level(getLevel1(), timerPanel, p, 270);
+            level = new Level(getLevel1(), timerPanel, 270);
             frame.setTitle("Level 1");
             frame.add(level);
 
@@ -66,7 +66,7 @@ public class Doolhof extends JFrame {
             insert();
             snelsteTijd();
             timerPanel = new Timers();
-            level = new Level(getLevel2(), timerPanel, p, 400);
+            level = new Level(getLevel2(), timerPanel, 400);
             frame.setTitle("Level 2");
             frame.add(level);
 
@@ -75,14 +75,14 @@ public class Doolhof extends JFrame {
             insert();
             snelsteTijd();
             timerPanel = new Timers();
-            level = new Level(getLevel3(), timerPanel, p, 600);
+            level = new Level(getLevel3(), timerPanel, 600);
             frame.setTitle("Level 3");
             frame.add(level);
 
         } else if (levelNummer == 0) {
 
             timerPanel = new Timers();
-            level = new Level(getLevel0(), timerPanel, p, 60);
+            level = new Level(getLevel0(), timerPanel, 60);
             frame.setTitle("Level 0");
             frame.add(level);
 
