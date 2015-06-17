@@ -6,6 +6,7 @@
 package doolhof;
 
 import java.awt.Image;
+import java.util.Timer;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -133,6 +134,19 @@ public class PacmanTest {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         assertEquals("Result", 2, 1);
+    }
+    
+    /**
+     * Test of move method, of class Pacman.
+     */
+    @Test
+    public void testMove3() {
+        System.out.println("move");
+        Level l = new Level(Doolhof.getLevel0(), new Timers(), 10000 );
+        Pacman p = l.getPacman();
+        Vak start = p.getVak();
+        p.move(1);
+        assertEquals(p.getVak(), start.getBuur(1));
     }
     
     
