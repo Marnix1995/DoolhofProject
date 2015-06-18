@@ -184,8 +184,7 @@ public class Doolhof extends JFrame {
                     box.setSelectedIndex(1);
                     
                     return;
-                    
-                    
+                                      
                 } else {
                     startPanel.setVisible(false);
                 }
@@ -471,7 +470,7 @@ public class Doolhof extends JFrame {
             {x, c, w, w, w, w, w, w, c, w, v, c, c, c, v, c, c, c, v, c, c, c, w, v, x},
             {x, c, c, c, c, w, c, c, c, w, w, w, w, w, w, w, w, w, w, w, w, c, w, c, x},
             {x, c, w, w, w, w, c, w, v, w, c, c, c, c, c, c, c, c, c, h, w, c, w, c, x},
-            {x, c, w, c, c, c, c, w, c, w, c, w, w, w, w, w, w, w, w, c, w, c, w, c, x},
+            {x, c, w, c, c, w, c, w, c, w, c, w, w, w, w, w, w, w, w, c, w, c, w, c, x},
             {x, c, w, c, w, w, v, w, c, w, c, w, c, c, c, c, c, c, w, w, w, c, w, c, x},
             {x, c, w, c, c, w, c, w, c, c, c, w, c, c, v, c, c, c, c, c, c, c, w, c, x},
             {x, p, w, c, c, w, c, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, c, x},
