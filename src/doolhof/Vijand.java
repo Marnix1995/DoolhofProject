@@ -23,22 +23,7 @@ public final class Vijand extends SpelObject {
         this.img = new ImageIcon(Vak.class.getResource("\\Plaatjes\\Enemy.png")).getImage();
         return img;
     }
-    
-  
-    public void beweeg(int dir) {
-            
-        
-        Vak target = vak.getBuur(dir);
-        SpelObject object = target.getObject();
-      
-       if (!(object instanceof Muur)) {
-         
-            vak.verplaats(target);
-            vak = target;
-        }
-    }    
-
-    
+       
     @Override
     public void pakOp(Pacman p) {
                
