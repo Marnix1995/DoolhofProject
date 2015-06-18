@@ -77,17 +77,17 @@ public final class Timers extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 
                 counter++;
                 munitieLabel.setText("   Munitie:  " + counter);
 
-                if (counter >= munitie) {
+                if(counter >= munitie) {
                     munitieLabel.setText("   Munitie:  " + munitie);
-                    counter = munitie;
+                    counter = munitie;                    
                     munitieTeller.setRepeats(false);
-                }               
-            }
+                    
+                }                  
+            }           
         };
         munitieTeller = new Timer(25, listener);
         munitieTeller.start();
@@ -170,7 +170,7 @@ public final class Timers extends JPanel {
                 if (loopTeller > strafTijd) {
                     loopTeller = 0;                  
                     timerExtra.setRepeats(false);           
-
+                    
                 }
                 if (teller < stopGetal) {
                     timerExtra.stop();

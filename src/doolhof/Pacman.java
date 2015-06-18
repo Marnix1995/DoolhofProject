@@ -27,6 +27,7 @@ public class Pacman extends SpelObject {
     private int dir;
     private boolean mondIsDicht = false;
     private Timer timer;
+    private boolean heeftMunitie = false;
 
     @Override
     public Image getImage() {
@@ -60,25 +61,28 @@ public class Pacman extends SpelObject {
     }
 
     public void schiet(int dir) {
-
+        
         int munitie = vak.level.timer.getMunitie();
-        munitie--;
+        munitie --;
+ 
+        Vak v;
+        v = vak;
+        
+     if(munitie >= 0)  { 
+        
+       heeftMunitie = true;
+       
+        while (heeftMunitie) {
 
-        Vak adf;
-        adf = vak;
-        while (munitie >= 0) {
-
-            Vak target = adf.getBuur(this.dir);
-            SpelObject item = target.getObject();
-            
+            Vak target = v.getBuur(this.dir);
+            SpelObject item = target.getObject();                        
             Muur muur;
-            vak.level.timer.setMunitie(munitie);
-
-            adf = target;
+            vak.level.timer.setMunitie(munitie);          
+            v = target;
 
             if (item instanceof Muur) {
-                muur = (Muur) item;
-
+                muur = (Muur) item;                
+                
                 if (muur.destroyable()) {
 
                     target.zetVakSpelObjectLeeg(target);
@@ -86,8 +90,9 @@ public class Pacman extends SpelObject {
                 break;
             }
         }
+        }
     }
-
+    
     public void wakaWakaWaka() {
 
         ActionListener listener = new ActionListener() {
@@ -105,6 +110,7 @@ public class Pacman extends SpelObject {
 
     }
 
+    
     public void move(int dir) {
 
         wakaWakaWaka();
@@ -123,20 +129,16 @@ public class Pacman extends SpelObject {
 
                 item.setVak(vak);
                 item.pakOp(this);
-            }
-
-            else if  (item instanceof Exit) {
+            } else if (item instanceof Exit) {
                 item.setVak(vak);
                 item.pakOp(this);
 
-            }
-            else if (item instanceof Bazooka) {
+            } else if (item instanceof Bazooka) {
 
                 item.setVak(vak);
                 item.pakOp(this);
 
-            }
-            else if (item instanceof Helper) {
+            } else if (item instanceof Helper) {
 
                 item.setVak(vak);
                 item.pakOp(this);
