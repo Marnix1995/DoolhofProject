@@ -503,8 +503,48 @@ public class Doolhof extends JFrame {
             {x, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
             {x, c, c, c, c, c, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
             {x, c, c, c, c, c, c, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, w, c, c, c, c, c, c, c, p, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, w, w, w, w, w, w, w, w, c, c, c, c, w, w, w, w, c, w, w, w, c, x},
+            {x, c, c, w, c, c, c, c, c, c, e, p, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, w, w, w, w, w, w, w, v, c, c, c, w, w, w, w, c, w, w, w, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, w, w, w, w, c, c, w, w, w, w, w, w, w, w, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, e, c, c, c, c, c, c, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, w, w, w, c, c, c, c, c, c, c, c, c, c, x},
+            {x, w, w, w, w, w, w, w, c, c, c, c, c, w, w, w, w, w, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},};
+        return level0;
+    }
+    
+    public static String[][] getLevelTest() {
+
+        String w = "w";
+        String c = "c";
+        String e = "e";
+        String p = "p";
+        String v = "v";
+        String b = "b";
+        String h = "h";
+        String x = "x";
+
+        String[][] level0 = new String[][]{
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
+            {x, c, c, w, c, c, c, p, h, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, c, c, b, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, c, x},
+            {x, c, c, w, c, w, c, c, c, b, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, w, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, w, c, v, c, c, c, c, c, c, c, w, c, c, c, c, c, v, c, c, x},
+            {x, c, c, c, c, w, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, w, w, w, w, w, w, w, v, c, c, c, w, w, w, w, c, w, w, w, c, x},
             {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
             {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
             {x, c, c, c, w, w, w, w, c, c, w, w, w, w, w, w, w, w, w, c, c, c, c, c, x},
