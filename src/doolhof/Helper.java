@@ -29,7 +29,7 @@ public class Helper extends SpelObject {
     public void zoekPad(Vak vak, Stack<Vak> pad) {
 
 
-        if (!(vak.getObject() instanceof Muur) && !(pad.contains(vak))&& pad.size() < padLengte) {
+        if (!(vak.getObject() instanceof Muur) && !(pad.contains(vak)) && pad.size() < padLengte) {
 
             pad.push(vak);
 
