@@ -315,30 +315,18 @@ public class Doolhof extends JFrame {
 
         try {
 
+            String str = ("score"+level);
+            
             Connection connection = DataBase.getConnection();
-            String tijd = timerPanel.getHighScore();
-
-            if (level == 1) {
-
-                String query = "insert into Level (score1) values(?)";
-                PreparedStatement statement = connection.prepareStatement(query);
-                statement.setString(1, tijd);
-                statement.executeUpdate();
-
-            } else if (level == 2) {
-
-                String query = "insert into Level (score2) values(?)";
-                PreparedStatement statement2 = connection.prepareStatement(query);
-                statement2.setString(1, tijd);
-                statement2.executeUpdate();
-
-            } else if (level == 3) {
-
-                String query = "insert into Level (score3) values(?)";
-                PreparedStatement statement3 = connection.prepareStatement(query);
-                statement3.setString(1, tijd);
-                statement3.executeUpdate();
-            }
+            String tijd = timerPanel.getHighScore();  
+            
+            String query = "insert into Level (column) values(?)";                     
+            String replaceQuery = query.replace("column", str);
+            
+            PreparedStatement statement = connection.prepareStatement(replaceQuery);
+            statement.setString(1, tijd);
+            statement.executeUpdate();
+               
 
         } catch (SQLException ex) {
             Logger.getLogger(Doolhof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
