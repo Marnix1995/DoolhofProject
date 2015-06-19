@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 /**
@@ -30,8 +31,7 @@ public final class Timers extends JPanel {
     private double loopTeller = 0;
     private int counter = 0;
     private int strafTijd;
-  
-        
+
     public Timers() {
 
         this.munitieLabel = new JLabel(" ");
@@ -57,7 +57,7 @@ public final class Timers extends JPanel {
 
                 String text = getTijdAfhalen();
                 tijdLabel.setText("     Tijd: " + text);
-                                 
+
                 if (teller < stopGetal) {
                     tijdLabel.setText("    Game Over!");
                     munitieLabel.setText(" ");
@@ -70,35 +70,44 @@ public final class Timers extends JPanel {
     }
 
     public void setMunitie(int i) {
-
+    
         this.munitie = i;
-
+    
         ActionListener listener = new ActionListener() {
-
+   
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+        
                 counter++;
                 munitieLabel.setText("   Munitie:  " + counter);
-
+    
                 if(counter >= munitie) {
-                    munitieLabel.setText("   Munitie:  " + munitie);
-                    counter = munitie;                    
-                    munitieTeller.setRepeats(false);
                     
+                    munitieTeller.setRepeats(false);
+                    munitieTeller.removeActionListener(this);                    
+                    munitieLabel.setText("   Munitie:  " + munitie);
+                    counter = munitie;     
+                    System.out.println(counter);                                                    
                 }                  
             }           
         };
         munitieTeller = new Timer(25, listener);
-        munitieTeller.start();
+        munitieTeller.start();       
     }
+      
+     public void haalMunitieAf(int i) {
+    
+          this.munitie = i;
+          munitieLabel.setText("   Munitie:  " + munitie);     
+     }   
 
-    public String getHighScore(){
-        
-        String formaat = getFormaat();        
+     
+    public String getHighScore() {
+
+        String formaat = getFormaat();
         return formaat;
     }
-    
+
     
     public int getMunitie() {
 
@@ -114,10 +123,10 @@ public final class Timers extends JPanel {
 
         return stopGetal;
     }
-        
+
     public String getTijdAfhalen() {
 
-        String formaat = getFormaat();      
+        String formaat = getFormaat();
         teller--;
 
         return formaat;
@@ -135,12 +144,12 @@ public final class Timers extends JPanel {
 
     public void pauze() {
 
-        timer.stop();             
-        tijdLabel.setText("    Pauze");              
+        timer.stop();
+        tijdLabel.setText("    Pauze");
     }
 
-    public void stop() {        
-        timer.stop();       
+    public void stop() {
+        timer.stop();
     }
 
     public String getFormaat() {
@@ -153,7 +162,6 @@ public final class Timers extends JPanel {
         return str;
     }
 
-    
     public void getExtraTijdAfhalen(int t) {
 
         this.strafTijd = t;
@@ -164,20 +172,20 @@ public final class Timers extends JPanel {
 
                 loopTeller += 2.1;
                 teller--;
-                
+
                 tijdLabel.setText("     Tijd: " + getTijdAfhalen());
 
                 if (loopTeller > strafTijd) {
-                    loopTeller = 0;                  
-                    timerExtra.setRepeats(false);           
-                    
+                    loopTeller = 0;
+                    timerExtra.setRepeats(false);
+
                 }
                 if (teller < stopGetal) {
                     timerExtra.stop();
                     tijdLabel.setText("    Game Over!");
                     munitieTeller.stop();
                     munitieLabel.setText(" ");
-                                                        
+
                 }
             }
         };
