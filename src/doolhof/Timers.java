@@ -48,21 +48,23 @@ public final class Timers extends JPanel {
         }
 
         setMunitie(munitie);
+        tijdLabel.setText("     Tijd: "+getFormaat());
 
         ActionListener listener = new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                String text = getTijdAfhalen();
-                tijdLabel.setText("     Tijd: " + text);
+                               
+                tijdLabel.setText("     Tijd: " +getFormaat());
 
                 if (teller < stopGetal) {
+                                     
+                    timer.stop(); 
                     tijdLabel.setText("    Game Over!");
                     munitieLabel.setText(" ");
-                    munitieTeller.stop();
-                    timer.removeActionListener(this);
-                }
+                    munitieTeller.stop(); 
+                    teller = stopGetal;
+                }               
             }
         };
         timer = new Timer(ms, listener);
@@ -120,14 +122,7 @@ public final class Timers extends JPanel {
 
         return stopGetal;
     }
-
-    public String getTijdAfhalen() {
-
-        String formaat = getFormaat();
-        teller--;
-
-        return formaat;
-    }
+   
 
     public void start(int tijd) {
 
@@ -142,7 +137,7 @@ public final class Timers extends JPanel {
     public void pauze() {
 
         timer.stop();
-        tijdLabel.setText("    Pauze");
+        tijdLabel.setText("    Tijd: --:--");      
     }
 
     public void stop() {
@@ -150,15 +145,17 @@ public final class Timers extends JPanel {
     }
 
     public String getFormaat() {
-
+        
         int count = teller * ms;
         int minutes = count / (60 * ms);
         int seconds = (count / ms) % 60;
+        teller--;
 
         String str = String.format("%d:%02d", minutes, seconds);
         return str;
     }
 
+    
     public void getExtraTijdAfhalen(int t) {
 
         this.strafTijd = t;
@@ -167,23 +164,23 @@ public final class Timers extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                loopTeller += 2.1;
-                teller--;
-
-                tijdLabel.setText("     Tijd: " + getTijdAfhalen());
+                loopTeller += 1.1;
+               
+                tijdLabel.setText("     Tijd: " + getFormaat());
 
                 if (loopTeller > strafTijd) {
                     loopTeller = 0;
                     timerExtra.setRepeats(false);
 
                 }
-                if (teller < stopGetal) {
+                if (teller < stopGetal) {  
+                     
                     timerExtra.stop();
                     tijdLabel.setText("    Game Over!");
                     munitieTeller.stop();
-                    munitieLabel.setText(" ");
-
-                }
+                    munitieLabel.setText(" ");  
+                    teller = stopGetal;
+                }                 
             }
         };
         timerExtra = new Timer(25, listener);

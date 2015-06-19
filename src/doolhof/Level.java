@@ -18,13 +18,15 @@ public class Level extends JPanel implements ActionListener {
 
     private int n = 25;    //aantal * n vakjes
     private Timer repaintTimer = new Timer(25, this);
-    public Vak[][] vakjes = new Vak[n][n];
+    private Vak[][] vakjes = new Vak[n][n];
     private String[][] levelScan;
     public Timers timer;
     private int druktOpPauze = 0;
     private Pacman p = new Pacman();
     public Doolhof doolhof;
-
+    private boolean stop;
+    
+    
     public Level(String[][] level, Timers timer, int tijd) {
 
         this.timer = timer;
@@ -32,12 +34,13 @@ public class Level extends JPanel implements ActionListener {
         timer.start(tijd);
 
         repaintTimer.start();
-
+      
         addKeyListener(new Toets(p, this));
         setFocusable(true);
         setObjectPosities();
+       
     }
-
+    
     // testmethode
     public Pacman getPacman() {
         return p;
@@ -85,31 +88,34 @@ public class Level extends JPanel implements ActionListener {
             }
         }
     }
-
-    public boolean updateLevel() {
+    
+        
+    public boolean stop(){          
+    return stop;
+    }
+    
+    
+    public void updateLevel() {
 
         this.removeAll();
         this.setVisible(false);
-        repaintTimer.removeActionListener(this);
+        this.setFocusable(false);
         timer.removeAll();
-       
-        return true;
     }
 
     public void pauzeer() {
-
-        repaintTimer.stop();
+        stop = true;      
         timer.pauze();
     }
-
+    
     public void hervat() {
-
-        repaintTimer.start();
+        stop = false; 
         timer.hervat();
     }
 
+    
     public void toets(int toets) {
-
+              
         druktOpPauze++;
 
         switch (toets) {
@@ -121,15 +127,12 @@ public class Level extends JPanel implements ActionListener {
 
             case 2:
                 pauzeer();
-
                 if (druktOpPauze % 2 == 0 && timer.getStartGetal() > timer.getStopGetal()) {
-
                     hervat();
                 }
-
                 break;
+                
             case 3:
-
                 Doolhof.levelPanel(Doolhof.checkHuidigLevel());
                 updateLevel();
                 break;
@@ -141,8 +144,10 @@ public class Level extends JPanel implements ActionListener {
         return vakjes;
     }
 
+    
     @Override
     public void paintComponent(Graphics g) {
+
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -151,15 +156,15 @@ public class Level extends JPanel implements ActionListener {
             }
         }
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        this.repaint();
+        repaint();
 
-        if (timer.getStartGetal() < timer.getStopGetal()) {
+        if (timer.getStartGetal() <= timer.getStopGetal()) {
+            stop = true;
             this.removeAll();
-            repaintTimer.stop();
         }
     }
 }
