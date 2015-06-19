@@ -320,8 +320,8 @@ public class Doolhof extends JFrame {
             Connection connection = DataBase.getConnection();
             String tijd = timerPanel.getHighScore();  
             
-            String query = "insert into Level (column) values(?)";                     
-            String replaceQuery = query.replace("column", str);
+            String query = "insert into Level ($column$) values(?)";                     
+            String replaceQuery = query.replace("$column$", str);
             
             PreparedStatement statement = connection.prepareStatement(replaceQuery);
             statement.setString(1, tijd);
