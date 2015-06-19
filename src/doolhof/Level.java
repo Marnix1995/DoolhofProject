@@ -87,8 +87,7 @@ public class Level extends JPanel implements ActionListener {
                 }
             }
         }
-    }
-    
+    }   
         
     public boolean stop(){          
     return stop;
@@ -162,9 +161,9 @@ public class Level extends JPanel implements ActionListener {
 
         repaint();
 
-        if (timer.getStartGetal() <= timer.getStopGetal()) {
-            stop = true;
-            this.removeAll();
+        if (timer.getStartGetal() == timer.getStopGetal()) {
+            stop = true;            
+            this.removeAll();            
         }
     }
 }

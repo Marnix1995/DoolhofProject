@@ -68,7 +68,7 @@ public final class Timers extends JPanel {
                 }               
             }
         };
-        timer = new Timer(ms, listener);
+        timer = new Timer(ms, listener);       
     }
 
     public void setMunitie(int i) {
