@@ -48,7 +48,7 @@ public final class Timers extends JPanel {
         }
 
         setMunitie(munitie);
-        tijdLabel.setText("     Tijd: "+getFormaat());
+        tijdLabel.setText("     Tijd: --:--");
 
         ActionListener listener = new ActionListener() {
 
@@ -137,7 +137,7 @@ public final class Timers extends JPanel {
     public void pauze() {
 
         timer.stop();
-        tijdLabel.setText("    Tijd: --:--");      
+        tijdLabel.setText("     Tijd: --:--");      
     }
 
     public void stop() {

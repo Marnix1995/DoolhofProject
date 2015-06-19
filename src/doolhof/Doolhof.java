@@ -56,7 +56,7 @@ public class Doolhof extends JFrame {
         if (levelNummer == 1) {
           
             timerPanel = new Timers();
-            level = new Level(getLevel1(), timerPanel, 270);
+            level = new Level(getLevel1(), timerPanel, 210);
             frame.setTitle("Level 1");
             frame.add(level);
           
