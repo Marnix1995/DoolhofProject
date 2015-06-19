@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 /**
@@ -81,8 +80,7 @@ public final class Timers extends JPanel {
                 counter++;
                 munitieLabel.setText("   Munitie:  " + counter);
     
-                if(counter >= munitie) {
-                    
+                if(counter >= munitie) {                    
                     munitieTeller.setRepeats(false);
                     munitieTeller.removeActionListener(this);                    
                     munitieLabel.setText("   Munitie:  " + munitie);
@@ -98,6 +96,7 @@ public final class Timers extends JPanel {
      public void haalMunitieAf(int i) {
     
           this.munitie = i;
+          counter = munitie;     
           munitieLabel.setText("   Munitie:  " + munitie);     
      }   
 
