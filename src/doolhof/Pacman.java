@@ -63,8 +63,8 @@ public class Pacman extends SpelObject {
     public void schiet(int dir) {
         
         int munitie = vak.level.timer.getMunitie();
-        munitie --;     
- 
+        munitie--;
+        
         Vak v;
         v = vak;
         
@@ -73,9 +73,9 @@ public class Pacman extends SpelObject {
        heeftMunitie = true;
        
         while (heeftMunitie) {
-
-            vak.level.timer.haalMunitieAf(munitie);
             
+            vak.level.timer.haalMunitieAf(munitie);
+                        
             Vak target = v.getBuur(this.dir);
             SpelObject item = target.getObject();                        
             Muur muur;

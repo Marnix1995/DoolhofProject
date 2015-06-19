@@ -93,7 +93,7 @@ public final class Timers extends JPanel {
       
      public void haalMunitieAf(int i) {
     
-          this.munitie = i;
+          this.munitie = i;          
           counter = munitie;     
           munitieLabel.setText("   Munitie:  " + munitie);     
      }   
