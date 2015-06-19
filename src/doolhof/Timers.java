@@ -21,6 +21,7 @@ public final class Timers extends JPanel {
     private Font font = new Font("Century gothic", Font.BOLD, 30);
     private Color color = (Color.BLUE);
     private JLabel tijdLabel;
+    private String leeg = "     Tijd: --:--";
     private Timer timer;
     private Timer timerExtra;
     private Timer munitieTeller;
@@ -48,7 +49,7 @@ public final class Timers extends JPanel {
         }
 
         setMunitie(munitie);
-        tijdLabel.setText("     Tijd: --:--");
+        tijdLabel.setText(leeg);
 
         ActionListener listener = new ActionListener() {
 
@@ -137,7 +138,7 @@ public final class Timers extends JPanel {
     public void pauze() {
 
         timer.stop();
-        tijdLabel.setText("     Tijd: --:--");      
+        tijdLabel.setText(leeg);      
     }
 
     public void stop() {
