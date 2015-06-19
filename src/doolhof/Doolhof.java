@@ -291,13 +291,13 @@ public class Doolhof extends JFrame {
 
                 datamodel.addElement("High score");
                 datamodel.addElement("___________");
-                datamodel.addElement("Level 1:");
+                datamodel.addElement("Level I:");
                 datamodel.addElement(s1);
                 datamodel.addElement("___________");
-                datamodel.addElement("Level 2:");
+                datamodel.addElement("Level II:");
                 datamodel.addElement(s2);
                 datamodel.addElement("___________");
-                datamodel.addElement("Level 3:");
+                datamodel.addElement("Level III:");
                 datamodel.addElement(s3);
                 datamodel.addElement("___________");
 
