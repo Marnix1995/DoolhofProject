@@ -57,7 +57,8 @@ public final class Timers extends JPanel {
             public void actionPerformed(ActionEvent e) {
                                
                 tijdLabel.setText("     Tijd: " +getFormaat());
-
+               
+                                
                 if (teller < stopGetal) {
                                      
                     timer.stop(); 
@@ -174,10 +175,10 @@ public final class Timers extends JPanel {
                     timerExtra.setRepeats(false);
 
                 }
-                if (teller < stopGetal) {  
+                if (teller < stopGetal) { 
                      
-                    timerExtra.stop();
                     tijdLabel.setText("    Game Over!");
+                    timerExtra.stop();                  
                     munitieTeller.stop();
                     munitieLabel.setText(" ");  
                     teller = stopGetal;

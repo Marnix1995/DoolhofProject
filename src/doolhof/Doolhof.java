@@ -92,6 +92,7 @@ public class Doolhof extends JFrame {
 //            level = new Level(getLevel5(), timerPanel, 120);
 //            frame.setTitle("Level "+levelNummer);
 //            frame.add(level);
+            
         } else {
 
             startPanel();
@@ -348,7 +349,7 @@ public class Doolhof extends JFrame {
 
             Connection connection = DataBase.getConnection();
 
-            String query = "DELETE from Level";
+            String query = "DELETE FROM Level";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate();
             insert(0);
