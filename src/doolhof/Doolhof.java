@@ -55,45 +55,43 @@ public class Doolhof extends JFrame {
 
             timerPanel = new Timers();
             level = new Level(getLevel0(), timerPanel, 60);
-            frame.setTitle("Level 0");
+            frame.setTitle("Level "+levelNummer);
             frame.add(level);
             
         } else if (levelNummer == 1) {
 
             timerPanel = new Timers();
             level = new Level(getLevel1(), timerPanel, 210);
-            frame.setTitle("Level 1");
+            frame.setTitle("Level "+levelNummer);
             frame.add(level);
 
         } else if (levelNummer == 2) {
 
             timerPanel = new Timers();
             level = new Level(getLevel2(), timerPanel, 400);
-            frame.setTitle("Level 2");
+            frame.setTitle("Level "+levelNummer);
             frame.add(level);
 
         } else if (levelNummer == 3) {
 
             timerPanel = new Timers();
             level = new Level(getLevel3(), timerPanel, 570);
-            frame.setTitle("Level 3");
+            frame.setTitle("Level "+levelNummer);
             frame.add(level);
 
 //        } else if (levelNummer == 4) {
 //
 //            timerPanel = new Timers();
 //            level = new Level(getLevel4(), timerPanel, 45);
-//            frame.setTitle("Level 4");
+//            frame.setTitle("Level "+levelNummer);
 //            frame.add(level);
 
 //        } else if (levelNummer == 5) {
 
 //            timerPanel = new Timers();
 //            level = new Level(getLevel5(), timerPanel, 120);
-//            frame.setTitle("Level 5");
+//            frame.setTitle("Level "+levelNummer);
 //            frame.add(level);
-
-
         } else {
 
             startPanel();
