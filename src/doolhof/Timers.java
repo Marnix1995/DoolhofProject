@@ -33,8 +33,8 @@ public final class Timers extends JPanel {
 
     public Timers() {
 
-        this.munitieLabel = new JLabel(" ");
-        this.tijdLabel = new JLabel(" ");
+        munitieLabel = new JLabel(" ");
+        tijdLabel = new JLabel(" ");
 
         labels.add(tijdLabel);
         labels.add(munitieLabel);
