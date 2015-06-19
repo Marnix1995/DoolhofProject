@@ -341,9 +341,10 @@ public class Doolhof extends JFrame {
             Connection connection = DataBase.getConnection();
 
             String query = "DELETE from Level";
-            PreparedStatement statement = connection.prepareStatement(query);
-
+            PreparedStatement statement = connection.prepareStatement(query);            
             statement.executeUpdate();
+            insert(0);
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(Doolhof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
