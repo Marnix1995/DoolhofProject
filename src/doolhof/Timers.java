@@ -81,8 +81,7 @@ public final class Timers extends JPanel {
                 munitieLabel.setText("   Munitie:  " + counter);
     
                 if(counter >= munitie) {                    
-                    munitieTeller.setRepeats(false);
-                    munitieTeller.removeActionListener(this);                    
+                    munitieTeller.setRepeats(false);                                  
                     munitieLabel.setText("   Munitie:  " + munitie);
                     counter = munitie;     
                     System.out.println(counter);                                                    
