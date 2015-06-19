@@ -92,8 +92,7 @@ public class Level extends JPanel implements ActionListener {
         this.setVisible(false);
         repaintTimer.removeActionListener(this);
         timer.removeAll();
-        timer = new Timers();
-
+       
         return true;
     }
 

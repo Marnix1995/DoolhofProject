@@ -28,9 +28,11 @@ public class Exit extends SpelObject {
               
      int levelNummer = Doolhof.checkHuidigLevel();  
      levelNummer++; 
-            
-     vak.level.doolhof.levelPanel(levelNummer);           
-     vak.level.updateLevel();     
+      
+     Doolhof.insert(levelNummer -1);
+     Doolhof.levelPanel(levelNummer);           
+     vak.level.updateLevel(); 
+        
     }    
     
     

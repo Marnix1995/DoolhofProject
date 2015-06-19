@@ -62,8 +62,7 @@ public class Doolhof extends JFrame {
           
 
         } else if (levelNummer == 2) {
-
-            insert();        
+                 
             timerPanel = new Timers();
             level = new Level(getLevel2(), timerPanel, 400);
             frame.setTitle("Level 2");
@@ -71,8 +70,7 @@ public class Doolhof extends JFrame {
           
             
         } else if (levelNummer == 3) {
-
-            insert();            
+                      
             timerPanel = new Timers();
             level = new Level(getLevel3(), timerPanel, 600);
             frame.setTitle("Level 3");
@@ -86,8 +84,7 @@ public class Doolhof extends JFrame {
             frame.add(level);
 
         } else {
-
-            insert();          
+                  
             startPanel();
         }
         frame.add(timerPanel, BorderLayout.SOUTH);
@@ -139,8 +136,10 @@ public class Doolhof extends JFrame {
         
         final JComboBox box = new JComboBox();
         box.addItem("Demo");
-        box.addItem("Startlevel");       
-        box.addItem("Verwijder highscore");
+        box.addItem("Level 1");
+        box.addItem("Level 2");
+        box.addItem("Level 3");         
+        box.addItem("Verwijder highscore");        
 
         box.setSelectedIndex(1);
         box.setFont(fontBtn);
@@ -179,10 +178,17 @@ public class Doolhof extends JFrame {
                 }              
 
                 if (selectedIndex == 2) {
+                    levelPanel(2);
+                }    
+                
+                if (selectedIndex == 3) {
+                    levelPanel(3);
+                }           
+                
+                if (selectedIndex == 4) {
                     deleteHighScore();
                     snelsteTijd();
-                    box.setSelectedIndex(1);
-                    
+                    box.setSelectedIndex(1);                    
                     return;
                                       
                 } else {
@@ -305,28 +311,28 @@ public class Doolhof extends JFrame {
         }
     }
 
-    public static void insert() {
+    public static void insert(int level) {
 
         try {
 
             Connection connection = DataBase.getConnection();
             String tijd = timerPanel.getHighScore();
 
-            if (checkLevel == 2) {
+            if (level == 1) {
 
                 String query = "insert into Level (score1) values(?)";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1, tijd);
                 statement.executeUpdate();
 
-            } else if (checkLevel == 3) {
+            } else if (level == 2) {
 
                 String query = "insert into Level (score2) values(?)";
                 PreparedStatement statement2 = connection.prepareStatement(query);
                 statement2.setString(1, tijd);
                 statement2.executeUpdate();
 
-            } else if (checkLevel > 3) {
+            } else if (level == 3) {
 
                 String query = "insert into Level (score3) values(?)";
                 PreparedStatement statement3 = connection.prepareStatement(query);
