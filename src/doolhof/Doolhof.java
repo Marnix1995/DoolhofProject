@@ -15,7 +15,6 @@ import javax.swing.*;
  *
  * @author Marnix / Alois
  *///Pacman Maze
-
 public class Doolhof extends JFrame {
 
     private static int breedte = 760;
@@ -52,39 +51,51 @@ public class Doolhof extends JFrame {
 
         Doolhof.checkLevel = levelNummer;
 
-
-        if (levelNummer == 1) {
-          
-            timerPanel = new Timers();
-            level = new Level(getLevel1(), timerPanel, 210);
-            frame.setTitle("Level 1");
-            frame.add(level);
-          
-
-        } else if (levelNummer == 2) {
-                 
-            timerPanel = new Timers();
-            level = new Level(getLevel2(), timerPanel, 400);
-            frame.setTitle("Level 2");
-            frame.add(level);
-          
-            
-        } else if (levelNummer == 3) {
-                      
-            timerPanel = new Timers();
-            level = new Level(getLevel3(), timerPanel, 570);
-            frame.setTitle("Level 3");
-            frame.add(level);
-
-        } else if (levelNummer == 0) {
+        if (levelNummer == 0) {
 
             timerPanel = new Timers();
             level = new Level(getLevel0(), timerPanel, 60);
             frame.setTitle("Level 0");
             frame.add(level);
+            
+        } else if (levelNummer == 1) {
+
+            timerPanel = new Timers();
+            level = new Level(getLevel1(), timerPanel, 210);
+            frame.setTitle("Level 1");
+            frame.add(level);
+
+        } else if (levelNummer == 2) {
+
+            timerPanel = new Timers();
+            level = new Level(getLevel2(), timerPanel, 400);
+            frame.setTitle("Level 2");
+            frame.add(level);
+
+        } else if (levelNummer == 3) {
+
+            timerPanel = new Timers();
+            level = new Level(getLevel3(), timerPanel, 570);
+            frame.setTitle("Level 3");
+            frame.add(level);
+
+//        } else if (levelNummer == 4) {
+//
+//            timerPanel = new Timers();
+//            level = new Level(getLevel4(), timerPanel, 45);
+//            frame.setTitle("Level 4");
+//            frame.add(level);
+
+//        } else if (levelNummer == 5) {
+
+//            timerPanel = new Timers();
+//            level = new Level(getLevel5(), timerPanel, 120);
+//            frame.setTitle("Level 5");
+//            frame.add(level);
+
 
         } else {
-                  
+
             startPanel();
         }
         frame.add(timerPanel, BorderLayout.SOUTH);
@@ -133,13 +144,13 @@ public class Doolhof extends JFrame {
         JButton buttonExit = new JButton("Exit");
         JButton buttonRead = new JButton("Read me");
         JButton buttonCheat = new JButton("Instellen");
-        
+
         final JComboBox box = new JComboBox();
         box.addItem("Demo");
         box.addItem("Level 1");
         box.addItem("Level 2");
-        box.addItem("Level 3");         
-        box.addItem("Verwijder highscore");        
+        box.addItem("Level 3");
+        box.addItem("Verwijder highscore");
 
         box.setSelectedIndex(1);
         box.setFont(fontBtn);
@@ -175,21 +186,21 @@ public class Doolhof extends JFrame {
 
                 if (selectedIndex == 1) {
                     levelPanel(1);
-                }              
+                }
 
                 if (selectedIndex == 2) {
                     levelPanel(2);
-                }    
-                
+                }
+
                 if (selectedIndex == 3) {
                     levelPanel(3);
-                }           
-                
+                }
+
                 if (selectedIndex == 4) {
-                    deleteHighScore();                   
-                    box.setSelectedIndex(1);                    
+                    deleteHighScore();
+                    box.setSelectedIndex(1);
                     return;
-                                      
+
                 } else {
                     startPanel.setVisible(false);
                 }
@@ -314,18 +325,18 @@ public class Doolhof extends JFrame {
 
         try {
 
-            String str = ("score"+level);
-            
+            String str = ("score" + level);
+
             Connection connection = DataBase.getConnection();
-            String tijd = timerPanel.getHighScore();  
-            
-            String query = "insert into Level ($column$) values(?)";                     
+            String tijd = timerPanel.getHighScore();
+
+            String query = "insert into Level ($column$) values(?)";
             String replaceQuery = query.replace("$column$", str);
-            
+
             PreparedStatement statement = connection.prepareStatement(replaceQuery);
             statement.setString(1, tijd);
             statement.executeUpdate();
-               
+
 
         } catch (SQLException ex) {
             Logger.getLogger(Doolhof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -340,14 +351,94 @@ public class Doolhof extends JFrame {
             Connection connection = DataBase.getConnection();
 
             String query = "DELETE from Level";
-            PreparedStatement statement = connection.prepareStatement(query);            
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate();
             insert(0);
-            
+
 
         } catch (SQLException ex) {
             Logger.getLogger(Doolhof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+    }
+
+    public static String[][] getLevelTest() {
+
+        String w = "w";
+        String c = "c";
+        String e = "e";
+        String p = "p";
+        String v = "v";
+        String b = "b";
+        String h = "h";
+        String x = "x";
+
+        String[][] level0 = new String[][]{
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
+            {x, c, c, w, c, c, c, p, h, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, c, c, b, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, c, x},
+            {x, c, c, w, c, w, c, c, c, b, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, w, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, w, c, v, c, c, c, c, c, c, c, w, c, c, c, c, c, v, c, c, x},
+            {x, c, c, c, c, w, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, w, w, w, w, w, w, w, v, c, c, c, w, w, w, w, c, w, w, w, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, w, w, w, w, c, c, w, w, w, w, w, w, w, w, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, e, c, c, c, c, c, c, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, w, w, w, c, c, c, c, c, c, c, c, c, c, x},
+            {x, w, w, w, w, w, w, w, c, c, c, c, c, w, w, w, w, w, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},};
+        return level0;
+    }
+
+    public static String[][] getLevel0() {
+
+        String w = "w";
+        String c = "c";
+        String e = "e";
+        String p = "p";
+        String v = "v";
+        String b = "b";
+        String h = "h";
+        String x = "x";
+
+        String[][] level0 = new String[][]{
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
+            {x, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, c, x},
+            {x, c, c, w, c, w, c, c, c, b, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, w, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, w, c, v, c, c, c, c, c, c, c, w, c, c, c, c, c, v, c, c, x},
+            {x, c, c, c, c, w, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, c, c, c, c, c, c, e, p, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, w, w, w, w, w, w, w, w, v, c, c, c, w, w, w, w, c, w, w, w, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, w, w, w, w, c, c, w, w, w, w, w, w, w, w, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, e, c, c, c, c, c, c, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, w, w, w, w, c, c, c, c, c, c, c, c, c, c, x},
+            {x, w, w, w, w, w, w, w, c, c, c, c, c, w, w, w, w, w, w, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},};
+        return level0;
     }
 
     public static String[][] getLevel1() {
@@ -473,7 +564,7 @@ public class Doolhof extends JFrame {
         return level3;
     }
 
-    public static String[][] getLevel0() {
+    public static String[][] getLevel4() {
 
         String w = "w";
         String c = "c";
@@ -484,36 +575,37 @@ public class Doolhof extends JFrame {
         String h = "h";
         String x = "x";
 
-        String[][] level0 = new String[][]{
+
+        String[][] level4 = new String[][]{
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
-            {x, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
-            {x, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
-            {x, c, c, w, c, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, c, x},
-            {x, c, c, w, c, w, c, c, c, b, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, w, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, w, c, v, c, c, c, c, c, c, c, w, c, c, c, c, c, v, c, c, x},
-            {x, c, c, c, c, w, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, w, c, c, c, c, c, c, e, p, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, w, w, w, w, w, w, w, w, v, c, c, c, w, w, w, w, c, w, w, w, c, x},
-            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, w, w, w, w, c, c, w, w, w, w, w, w, w, w, w, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, w, e, c, c, c, c, c, c, w, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, w, w, w, w, c, c, c, c, c, c, c, c, c, c, x},
-            {x, w, w, w, w, w, w, w, c, c, c, c, c, w, w, w, w, w, w, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, w, w, w, w, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, w, p, c, c, c, c, c, c, c, c, c, c, e, x},
+            {x, c, c, c, c, c, c, c, c, c, c, w, w, w, w, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
             {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},};
-        return level0;
+        return level4;
     }
-    
-    public static String[][] getLevelTest() {
+
+    public static String[][] getLevel5() {
 
         String w = "w";
         String c = "c";
@@ -524,32 +616,33 @@ public class Doolhof extends JFrame {
         String h = "h";
         String x = "x";
 
-        String[][] level0 = new String[][]{
+
+        String[][] level5 = new String[][]{
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
-            {x, c, c, w, c, c, c, p, h, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
-            {x, c, c, w, c, c, c, b, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
-            {x, c, c, w, c, w, c, c, c, c, c, c, c, c, c, w, w, w, w, w, w, w, w, c, x},
-            {x, c, c, w, c, w, c, c, c, b, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, w, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, w, c, v, c, c, c, c, c, c, c, w, c, c, c, c, c, v, c, c, x},
-            {x, c, c, c, c, w, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, w, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, w, c, w, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, w, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, w, w, w, w, w, w, w, w, v, c, c, c, w, w, w, w, c, w, w, w, c, x},
-            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, w, w, w, w, c, c, w, w, w, w, w, w, w, w, w, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, w, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, w, e, c, c, c, c, c, c, w, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, w, w, w, w, c, c, c, c, c, c, c, c, c, c, x},
-            {x, w, w, w, w, w, w, w, c, c, c, c, c, w, w, w, w, w, w, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, w, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, p, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, e, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
             {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},};
-        return level0;
+        return level5;
     }
 }
