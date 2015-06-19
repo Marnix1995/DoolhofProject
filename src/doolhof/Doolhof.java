@@ -186,8 +186,7 @@ public class Doolhof extends JFrame {
                 }           
                 
                 if (selectedIndex == 4) {
-                    deleteHighScore();
-                    snelsteTijd();
+                    deleteHighScore();                   
                     box.setSelectedIndex(1);                    
                     return;
                                       
