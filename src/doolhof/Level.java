@@ -25,8 +25,7 @@ public class Level extends JPanel implements ActionListener {
     private Pacman p = new Pacman();
     public Doolhof doolhof;
     private boolean stop;
-    
-    
+
     public Level(String[][] level, Timers timer, int tijd) {
 
         this.timer = timer;
@@ -34,13 +33,13 @@ public class Level extends JPanel implements ActionListener {
         timer.start(tijd);
 
         repaintTimer.start();
-      
+
         addKeyListener(new Toets(p, this));
         setFocusable(true);
         setObjectPosities();
-       
+
     }
-    
+
     // testmethode
     public Pacman getPacman() {
         return p;
@@ -87,13 +86,12 @@ public class Level extends JPanel implements ActionListener {
                 }
             }
         }
-    }   
-        
-    public boolean stop(){          
-    return stop;
     }
-    
-    
+
+    public boolean stop() {
+        return stop;
+    }
+
     public void updateLevel() {
 
         this.removeAll();
@@ -103,18 +101,17 @@ public class Level extends JPanel implements ActionListener {
     }
 
     public void pauzeer() {
-        stop = true;      
+        stop = true;
         timer.pauze();
     }
-    
+
     public void hervat() {
-        stop = false; 
+        stop = false;
         timer.hervat();
     }
 
-    
     public void toets(int toets) {
-              
+
         druktOpPauze++;
 
         switch (toets) {
@@ -130,7 +127,7 @@ public class Level extends JPanel implements ActionListener {
                     hervat();
                 }
                 break;
-                
+
             case 3:
                 Doolhof.levelPanel(Doolhof.checkHuidigLevel());
                 updateLevel();
@@ -143,10 +140,8 @@ public class Level extends JPanel implements ActionListener {
         return vakjes;
     }
 
-    
     @Override
     public void paintComponent(Graphics g) {
-
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -155,15 +150,16 @@ public class Level extends JPanel implements ActionListener {
             }
         }
     }
+
     
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        
         repaint();
 
         if (timer.getStartGetal() == timer.getStopGetal()) {
-            stop = true;            
-            this.removeAll();            
+            stop = true;
+            this.removeAll();
         }
     }
 }

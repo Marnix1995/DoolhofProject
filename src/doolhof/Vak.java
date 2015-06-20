@@ -29,7 +29,7 @@ public class Vak extends JComponent {
 
         this.level = level;
         this.x = x;
-        this.y = y;        
+        this.y = y;       
     
     }
 
@@ -40,6 +40,7 @@ public class Vak extends JComponent {
 
     public void tekenVakjes(Graphics g) {
 
+                           
         g.drawImage(img, x * size, y * size, this);
 
         if (kortste == true) {
@@ -53,12 +54,12 @@ public class Vak extends JComponent {
 
     //Vraag de buurvakjes op. Geef dir mee.  
     
-    public Vak getBuur(int dir) {
+    public Vak getBuur(int dir) {      
         Vak[][] vakjes = level.getVakjes();
                  
         try {
             switch (dir) {
-                case 1:                   
+                case 1:                     
                     return vakjes[y - 1][x];
                 case 2:                   
                     return vakjes[y + 1][x];
@@ -92,10 +93,10 @@ public class Vak extends JComponent {
                   
         t.zetObject(speelObject);
         speelObject = null;
-    }
+           
+    }    
         
     public void zetVakSpelObjectLeeg(Vak t) {  
-        speelObject = null;
-              
+        speelObject = null;              
     }    
 }

@@ -116,7 +116,7 @@ public class Pacman extends SpelObject {
     public void move(int dir) {
 
         wakaWakaWaka();
-
+ 
         this.dir = dir;
 
         Vak target = vak.getBuur(dir);
@@ -150,5 +150,6 @@ public class Pacman extends SpelObject {
 
     @Override
     public void pakOp(Pacman p) {
+        
     }
 }
