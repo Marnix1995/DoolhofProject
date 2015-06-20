@@ -471,13 +471,12 @@ public class Doolhof extends JFrame {
             {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, x},
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, c, c, x},
             {x, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, v, c, c, c, h, c, w, x},
-            {x, c, c, c, c, b, c, c, c, c, c, w, w, w, c, w, w, w, w, w, w, w, w, w, x},
-            {x, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, c, c, c, w, c, c, c, c, x},
-            {x, c, c, c, c, c, c, c, v, c, c, c, c, w, w, w, w, w, c, w, e, c, w, c, x},
-            {x, w, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, w, w, w, w, c, x},
+            {x, c, c, c, c, b, c, c, c, c, c, w, w, w, c, w, w, w, w, x, x, x, x, x, x},
+            {x, c, w, w, w, w, w, w, w, w, w, w, c, c, c, c, c, c, c, x, c, c, c, c, x},
+            {x, c, c, c, c, c, c, c, v, c, c, c, c, w, w, w, w, w, c, x, e, c, x, c, x},
+            {x, w, w, w, w, w, w, w, w, w, w, w, c, c, c, c, w, c, c, x, x, x, x, c, x},
             {x, c, c, v, c, c, c, v, c, c, c, c, c, c, c, c, w, c, c, c, v, c, c, c, x},
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},};
-
 
         return level1;
     }
