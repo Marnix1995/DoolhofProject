@@ -51,7 +51,7 @@ public class Level extends JPanel implements ActionListener {
             for (int j = 0; j < n; j++) {
 
                 vakjes[i][j] = new Vak(this, j, i);
-
+              
                 switch (levelScan[i][j]) {
 
                     case "w":
@@ -72,8 +72,7 @@ public class Level extends JPanel implements ActionListener {
                         break;
 
                     case "v":
-                        vakjes[i][j].zetObject(new Vijand());
-
+                        vakjes[i][j].zetObject(new Vijand(vakjes[i][j]));                                               
                         break;
 
                     case "h":
@@ -88,6 +87,7 @@ public class Level extends JPanel implements ActionListener {
         }
     }
 
+    
     public boolean stop() {
         return stop;
     }

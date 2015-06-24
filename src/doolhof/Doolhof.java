@@ -15,6 +15,7 @@ import javax.swing.*;
  *
  * @author Marnix / Alois
  *///Pacman Maze
+
 public class Doolhof extends JFrame {
 
     private static int breedte = 760;

@@ -29,8 +29,8 @@ public class Vak extends JComponent {
 
         this.level = level;
         this.x = x;
-        this.y = y;       
-    
+        this.y = y;  
+           
     }
 
     public void setKortste(boolean kortste) {
@@ -56,7 +56,8 @@ public class Vak extends JComponent {
     
     public Vak getBuur(int dir) {      
         Vak[][] vakjes = level.getVakjes();
-                 
+                   
+        
         try {
             switch (dir) {
                 case 1:                     

@@ -68,6 +68,7 @@ public class Pacman extends SpelObject {
         Vak v;
         v = vak;
         
+        
      if(munitie >= 0)  { 
         
        heeftMunitie = true;
@@ -78,8 +79,7 @@ public class Pacman extends SpelObject {
                         
             Vak target = v.getBuur(this.dir);
             SpelObject item = target.getObject();                        
-            Muur muur;
-                                   
+            Muur muur;                                   
             v = target;
 
             if (item instanceof Muur) {
@@ -109,9 +109,9 @@ public class Pacman extends SpelObject {
         timer.start();
         mondIsDicht = true;
         timer.setRepeats(false);
-
     }
-
+    
+    
     
     public void move(int dir) {
 
@@ -131,6 +131,7 @@ public class Pacman extends SpelObject {
 
                 item.setVak(vak);
                 item.pakOp(this);
+                
             } else if (item instanceof Exit) {
                 item.setVak(vak);
                 item.pakOp(this);
